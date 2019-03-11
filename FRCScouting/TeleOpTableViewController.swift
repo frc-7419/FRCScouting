@@ -37,6 +37,7 @@ class TeleOpTableViewController: UITableViewController {
     
     @objc func pushNextViewController(sender: UIButton) {
         let nextVC = TotalTableViewController()
+        nextVC.gameData = ModelObject()
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
