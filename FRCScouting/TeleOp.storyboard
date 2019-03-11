@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zOQ-fg-AQb">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tele Op View Controller-->
+        <scene sceneID="Z4k-yM-1UD">
+            <objects>
+                <viewController storyboardIdentifier="TeleOpViewController" id="zOQ-fg-AQb" customClass="TeleOpViewController" customModule="FRCScouting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cNW-MK-lFq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KsM-tI-fSx" userLabel="Rocket Stack">
+                                <rect key="frame" x="92.5" y="20" width="190" height="331"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uxm-KM-97W">
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="331"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zl0-2G-6XS">
+                                                <rect key="frame" x="0.0" y="0.0" width="85" height="331"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R1 - Hatch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5B-h9-iMf">
+                                                        <rect key="frame" x="0.0" y="0.0" width="85" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="EEN-Ny-pTG">
+                                                        <rect key="frame" x="0.0" y="30.5" width="85" height="130"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZAt-de-sjE">
+                                                                <rect key="frame" x="0.0" y="0.0" width="85" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbX-Ui-k0x">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="40" id="yUM-bP-jFJ"/>
+                                                                            <constraint firstAttribute="width" constant="40" id="ylH-VO-xcT"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <action selector="topLeftHatchButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="rWg-Rw-Dzp"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gob-pg-F8H">
+                                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="topRightHatchButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="wnj-bU-ANy"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="Gob-pg-F8H" firstAttribute="height" secondItem="RbX-Ui-k0x" secondAttribute="height" id="8Pn-G8-PIT"/>
+                                                                    <constraint firstItem="Gob-pg-F8H" firstAttribute="width" secondItem="RbX-Ui-k0x" secondAttribute="width" id="g7K-gB-TG8"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pgo-y9-0cc">
+                                                                <rect key="frame" x="0.0" y="45" width="85" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SR-mH-EJQ">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="centerLeftHatchButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="Dxd-2V-XRy"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="miP-TH-Xej">
+                                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="centerRightHatchButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="L0c-gG-YJi"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JYU-CU-hG8">
+                                                                <rect key="frame" x="0.0" y="90" width="85" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xna-NK-5rZ">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="bottomLeftHatchButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="dFY-2w-wpr"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZC-Yc-wJg">
+                                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="bottomRightHatchButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="avg-yO-K95"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="5SR-mH-EJQ" firstAttribute="height" secondItem="RbX-Ui-k0x" secondAttribute="height" id="BFz-wz-eyT"/>
+                                                            <constraint firstItem="5SR-mH-EJQ" firstAttribute="width" secondItem="RbX-Ui-k0x" secondAttribute="width" id="CsA-og-DFE"/>
+                                                            <constraint firstItem="vZC-Yc-wJg" firstAttribute="height" secondItem="RbX-Ui-k0x" secondAttribute="height" id="T7j-HS-0DN"/>
+                                                            <constraint firstItem="miP-TH-Xej" firstAttribute="height" secondItem="RbX-Ui-k0x" secondAttribute="height" id="lDe-Dv-Ssj"/>
+                                                            <constraint firstItem="xna-NK-5rZ" firstAttribute="height" secondItem="RbX-Ui-k0x" secondAttribute="height" id="mRz-D2-k3a"/>
+                                                            <constraint firstItem="xna-NK-5rZ" firstAttribute="width" secondItem="RbX-Ui-k0x" secondAttribute="width" id="mtC-A1-xhD"/>
+                                                            <constraint firstItem="miP-TH-Xej" firstAttribute="width" secondItem="RbX-Ui-k0x" secondAttribute="width" id="o40-VV-Veg"/>
+                                                            <constraint firstItem="vZC-Yc-wJg" firstAttribute="width" secondItem="RbX-Ui-k0x" secondAttribute="width" id="vks-EY-LxY"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R2 - Cargo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xv-BR-eoY">
+                                                        <rect key="frame" x="0.0" y="170.5" width="85" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XdQ-DZ-Zza">
+                                                        <rect key="frame" x="0.0" y="201" width="85" height="130"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5Yz-83-ykE">
+                                                                <rect key="frame" x="0.0" y="0.0" width="85" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xag-nN-FVj">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="topLeftCargoButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="7FH-kV-mH0"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0u-YG-0Nh">
+                                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="topRightCargoButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="xBY-Wd-tJy"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="I1W-xh-lKe">
+                                                                <rect key="frame" x="0.0" y="45" width="85" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXR-Qu-aQ9">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="centerLeftCargoButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="Y8e-YQ-GRx"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHL-7y-hIr">
+                                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="centerRightCargoButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="MGW-Kl-wj9"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FLc-Jy-5pc">
+                                                                <rect key="frame" x="0.0" y="90" width="85" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSG-Kv-2eo">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="bottomLeftCargoButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="gli-EW-TCj"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBZ-te-kYb">
+                                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="bottomRightCargoButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="I2P-5m-Xp2"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="wXR-Qu-aQ9" firstAttribute="height" secondItem="RbX-Ui-k0x" secondAttribute="height" id="3Cq-Oy-11S"/>
+                                                    <constraint firstItem="RBZ-te-kYb" firstAttribute="height" secondItem="RbX-Ui-k0x" secondAttribute="height" id="9FN-tq-iCe"/>
+                                                    <constraint firstItem="WSG-Kv-2eo" firstAttribute="height" secondItem="RbX-Ui-k0x" secondAttribute="height" id="JYV-pw-5DL"/>
+                                                    <constraint firstItem="x0u-YG-0Nh" firstAttribute="height" secondItem="RbX-Ui-k0x" secondAttribute="height" id="KRL-7V-zY9"/>
+                                                    <constraint firstItem="Xag-nN-FVj" firstAttribute="width" secondItem="RbX-Ui-k0x" secondAttribute="width" id="RJa-1N-MFM"/>
+                                                    <constraint firstItem="WSG-Kv-2eo" firstAttribute="width" secondItem="RbX-Ui-k0x" secondAttribute="width" id="SZ0-WV-6ly"/>
+                                                    <constraint firstItem="wXR-Qu-aQ9" firstAttribute="width" secondItem="RbX-Ui-k0x" secondAttribute="width" id="V8N-2D-vzg"/>
+                                                    <constraint firstItem="x0u-YG-0Nh" firstAttribute="width" secondItem="RbX-Ui-k0x" secondAttribute="width" id="bml-ke-pSl"/>
+                                                    <constraint firstItem="uHL-7y-hIr" firstAttribute="height" secondItem="RbX-Ui-k0x" secondAttribute="height" id="jeG-D9-RZp"/>
+                                                    <constraint firstItem="Xag-nN-FVj" firstAttribute="height" secondItem="RbX-Ui-k0x" secondAttribute="height" id="pHd-Im-Hq6"/>
+                                                    <constraint firstItem="RBZ-te-kYb" firstAttribute="width" secondItem="RbX-Ui-k0x" secondAttribute="width" id="sA8-os-xMz"/>
+                                                    <constraint firstItem="uHL-7y-hIr" firstAttribute="width" secondItem="RbX-Ui-k0x" secondAttribute="width" id="sgW-3y-lJu"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k24-n2-qdh">
+                                                <rect key="frame" x="105" y="0.0" width="85" height="331"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R2 - Hatch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6W-yM-pV0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="85" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Rpd-Zv-Fmm">
+                                                        <rect key="frame" x="0.0" y="30.5" width="85" height="130"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="atH-CM-j3A">
+                                                                <rect key="frame" x="0.0" y="0.0" width="85" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9p-nC-7hy">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="40" id="U43-fq-pGZ"/>
+                                                                            <constraint firstAttribute="width" constant="40" id="cAT-Sh-Szn"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <action selector="r2topLeftHatchButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="pi1-h1-fv5"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3J-g3-8C3">
+                                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="r2topRightHatchButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="wFJ-ew-Lny"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="j3J-g3-8C3" firstAttribute="width" secondItem="Z9p-nC-7hy" secondAttribute="width" id="I9O-F1-adT"/>
+                                                                    <constraint firstItem="j3J-g3-8C3" firstAttribute="height" secondItem="Z9p-nC-7hy" secondAttribute="height" id="ruM-Wr-m3g"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2Ke-vg-KaR">
+                                                                <rect key="frame" x="0.0" y="45" width="85" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZl-5N-gn6">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="r2centerLeftHatchButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="16C-bY-YRk"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2D2-ig-IQ0">
+                                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="r2centerRightHatchButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="Bjs-jA-Ndx"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Pk0-gw-LdB">
+                                                                <rect key="frame" x="0.0" y="90" width="85" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXs-9E-4J9">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="r2bottomLeftHatchButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="Fa4-z9-e3i"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8j-hM-jLC">
+                                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="r2bottomRightHatchButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="Kad-4l-AHh"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="P8j-hM-jLC" firstAttribute="width" secondItem="Z9p-nC-7hy" secondAttribute="width" id="RND-jv-lN8"/>
+                                                            <constraint firstItem="LXs-9E-4J9" firstAttribute="height" secondItem="Z9p-nC-7hy" secondAttribute="height" id="UeK-cr-9Cd"/>
+                                                            <constraint firstItem="HZl-5N-gn6" firstAttribute="height" secondItem="Z9p-nC-7hy" secondAttribute="height" id="XYl-lb-shV"/>
+                                                            <constraint firstItem="LXs-9E-4J9" firstAttribute="width" secondItem="Z9p-nC-7hy" secondAttribute="width" id="b56-c5-u01"/>
+                                                            <constraint firstItem="2D2-ig-IQ0" firstAttribute="height" secondItem="Z9p-nC-7hy" secondAttribute="height" id="bHW-ks-0tC"/>
+                                                            <constraint firstItem="2D2-ig-IQ0" firstAttribute="width" secondItem="Z9p-nC-7hy" secondAttribute="width" id="ma3-BX-dtX"/>
+                                                            <constraint firstItem="HZl-5N-gn6" firstAttribute="width" secondItem="Z9p-nC-7hy" secondAttribute="width" id="sxd-h0-QdE"/>
+                                                            <constraint firstItem="P8j-hM-jLC" firstAttribute="height" secondItem="Z9p-nC-7hy" secondAttribute="height" id="szU-gD-RYL"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R2 - Cargo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hV-eH-OpK">
+                                                        <rect key="frame" x="0.0" y="170.5" width="85" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zzc-cd-Rqr">
+                                                        <rect key="frame" x="0.0" y="201" width="85" height="130"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0Tw-gn-lXo">
+                                                                <rect key="frame" x="0.0" y="0.0" width="85" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XtC-bE-UXU">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="r2topLeftCargoButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="yef-11-Nxe"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4EG-9w-B8P">
+                                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="r2topRightCargoButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="zuk-Xo-2JF"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AlS-sR-zyf">
+                                                                <rect key="frame" x="0.0" y="45" width="85" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qP-ZH-iC5">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="r2centerLeftCargoButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="tad-Ru-4yL"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLU-k5-wdJ">
+                                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="r2centerRightCargoButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="e1k-xm-i4R"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YCC-Lb-RVd">
+                                                                <rect key="frame" x="0.0" y="90" width="85" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOQ-ag-Pmy">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="r2bottomLeftCargoButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="hVQ-K6-VmR"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kke-vd-PHC">
+                                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <connections>
+                                                                            <action selector="r2bottomRightCargoButton:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="EkI-5n-Uoc"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="2qP-ZH-iC5" firstAttribute="width" secondItem="Z9p-nC-7hy" secondAttribute="width" id="4HN-Re-jSJ"/>
+                                                    <constraint firstItem="2qP-ZH-iC5" firstAttribute="height" secondItem="Z9p-nC-7hy" secondAttribute="height" id="5Ef-TF-kKG"/>
+                                                    <constraint firstItem="XtC-bE-UXU" firstAttribute="height" secondItem="Z9p-nC-7hy" secondAttribute="height" id="6XJ-98-Umm"/>
+                                                    <constraint firstItem="SOQ-ag-Pmy" firstAttribute="width" secondItem="Z9p-nC-7hy" secondAttribute="width" id="CYg-wm-DVj"/>
+                                                    <constraint firstItem="4EG-9w-B8P" firstAttribute="width" secondItem="Z9p-nC-7hy" secondAttribute="width" id="DBF-46-XOC"/>
+                                                    <constraint firstItem="cLU-k5-wdJ" firstAttribute="width" secondItem="Z9p-nC-7hy" secondAttribute="width" id="ICn-Wo-UxY"/>
+                                                    <constraint firstItem="XtC-bE-UXU" firstAttribute="width" secondItem="Z9p-nC-7hy" secondAttribute="width" id="IiL-UF-eh3"/>
+                                                    <constraint firstItem="4EG-9w-B8P" firstAttribute="height" secondItem="Z9p-nC-7hy" secondAttribute="height" id="Nqk-Ud-hPV"/>
+                                                    <constraint firstItem="SOQ-ag-Pmy" firstAttribute="height" secondItem="Z9p-nC-7hy" secondAttribute="height" id="dCu-QQ-xbz"/>
+                                                    <constraint firstItem="kke-vd-PHC" firstAttribute="height" secondItem="Z9p-nC-7hy" secondAttribute="height" id="iRq-ra-W5w"/>
+                                                    <constraint firstItem="kke-vd-PHC" firstAttribute="width" secondItem="Z9p-nC-7hy" secondAttribute="width" id="twf-GG-b6F"/>
+                                                    <constraint firstItem="cLU-k5-wdJ" firstAttribute="height" secondItem="Z9p-nC-7hy" secondAttribute="height" id="zhh-g1-5Ss"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bSr-OR-DAa" userLabel="Cargo Ship Stack">
+                                <rect key="frame" x="100" y="361" width="175" height="241"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cargo Ship Hatch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqt-qw-azU">
+                                        <rect key="frame" x="0.0" y="0.0" width="175" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UbB-ol-yXW">
+                                        <rect key="frame" x="0.0" y="30.5" width="175" height="85"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CeS-Gp-C2k">
+                                                <rect key="frame" x="0.0" y="0.0" width="175" height="40"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2av-dB-eEY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipHatchTop1:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="nkV-HR-oLi"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePh-gE-y3r">
+                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipHatchTop2:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="9yj-Vs-Eua"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRy-cE-BDP">
+                                                        <rect key="frame" x="90" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipHatchTop3:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="Uaw-1k-lSn"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYy-nx-G9j">
+                                                        <rect key="frame" x="135" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipHatchTop4:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="gNB-HZ-IC7"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="PRy-cE-BDP" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="9OS-sA-rE8"/>
+                                                    <constraint firstItem="ePh-gE-y3r" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="Auy-XX-ZFP"/>
+                                                    <constraint firstItem="RYy-nx-G9j" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="Glq-DB-9Cc"/>
+                                                    <constraint firstItem="PRy-cE-BDP" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="Q1a-uT-M51"/>
+                                                    <constraint firstItem="ePh-gE-y3r" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="QJV-Vb-aBd"/>
+                                                    <constraint firstItem="RYy-nx-G9j" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="hlR-6j-ldc"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ol5-pS-hfe">
+                                                <rect key="frame" x="0.0" y="45" width="175" height="40"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XxV-8H-9mc">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipHatchBottom1:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="ial-u8-iKs"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="422-9b-ZgN">
+                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipHatchBottom2:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="fhb-dp-RjX"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uX-s5-wJM">
+                                                        <rect key="frame" x="90" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipHatchBottom3:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="lnS-7X-Zf7"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itY-pp-09d">
+                                                        <rect key="frame" x="135" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipHatchBottom4:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="3qI-Af-9Bk"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="8uX-s5-wJM" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="6xj-fi-L8B"/>
+                                            <constraint firstItem="itY-pp-09d" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="TOV-R8-XBY"/>
+                                            <constraint firstItem="XxV-8H-9mc" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="UAt-2c-2BL"/>
+                                            <constraint firstItem="422-9b-ZgN" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="Utz-Pw-u78"/>
+                                            <constraint firstItem="8uX-s5-wJM" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="VAr-xk-OfO"/>
+                                            <constraint firstItem="itY-pp-09d" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="bn6-Rj-aJL"/>
+                                            <constraint firstItem="422-9b-ZgN" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="kOD-iq-Zwo"/>
+                                            <constraint firstItem="XxV-8H-9mc" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="o0l-1x-nQr"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cargo Ship Cargo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MpL-kb-ogd">
+                                        <rect key="frame" x="0.0" y="125.5" width="175" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="akg-Bi-LmU">
+                                        <rect key="frame" x="0.0" y="156" width="175" height="85"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="j6L-9N-aZl">
+                                                <rect key="frame" x="0.0" y="0.0" width="175" height="40"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYz-HE-297">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipCargoTop1:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="aWx-bg-Yq1"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7k-ez-9HI">
+                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipCargoTop2:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="cm4-pV-cfI"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sk-38-HSq">
+                                                        <rect key="frame" x="90" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipCargoTop3:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="Oam-qP-J8b"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGL-Sh-dhG">
+                                                        <rect key="frame" x="135" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipCargoTop4:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="nmR-gp-VBQ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="R1g-bv-NBM">
+                                                <rect key="frame" x="0.0" y="45" width="175" height="40"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fG-YR-Q0U">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipCargoBottom1:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="qDj-CJ-44Y"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2L3-2U-02g">
+                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipCargoBottom2:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="NIA-CW-o58"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7p2-ln-Rma">
+                                                        <rect key="frame" x="90" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipCargoBottom3:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="RD4-m6-fxf"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efn-ti-nwn">
+                                                        <rect key="frame" x="135" y="0.0" width="40" height="40"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="cargoShipCargoBottom4:" destination="zOQ-fg-AQb" eventType="touchUpInside" id="7qH-8a-8oR"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="2L3-2U-02g" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="5Nd-jv-X8z"/>
+                                    <constraint firstItem="eGL-Sh-dhG" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="BR3-GM-YuG"/>
+                                    <constraint firstItem="s7k-ez-9HI" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="Ebq-jA-Y9k"/>
+                                    <constraint firstItem="5Sk-38-HSq" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="FS9-V1-7QC"/>
+                                    <constraint firstItem="7p2-ln-Rma" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="Maj-Zi-IJu"/>
+                                    <constraint firstItem="5Sk-38-HSq" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="NfY-le-3hz"/>
+                                    <constraint firstItem="7p2-ln-Rma" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="QAm-Ed-4Pz"/>
+                                    <constraint firstItem="OYz-HE-297" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="SNz-dU-1zH"/>
+                                    <constraint firstItem="eGL-Sh-dhG" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="Sjw-ba-6hg"/>
+                                    <constraint firstItem="2fG-YR-Q0U" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="dSW-Nb-5RT"/>
+                                    <constraint firstItem="efn-ti-nwn" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="jUl-i0-VcT"/>
+                                    <constraint firstItem="2L3-2U-02g" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="msx-1N-jBH"/>
+                                    <constraint firstItem="s7k-ez-9HI" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="n4i-tA-VaA"/>
+                                    <constraint firstItem="efn-ti-nwn" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="wdN-tN-49X"/>
+                                    <constraint firstItem="2fG-YR-Q0U" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="xxE-uW-Lsb"/>
+                                    <constraint firstItem="OYz-HE-297" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="yGh-p3-Cav"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RbX-Ui-k0x" firstAttribute="width" secondItem="2av-dB-eEY" secondAttribute="width" id="Bru-Jf-zqS"/>
+                            <constraint firstItem="RbX-Ui-k0x" firstAttribute="height" secondItem="2av-dB-eEY" secondAttribute="height" id="E0Y-Wh-SBj"/>
+                            <constraint firstItem="bSr-OR-DAa" firstAttribute="top" secondItem="KsM-tI-fSx" secondAttribute="bottom" constant="10" id="EGp-SM-lo3"/>
+                            <constraint firstItem="KsM-tI-fSx" firstAttribute="top" secondItem="cJz-vi-596" secondAttribute="top" id="jYi-dh-I0w"/>
+                            <constraint firstItem="bSr-OR-DAa" firstAttribute="centerX" secondItem="cNW-MK-lFq" secondAttribute="centerX" id="lzx-Sv-bds"/>
+                            <constraint firstItem="KsM-tI-fSx" firstAttribute="centerX" secondItem="cNW-MK-lFq" secondAttribute="centerX" id="mvg-OW-tWd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cJz-vi-596"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomLeftCargoButton" destination="WSG-Kv-2eo" id="8or-FC-m2n"/>
+                        <outlet property="bottomLeftHatchButton" destination="xna-NK-5rZ" id="dAD-wb-h8m"/>
+                        <outlet property="bottomRightCargoButton" destination="RBZ-te-kYb" id="gav-do-lyl"/>
+                        <outlet property="bottomRightHatchButton" destination="vZC-Yc-wJg" id="YGA-Zo-96B"/>
+                        <outlet property="cargoShipCargoBottom1" destination="2fG-YR-Q0U" id="Ue4-RN-mP0"/>
+                        <outlet property="cargoShipCargoBottom2" destination="2L3-2U-02g" id="gSL-w4-csh"/>
+                        <outlet property="cargoShipCargoBottom3" destination="7p2-ln-Rma" id="NzK-cX-XEZ"/>
+                        <outlet property="cargoShipCargoBottom4" destination="efn-ti-nwn" id="PYa-Wo-TsJ"/>
+                        <outlet property="cargoShipCargoTop1" destination="OYz-HE-297" id="KrJ-C8-oGA"/>
+                        <outlet property="cargoShipCargoTop2" destination="s7k-ez-9HI" id="Zfk-bd-lvc"/>
+                        <outlet property="cargoShipCargoTop3" destination="5Sk-38-HSq" id="6yo-gv-HNT"/>
+                        <outlet property="cargoShipCargoTop4" destination="eGL-Sh-dhG" id="YI8-Wy-WGt"/>
+                        <outlet property="cargoShipHatchBottom1" destination="XxV-8H-9mc" id="8uE-Ij-TBU"/>
+                        <outlet property="cargoShipHatchBottom2" destination="422-9b-ZgN" id="nOU-Na-Ouq"/>
+                        <outlet property="cargoShipHatchBottom3" destination="8uX-s5-wJM" id="Rrf-PX-uL1"/>
+                        <outlet property="cargoShipHatchBottom4" destination="itY-pp-09d" id="PZN-PF-jjg"/>
+                        <outlet property="cargoShipHatchTop1" destination="2av-dB-eEY" id="txM-kH-GiP"/>
+                        <outlet property="cargoShipHatchTop2" destination="ePh-gE-y3r" id="2kV-sg-diU"/>
+                        <outlet property="cargoShipHatchTop3" destination="PRy-cE-BDP" id="kwK-5N-t1w"/>
+                        <outlet property="cargoShipHatchTop4" destination="RYy-nx-G9j" id="PAg-86-Amh"/>
+                        <outlet property="centerLeftCargoButton" destination="wXR-Qu-aQ9" id="zmq-rm-rQC"/>
+                        <outlet property="centerLeftHatchButton" destination="5SR-mH-EJQ" id="F9C-IB-4kW"/>
+                        <outlet property="centerRightCargoButton" destination="uHL-7y-hIr" id="Gbc-wR-W33"/>
+                        <outlet property="centerRightHatchButton" destination="miP-TH-Xej" id="Bou-ty-rwO"/>
+                        <outlet property="r2bottomLeftCargoButton" destination="SOQ-ag-Pmy" id="CeU-vz-md3"/>
+                        <outlet property="r2bottomLeftHatchButton" destination="LXs-9E-4J9" id="3Ca-SB-aCJ"/>
+                        <outlet property="r2bottomRightCargoButton" destination="kke-vd-PHC" id="T05-PQ-ha9"/>
+                        <outlet property="r2bottomRightHatchButton" destination="P8j-hM-jLC" id="ZHk-8f-m3o"/>
+                        <outlet property="r2centerLeftCargoButton" destination="2qP-ZH-iC5" id="q5S-43-sHF"/>
+                        <outlet property="r2centerLeftHatchButton" destination="HZl-5N-gn6" id="6jL-UU-iKb"/>
+                        <outlet property="r2centerRightCargoButton" destination="cLU-k5-wdJ" id="j9S-Ni-Aab"/>
+                        <outlet property="r2centerRightHatchButton" destination="2D2-ig-IQ0" id="wuj-mt-nst"/>
+                        <outlet property="r2topLeftCargoButton" destination="XtC-bE-UXU" id="dme-yT-H0H"/>
+                        <outlet property="r2topLeftHatchButton" destination="Z9p-nC-7hy" id="kw2-m2-13l"/>
+                        <outlet property="r2topRightCargoButton" destination="4EG-9w-B8P" id="3l6-IY-iaV"/>
+                        <outlet property="r2topRightHatchButton" destination="j3J-g3-8C3" id="8u1-T3-EGn"/>
+                        <outlet property="topLeftCargoButton" destination="Xag-nN-FVj" id="GF0-Ja-jA5"/>
+                        <outlet property="topLeftHatchButton" destination="RbX-Ui-k0x" id="O4j-HS-E5b"/>
+                        <outlet property="topRightCargoButton" destination="x0u-YG-0Nh" id="uyL-Tf-Abe"/>
+                        <outlet property="topRightHatchButton" destination="Gob-pg-F8H" id="tt3-uG-mtu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uww-Up-03P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="122" y="108"/>
+        </scene>
+    </scenes>
+</document>
