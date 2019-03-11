@@ -1,3 +1,9 @@
 build/
 FRCScouting.xcodeproj/xcuserdata/
 FRCScouting.xcodeproj/project.xcworkspace/
+SAPCommon.framework/
+SAPFiori.framework/
+SAPFioriFlows.framework/
+SAPFoundation.framework/
+SAPOData.framework/
+SAPOfflineOData.framework/
