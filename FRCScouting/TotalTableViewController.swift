@@ -14,6 +14,7 @@ import SAPFoundation
 class TotalTableViewController: FUIFormTableViewController {
     
     var gameData: ModelObject?
+    var netPoints = 0
     
     @objc func shareCSV(sender: UIButton) {
         let fileName = "GameData.csv"
@@ -22,15 +23,15 @@ class TotalTableViewController: FUIFormTableViewController {
             let gameData = self.gameData
             else { preconditionFailure()}
         
-        var csvText = "Team Name, Match Number, Crossed Line, Ally Collision, Rocket Hatch, Rocket Cargo, Cargo Ship Hatch, Cargo Ship Cargo, Penalty, Notes, Active Defense, Failed Climb, Disconnect, Defended Against, Total\n"
+        var csvText = "Team Name, Match Number, Crossed Line, Ally Collision, Rocket 1 Hatch, Rocket 1 Cargo, Rocket 2 Hatch, Rocket 2 Cargo, Cargo Ship Hatch, Cargo Ship Cargo, Penalty, Notes, Active Defense, Failed Climb, Disconnect, Defended Against, Total\n"
         let newLine = """
-        \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(gameData.r1RocketHatch), \(gameData.r1RocketCargo), \(gameData.cargoShipHatch), \(gameData.cargoShipCargo), \(gameData.penaltyPoints), \(gameData.notes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
+        \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(gameData.r1RocketHatch), \(gameData.r1RocketCargo), \(gameData.r2RocketHatch), \(gameData.r2RocketCargo) \(gameData.cargoShipHatch), \(gameData.cargoShipCargo), \(gameData.penaltyPoints), \(gameData.notes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
         
         """
         
-//        let newLine = """
-//        \(gameData.grandTotal), \(gameData.penaltyPoints), \(gameData.aggressiveDefense), \(gameData.allyCollision), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), "\(gameData.notes)"
-//        """
+        //        let newLine = """
+        //        \(gameData.grandTotal), \(gameData.penaltyPoints), \(gameData.aggressiveDefense), \(gameData.allyCollision), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), "\(gameData.notes)"
+        //        """
         csvText.append(contentsOf: newLine)
         
         
@@ -85,6 +86,62 @@ class TotalTableViewController: FUIFormTableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         
+        //self.gameData?.rocketCargo = [[true,true],[false,true]]
+        
+        // Adding Cargo Points
+        for row in self.gameData?.r1RocketCargo ?? [[Bool]]() {
+            for column in row {
+                if column {
+                    self.netPoints += 3
+                }
+            }
+        }
+        
+        for row in self.gameData?.r2RocketCargo ?? [[Bool]]() {
+            for column in row {
+                if column {
+                    self.netPoints += 3
+                }
+            }
+        }
+        
+        for row in self.gameData?.cargoShipCargo ?? [[Bool]]() {
+            for column in row {
+                if column {
+                    self.netPoints += 3
+                }
+            }
+        }
+        //
+        
+        // Adding Hatch points
+        for row in self.gameData?.r1RocketHatch ?? [[Bool]]() {
+            for column in row {
+                if column {
+                    self.netPoints += 2
+                }
+            }
+        }
+        
+        for row in self.gameData?.r2RocketHatch ?? [[Bool]]() {
+            for column in row {
+                if column {
+                    self.netPoints += 2
+                }
+            }
+        }
+        
+        for row in self.gameData?.cargoShipHatch ?? [[Bool]]() {
+            for column in row {
+                if column {
+                    self.netPoints += 2
+                }
+            }
+        }
+        //
+        gameData?.grandTotal = netPoints
+        //tableView.reloadRows(at: [[0,0]], with: UITableView.RowAnimation.none)
+        
     }
     
     
@@ -126,7 +183,15 @@ class TotalTableViewController: FUIFormTableViewController {
                 penaltyPoints.keyboardType = .numberPad
                 penaltyPoints.isTrackingLiveChanges = true
                 penaltyPoints.onChangeHandler = { [unowned self] newValue in
-                    self.gameData?.penaltyPoints = Int(newValue)!
+                    let penalty = Int(newValue)
+                    if penalty != nil {
+                        self.gameData?.penaltyPoints = penalty ?? 0
+                    }
+                    else {
+                        self.gameData?.penaltyPoints = 0
+                    }
+                    self.gameData?.grandTotal = self.netPoints - (penalty ?? 0)
+                    tableView.reloadRows(at: [[0,0]], with: UITableView.RowAnimation.none)
                 }
                 return penaltyPoints
             case 2:

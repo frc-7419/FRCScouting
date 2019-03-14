@@ -70,7 +70,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
     
     var valueOptions = ["1"]
     
-    var info = ModelObject()
+    var gameData = ModelObject()
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // List Picker
@@ -85,7 +85,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
                 
                 
                 listPickerCell.keyName = "Team"
-                listPickerCell.value = [listOptions.firstIndex(of: info.teamName) ?? 0]
+                listPickerCell.value = [listOptions.firstIndex(of: gameData.teamName) ?? 0]
                 listPickerCell.isEditable = isEditable
                 listPickerCell.allowsMultipleSelection = multiSelection
                 listPickerCell.allowsEmptySelection = allowsEmptySelection
@@ -94,7 +94,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
                 listPickerCell.valueOptions = listOptions
                 listPickerCell.onChangeHandler = { [unowned self] newValues in
                     self.selectedValues = newValues
-                    self.info.teamName = self.listOptions[cell.value]
+                    self.gameData.teamName = self.listOptions[listPickerCell.value[0]]
                 }
                 
                 listPickerCell.listPicker.prompt = pickerPromptText
@@ -107,10 +107,10 @@ class TeamPickerTableViewController: FUIFormTableViewController {
                 valuePickerCell = cell // keep reference for onChangeHandler
                 cell.keyName = "Match Number"
                 cell.valueOptions = valueOptions
-                cell.value = self.info.match - 1  // index of first value as default
+                cell.value = self.gameData.match - 1  // index of first value as default
                 cell.onChangeHandler = { newValue in
                     print("Selected value option: \(self.valueOptions[newValue])")
-                    self.info.match = newValue + 1
+                    self.gameData.match = newValue + 1
                 }
                 
                 return cell
@@ -168,8 +168,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
     
     @objc func pushNextViewController(sender: UIButton) {
         let nextVC =         UIStoryboard.init(name: "TeleOp", bundle: Bundle.main).instantiateViewController(withIdentifier: "TeleOpViewController") as! TeleOpViewController
-//        nextVC.info = self.info
-        nextVC.gameData = ModelObject()
+        nextVC.gameData = self.gameData
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
