@@ -24,7 +24,7 @@ class TotalTableViewController: FUIFormTableViewController {
         
         var csvText = "Team Name, Match Number, Crossed Line, Ally Collision, Rocket Hatch, Rocket Cargo, Cargo Ship Hatch, Cargo Ship Cargo, Penalty, Notes, Active Defense, Failed Climb, Disconnect, Defended Against, Total\n"
         let newLine = """
-        \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(gameData.rocketHatch), \(gameData.rocketCargo), \(gameData.cargoShipHatch), \(gameData.cargoShipCargo), \(gameData.penaltyPoints), \(gameData.notes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
+        \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(gameData.r1RocketHatch), \(gameData.r1RocketCargo), \(gameData.cargoShipHatch), \(gameData.cargoShipCargo), \(gameData.penaltyPoints), \(gameData.notes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
         
         """
         

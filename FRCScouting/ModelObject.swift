@@ -16,8 +16,10 @@ struct ModelObject {
     /// During Sandstorm
     var allyCollision = Bool()
     
-    var rocketHatch = [[Bool]]()
-    var rocketCargo = [[Bool]]()
+    var r1RocketHatch = [[Bool]]()
+    var r2RocketHatch = [[Bool]]()
+    var r1RocketCargo = [[Bool]]()
+    var r2RocketCargo = [[Bool]]()
     var cargoShipHatch = [[Bool]]()
     var cargoShipCargo = [[Bool]]()
     

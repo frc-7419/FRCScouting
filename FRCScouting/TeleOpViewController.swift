@@ -11,27 +11,24 @@ import UIKit
 
 class TeleOpViewController: UIViewController {
     
-    struct Grid {
+    var gameData: ModelObject?
+    
+    struct RocketGrid {
         var topLeft: Bool = false
         var topRight: Bool = false
         var centerLeft: Bool = false
         var centerRight: Bool = false
         var bottomLeft: Bool = false
         var bottomRight: Bool = false
-        
-        var r2topLeft: Bool = false
-        var r2topRight: Bool = false
-        var r2centerLeft: Bool = false
-        var r2centerRight: Bool = false
-        var r2bottomLeft: Bool = false
-        var r2bottomRight: Bool = false
     }
     
-    var hatchGrid = Grid()
-    var cargoGrid = Grid()
+    var r1HatchGrid = RocketGrid()
+    var r1CargoGrid = RocketGrid()
+    var r2HatchGrid = RocketGrid()
+    var r2CargoGrid = RocketGrid()
     
     // Cargo Ship Struct
-    struct cargoShipGrid {
+    struct CargoShipGrid {
         var top1: Bool = false
         var top2: Bool = false
         var top3: Bool = false
@@ -42,8 +39,8 @@ class TeleOpViewController: UIViewController {
         var bottom4: Bool = false
     }
     
-    var cargoShipHatchGrid = cargoShipGrid()
-    var cargoShipCargoGrid = cargoShipGrid()
+    var cargoShipHatchGrid = CargoShipGrid()
+    var cargoShipCargoGrid = CargoShipGrid()
     
     
     // R1 - Hatch
@@ -62,7 +59,7 @@ class TeleOpViewController: UIViewController {
     @IBOutlet weak var r2bottomLeftHatchButton: UIButton!
     @IBOutlet weak var r2bottomRightHatchButton: UIButton!
     
-    // R1 - Cargo
+    // R2 - Cargo
     @IBOutlet weak var r2topLeftCargoButton: UIButton!
     @IBOutlet weak var r2topRightCargoButton: UIButton!
     @IBOutlet weak var r2centerLeftCargoButton: UIButton!
@@ -70,7 +67,7 @@ class TeleOpViewController: UIViewController {
     @IBOutlet weak var r2bottomLeftCargoButton: UIButton!
     @IBOutlet weak var r2bottomRightCargoButton: UIButton!
     
-    // R2 - Cargo
+    // R1 - Cargo
     @IBOutlet weak var topLeftCargoButton: UIButton!
     @IBOutlet weak var topRightCargoButton: UIButton!
     @IBOutlet weak var centerLeftCargoButton: UIButton!
@@ -109,69 +106,48 @@ class TeleOpViewController: UIViewController {
     }
     
     @objc func pushNextViewController(sender: UIButton) {
+        fillGameData()
         let nextVC = TotalTableViewController()
         nextVC.gameData = ModelObject()
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // R1 - Hatch
-        topLeftHatchButton.isSelected = hatchGrid.topLeft
-        updateHatchBackgroundColor(for: topLeftHatchButton)
-        topRightHatchButton.isSelected = hatchGrid.topRight
-        updateHatchBackgroundColor(for: topRightHatchButton)
-        centerLeftHatchButton.isSelected = hatchGrid.centerLeft
-        updateHatchBackgroundColor(for: centerLeftHatchButton)
-        centerRightHatchButton.isSelected = hatchGrid.centerRight
-        updateHatchBackgroundColor(for: centerRightHatchButton)
-        bottomLeftHatchButton.isSelected = hatchGrid.bottomLeft
-        updateHatchBackgroundColor(for: bottomLeftHatchButton)
-        bottomRightHatchButton.isSelected = hatchGrid.bottomRight
-        updateHatchBackgroundColor(for: bottomRightHatchButton)
+        topLeftHatchButton.isSelected = r1HatchGrid.topLeft
+        topRightHatchButton.isSelected = r1HatchGrid.topRight
+        centerLeftHatchButton.isSelected = r1HatchGrid.centerLeft
+        centerRightHatchButton.isSelected = r1HatchGrid.centerRight
+        bottomLeftHatchButton.isSelected = r1HatchGrid.bottomLeft
+        bottomRightHatchButton.isSelected = r1HatchGrid.bottomRight
         
         // R2- Hatch
-        r2topLeftHatchButton.isSelected = hatchGrid.r2topLeft
-        updateHatchBackgroundColor(for: topLeftHatchButton)
-        r2topRightHatchButton.isSelected = hatchGrid.r2topRight
-        updateHatchBackgroundColor(for: topRightHatchButton)
-        r2centerLeftHatchButton.isSelected = hatchGrid.r2centerLeft
-        updateHatchBackgroundColor(for: centerLeftHatchButton)
-        r2centerRightHatchButton.isSelected = hatchGrid.r2centerRight
-        updateHatchBackgroundColor(for: centerRightHatchButton)
-        r2bottomLeftHatchButton.isSelected = hatchGrid.r2bottomLeft
-        updateHatchBackgroundColor(for: bottomLeftHatchButton)
-        r2bottomRightHatchButton.isSelected = hatchGrid.r2bottomRight
-        updateHatchBackgroundColor(for: bottomRightHatchButton)
+        r2topLeftHatchButton.isSelected = r2HatchGrid.topLeft
+        r2topRightHatchButton.isSelected = r2HatchGrid.topRight
+        r2centerLeftHatchButton.isSelected = r2HatchGrid.centerLeft
+        r2centerRightHatchButton.isSelected = r2HatchGrid.centerRight
+        r2bottomLeftHatchButton.isSelected = r2HatchGrid.bottomLeft
+        r2bottomRightHatchButton.isSelected = r2HatchGrid.bottomRight
         
         // R1 - Cargo
-        topLeftCargoButton.isSelected = cargoGrid.topLeft
-        updateCargoBackgroundColor(for: topLeftCargoButton)
-        topRightCargoButton.isSelected = cargoGrid.topRight
-        updateCargoBackgroundColor(for: topRightCargoButton)
-        centerLeftCargoButton.isSelected = cargoGrid.centerLeft
-        updateCargoBackgroundColor(for: centerLeftCargoButton)
-        centerRightCargoButton.isSelected = cargoGrid.centerRight
-        updateCargoBackgroundColor(for: centerRightCargoButton)
-        bottomLeftCargoButton.isSelected = cargoGrid.bottomLeft
-        updateCargoBackgroundColor(for: bottomLeftCargoButton)
-        bottomRightCargoButton.isSelected = cargoGrid.bottomRight
-        updateCargoBackgroundColor(for: bottomRightCargoButton)
+        topLeftCargoButton.isSelected = r1CargoGrid.topLeft
+        topRightCargoButton.isSelected = r1CargoGrid.topRight
+        centerLeftCargoButton.isSelected = r1CargoGrid.centerLeft
+        centerRightCargoButton.isSelected = r1CargoGrid.centerRight
+        bottomLeftCargoButton.isSelected = r1CargoGrid.bottomLeft
+        bottomRightCargoButton.isSelected = r1CargoGrid.bottomRight
         
-        // R2 - Hatch
-        r2topLeftCargoButton.isSelected = cargoGrid.r2topLeft
-        updateCargoBackgroundColor(for: topLeftCargoButton)
-        r2topRightCargoButton.isSelected = cargoGrid.r2topRight
-        updateCargoBackgroundColor(for: topRightCargoButton)
-        r2centerLeftCargoButton.isSelected = cargoGrid.r2centerLeft
-        updateCargoBackgroundColor(for: centerLeftCargoButton)
-        r2centerRightCargoButton.isSelected = cargoGrid.r2centerRight
-        updateCargoBackgroundColor(for: centerRightCargoButton)
-        r2bottomLeftCargoButton.isSelected = cargoGrid.r2bottomLeft
-        updateCargoBackgroundColor(for: bottomLeftCargoButton)
-        r2bottomRightCargoButton.isSelected = cargoGrid.r2bottomRight
-        updateCargoBackgroundColor(for: bottomRightCargoButton)
+        // R2 - Cargo
+        r2topLeftCargoButton.isSelected = r2CargoGrid.topLeft
+        r2topRightCargoButton.isSelected = r2CargoGrid.topRight
+        r2centerLeftCargoButton.isSelected = r2CargoGrid.centerLeft
+        r2centerRightCargoButton.isSelected = r2CargoGrid.centerRight
+        r2bottomLeftCargoButton.isSelected = r2CargoGrid.bottomLeft
+        r2bottomRightCargoButton.isSelected = r2CargoGrid.bottomRight
         
         // Cargo Ship - Hatch
         cargoShipHatchTop1.isSelected = cargoShipHatchGrid.top1
@@ -197,173 +173,200 @@ class TeleOpViewController: UIViewController {
     // R1 - Hatch Actions
     @IBAction func topLeftHatchButton(_ sender: Any) {
         let button = sender as! UIButton
-        hatchGrid.topLeft = button.isSelected
-        toggleHatchButtonBackground(for: button)
-        print (hatchGrid.topLeft)
-    }
+        button.isSelected.toggle()
+        r1HatchGrid.topLeft = button.isSelected
+        toggleHatchButtonBackground(for: button)    }
     @IBAction func topRightHatchButton(_ sender: Any) {
         let button = sender as! UIButton
-        hatchGrid.topRight = button.isSelected
+        button.isSelected.toggle()
+        r1HatchGrid.topRight = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func centerLeftHatchButton(_ sender: Any) {
         let button = sender as! UIButton
-        hatchGrid.centerLeft = button.isSelected
+        button.isSelected.toggle()
+        r1HatchGrid.centerLeft = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func centerRightHatchButton(_ sender: Any) {
         let button = sender as! UIButton
-        hatchGrid.centerRight = button.isSelected
+        button.isSelected.toggle()
+        r1HatchGrid.centerRight = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func bottomLeftHatchButton(_ sender: Any) {
         let button = sender as! UIButton
-        hatchGrid.bottomLeft = button.isSelected
+        button.isSelected.toggle()
+        r1HatchGrid.bottomLeft = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func bottomRightHatchButton(_ sender: Any) {
         let button = sender as! UIButton
-        hatchGrid.bottomRight = button.isSelected
+        button.isSelected.toggle()
+        r1HatchGrid.bottomRight = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     
     // R2 - Hatch Actions
     @IBAction func r2topLeftHatchButton(_ sender: Any) {
         let button = sender as! UIButton
-        hatchGrid.r2topLeft = button.isSelected
+        button.isSelected.toggle()
+        r2HatchGrid.topLeft = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func r2topRightHatchButton(_ sender: Any) {
         let button = sender as! UIButton
-        hatchGrid.r2topRight = button.isSelected
+        button.isSelected.toggle()
+        r2HatchGrid.topRight = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func r2centerLeftHatchButton(_ sender: Any) {
         let button = sender as! UIButton
-        hatchGrid.r2centerLeft = button.isSelected
+        button.isSelected.toggle()
+        r2HatchGrid.centerLeft = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func r2centerRightHatchButton(_ sender: Any) {
         let button = sender as! UIButton
-        hatchGrid.r2centerRight = button.isSelected
+        button.isSelected.toggle()
+        r2HatchGrid.centerRight = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func r2bottomLeftHatchButton(_ sender: Any) {
         let button = sender as! UIButton
-        hatchGrid.r2bottomLeft = button.isSelected
+        button.isSelected.toggle()
+        r2HatchGrid.bottomLeft = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func r2bottomRightHatchButton(_ sender: Any) {
         let button = sender as! UIButton
-        hatchGrid.r2bottomRight = button.isSelected
+        button.isSelected.toggle()
+        r2HatchGrid.bottomRight = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     
     // R1 - Cargo Actions
     @IBAction func topLeftCargoButton(_ sender: Any) {
         let button = sender as! UIButton
-        cargoGrid.topLeft = button.isSelected
+        button.isSelected.toggle()
+        r1CargoGrid.topLeft = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func topRightCargoButton(_ sender: Any) {
         let button = sender as! UIButton
-        cargoGrid.topRight = button.isSelected
+        button.isSelected.toggle()
+        r1CargoGrid.topRight = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func centerLeftCargoButton(_ sender: Any) {
         let button = sender as! UIButton
-        cargoGrid.centerLeft = button.isSelected
+        button.isSelected.toggle()
+        r1CargoGrid.centerLeft = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func centerRightCargoButton(_ sender: Any) {
         let button = sender as! UIButton
-        cargoGrid.centerRight = button.isSelected
+        button.isSelected.toggle()
+        r1CargoGrid.centerRight = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func bottomLeftCargoButton(_ sender: Any) {
         let button = sender as! UIButton
-        cargoGrid.bottomLeft = button.isSelected
+        button.isSelected.toggle()
+        r1CargoGrid.bottomLeft = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func bottomRightCargoButton(_ sender: Any) {
         let button = sender as! UIButton
-        cargoGrid.bottomRight = button.isSelected
+        button.isSelected.toggle()
+        r1CargoGrid.bottomRight = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     
     // R2 - Cargo Actions
     @IBAction func r2topLeftCargoButton(_ sender: Any) {
         let button = sender as! UIButton
-        cargoGrid.topLeft = button.isSelected
+        button.isSelected.toggle()
+        r2CargoGrid.topLeft = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func r2topRightCargoButton(_ sender: Any) {
         let button = sender as! UIButton
-        cargoGrid.r2topRight = button.isSelected
+        button.isSelected.toggle()
+        r2CargoGrid.topRight = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func r2centerLeftCargoButton(_ sender: Any) {
         let button = sender as! UIButton
-        cargoGrid.r2centerLeft = button.isSelected
+        button.isSelected.toggle()
+        r2CargoGrid.centerLeft = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func r2centerRightCargoButton(_ sender: Any) {
         let button = sender as! UIButton
-        cargoGrid.r2centerRight = button.isSelected
+        button.isSelected.toggle()
+        r2CargoGrid.centerRight = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func r2bottomLeftCargoButton(_ sender: Any) {
         let button = sender as! UIButton
-        cargoGrid.r2bottomLeft = button.isSelected
+        button.isSelected.toggle()
+        r2CargoGrid.bottomLeft = button.isSelected
         toggleCargoButtonBackground(for: button)
-        print (button.isSelected)
     }
     @IBAction func r2bottomRightCargoButton(_ sender: Any) {
         let button = sender as! UIButton
-        cargoGrid.r2bottomRight = button.isSelected
+        button.isSelected.toggle()
+        r2CargoGrid.bottomRight = button.isSelected
         toggleCargoButtonBackground(for: button)
-        print (button.isSelected)
     }
     
     // Cargo Ship Hatch Actions
     @IBAction func cargoShipHatchTop1(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipHatchGrid.top1 = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func cargoShipHatchTop2(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipHatchGrid.top2 = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func cargoShipHatchTop3(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipHatchGrid.top3 = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func cargoShipHatchTop4(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipHatchGrid.top4 = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func cargoShipHatchBottom1(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipHatchGrid.bottom1 = button.isSelected
         toggleHatchButtonBackground(for: button)
-        
     }
     @IBAction func cargoShipHatchBottom2(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipHatchGrid.bottom2 = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func cargoShipHatchBottom3(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipHatchGrid.bottom3 = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
     @IBAction func cargoShipHatchBottom4(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipHatchGrid.bottom4 = button.isSelected
         toggleHatchButtonBackground(for: button)
     }
@@ -371,51 +374,57 @@ class TeleOpViewController: UIViewController {
     // Cargo Ship Cargo Actions
     @IBAction func cargoShipCargoTop1(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipCargoGrid.top1 = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func cargoShipCargoTop2(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipCargoGrid.top2 = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func cargoShipCargoTop3(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipCargoGrid.top3 = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func cargoShipCargoTop4(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipCargoGrid.top4 = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func cargoShipCargoBottom1(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipCargoGrid.bottom1 = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func cargoShipCargoBottom2(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipCargoGrid.bottom2 = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func cargoShipCargoBottom3(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipCargoGrid.bottom3 = button.isSelected
         toggleCargoButtonBackground(for: button)
     }
     @IBAction func cargoShipCargoBottom4(_ sender: Any) {
         let button = sender as! UIButton
+        button.isSelected.toggle()
         cargoShipCargoGrid.bottom4 = button.isSelected
         toggleCargoButtonBackground(for: button)
-        print (button.isSelected)
     }
   
     
     // Toggle Hatch Background Colors
     func toggleHatchButtonBackground(for button: UIButton) {
         //Hatch button should be yellow
-        button.isSelected.toggle()
         updateHatchBackgroundColor(for: button)
     
     }
@@ -426,11 +435,10 @@ class TeleOpViewController: UIViewController {
             button.backgroundColor = UIColor.lightGray
         }
     }
-    
+
     // Toggle Cargo Background Colors
     func toggleCargoButtonBackground(for button: UIButton) {
         // Cargo should be orange
-        button.isSelected.toggle()
         updateCargoBackgroundColor(for: button)
     }
     func updateCargoBackgroundColor(for button: UIButton) {
@@ -439,5 +447,46 @@ class TeleOpViewController: UIViewController {
         } else {
             button.backgroundColor = UIColor.lightGray
         }
+    }
+    func fillGameData() {
+        guard var gameData = gameData
+        else {
+                return
+        }
+        gameData.r1RocketHatch =
+        [
+            [r1HatchGrid.topLeft, r1HatchGrid.topRight],
+            [r1HatchGrid.centerLeft, r1HatchGrid.centerRight],
+            [r1HatchGrid.bottomLeft, r1HatchGrid.bottomRight]
+        ]
+        gameData.r1RocketCargo =
+        [
+            [r1CargoGrid.topLeft, r1CargoGrid.topRight],
+            [r1CargoGrid.centerLeft, r1CargoGrid.centerRight],
+            [r1HatchGrid.bottomLeft, r1HatchGrid.bottomRight]
+        ]
+        gameData.r2RocketHatch =
+        [
+            [r2HatchGrid.topLeft, r2HatchGrid.topRight],
+            [r2HatchGrid.centerLeft, r2HatchGrid.centerRight],
+            [r2HatchGrid.bottomLeft, r2HatchGrid.bottomRight]
+        ]
+        gameData.r2RocketCargo =
+        [
+            [r2CargoGrid.topLeft, r2CargoGrid.topRight],
+            [r2CargoGrid.centerLeft, r2CargoGrid.centerRight],
+            [r2HatchGrid.bottomLeft, r2HatchGrid.bottomRight]
+        ]
+        gameData.cargoShipHatch =
+        [
+            [cargoShipHatchGrid.top1, cargoShipHatchGrid.top2, cargoShipHatchGrid.top3, cargoShipHatchGrid.top4],
+            [cargoShipHatchGrid.bottom1, cargoShipHatchGrid.bottom2, cargoShipHatchGrid.bottom3, cargoShipHatchGrid.bottom4]
+        ]
+        gameData.cargoShipCargo =
+        [
+            [cargoShipCargoGrid.top1, cargoShipCargoGrid.top2, cargoShipCargoGrid.top3, cargoShipCargoGrid.top4],
+            [cargoShipCargoGrid.bottom1, cargoShipCargoGrid.bottom2, cargoShipCargoGrid.bottom3, cargoShipCargoGrid.bottom4]
+        ]
+        self.gameData = gameData
     }
 }
