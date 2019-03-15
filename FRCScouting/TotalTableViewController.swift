@@ -17,7 +17,7 @@ class TotalTableViewController: FUIFormTableViewController {
     var netPoints = 0
     
     @objc func shareCSV(sender: UIButton) {
-        let fileName = "GameData.csv"
+        let fileName = "Q_\(gameData?.match ?? 0)_\(gameData?.teamName ?? "").csv"
         guard
             let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName),
             let gameData = self.gameData
@@ -75,7 +75,7 @@ class TotalTableViewController: FUIFormTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Totals"
-        let nextButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(alert(sender:)))
+        let nextButton = UIBarButtonItem(title: "Reset", style: .done, target: self, action: #selector(alert(sender:)))
         self.navigationItem.rightBarButtonItem = nextButton
         
         tableView.register(FUISwitchFormCell.self, forCellReuseIdentifier: FUISwitchFormCell.reuseIdentifier)
@@ -159,7 +159,7 @@ class TotalTableViewController: FUIFormTableViewController {
         let saveButton = tableView.dequeueReusableCell(withIdentifier: FUIMapDetailPanel.ButtonTableViewCell.reuseIdentifier, for: indexPath) as! FUIMapDetailPanel.ButtonTableViewCell
         
         
-        guard var gameData = self.gameData else {
+        guard let gameData = self.gameData else {
             switchFormCell.value = true
             switchFormCell.keyName = "Error"
             return switchFormCell
