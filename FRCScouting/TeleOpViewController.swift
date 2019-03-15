@@ -455,37 +455,37 @@ class TeleOpViewController: UIViewController {
         }
         gameData.r1RocketHatch =
         [
-            [r1HatchGrid.topLeft, r1HatchGrid.topRight],
-            [r1HatchGrid.centerLeft, r1HatchGrid.centerRight],
-            [r1HatchGrid.bottomLeft, r1HatchGrid.bottomRight]
+            [Int(r1HatchGrid.topLeft), Int(r1HatchGrid.topRight)],
+            [Int(r1HatchGrid.centerLeft), Int(r1HatchGrid.centerRight)],
+            [Int(r1HatchGrid.bottomLeft), Int(r1HatchGrid.bottomRight)]
         ]
         gameData.r1RocketCargo =
         [
-            [r1CargoGrid.topLeft, r1CargoGrid.topRight],
-            [r1CargoGrid.centerLeft, r1CargoGrid.centerRight],
-            [r1HatchGrid.bottomLeft, r1HatchGrid.bottomRight]
+            [Int(r1CargoGrid.topLeft), Int(r1CargoGrid.topRight)],
+            [Int(r1CargoGrid.centerLeft), Int(r1CargoGrid.centerRight)],
+            [Int(r1HatchGrid.bottomLeft), Int(r1HatchGrid.bottomRight)]
         ]
         gameData.r2RocketHatch =
         [
-            [r2HatchGrid.topLeft, r2HatchGrid.topRight],
-            [r2HatchGrid.centerLeft, r2HatchGrid.centerRight],
-            [r2HatchGrid.bottomLeft, r2HatchGrid.bottomRight]
+            [Int(r2HatchGrid.topLeft), Int(r2HatchGrid.topRight)],
+            [Int(r2HatchGrid.centerLeft), Int(r2HatchGrid.centerRight)],
+            [Int(r2HatchGrid.bottomLeft), Int(r2HatchGrid.bottomRight)]
         ]
         gameData.r2RocketCargo =
         [
-            [r2CargoGrid.topLeft, r2CargoGrid.topRight],
-            [r2CargoGrid.centerLeft, r2CargoGrid.centerRight],
-            [r2HatchGrid.bottomLeft, r2HatchGrid.bottomRight]
+            [Int(r2CargoGrid.topLeft), Int(r2CargoGrid.topRight)],
+            [Int(r2CargoGrid.centerLeft), Int(r2CargoGrid.centerRight)],
+            [Int(r2HatchGrid.bottomLeft), Int(r2HatchGrid.bottomRight)]
         ]
         gameData.cargoShipHatch =
         [
-            [cargoShipHatchGrid.top1, cargoShipHatchGrid.top2, cargoShipHatchGrid.top3, cargoShipHatchGrid.top4],
-            [cargoShipHatchGrid.bottom1, cargoShipHatchGrid.bottom2, cargoShipHatchGrid.bottom3, cargoShipHatchGrid.bottom4]
+            [Int(cargoShipHatchGrid.top1), Int(cargoShipHatchGrid.top2), Int(cargoShipHatchGrid.top3), Int(cargoShipHatchGrid.top4)],
+            [Int(cargoShipHatchGrid.bottom1), Int(cargoShipHatchGrid.bottom2), Int(cargoShipHatchGrid.bottom3), Int(cargoShipHatchGrid.bottom4)]
         ]
         gameData.cargoShipCargo =
         [
-            [cargoShipCargoGrid.top1, cargoShipCargoGrid.top2, cargoShipCargoGrid.top3, cargoShipCargoGrid.top4],
-            [cargoShipCargoGrid.bottom1, cargoShipCargoGrid.bottom2, cargoShipCargoGrid.bottom3, cargoShipCargoGrid.bottom4]
+            [Int(cargoShipCargoGrid.top1), Int(cargoShipCargoGrid.top2), Int(cargoShipCargoGrid.top3), Int(cargoShipCargoGrid.top4)],
+            [Int(cargoShipCargoGrid.bottom1), Int(cargoShipCargoGrid.bottom2), Int(cargoShipCargoGrid.bottom3), Int(cargoShipCargoGrid.bottom4)]
         ]
         self.gameData = gameData
     }

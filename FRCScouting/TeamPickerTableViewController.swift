@@ -15,7 +15,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
     private var multiSelection = false
     private var pickerPromptText = "Select One Item"
     private var selectedValues = [0]
-    var listOptions = ["100 - The WildHats",
+    let listOptions = ["100 - The WildHats",
                        "115 - MVRT",
                        "253 - Boba Bots",
                        "254 - Cheesy Poofs",
@@ -66,7 +66,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
     // Value Picker
     var valuePickerCell: FUIValuePickerFormCell?
     
-    var ROUNDS = 10
+    var ROUNDS = 50
     
     var valueOptions = ["1"]
     
@@ -83,7 +83,6 @@ class TeamPickerTableViewController: FUIFormTableViewController {
             switch indexPath.row{
             case 0:
                 
-                
                 listPickerCell.keyName = "Team"
                 listPickerCell.value = [listOptions.firstIndex(of: gameData.teamName) ?? 0]
                 listPickerCell.isEditable = isEditable
@@ -95,6 +94,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
                 listPickerCell.onChangeHandler = { [unowned self] newValues in
                     self.selectedValues = newValues
                     self.gameData.teamName = self.listOptions[listPickerCell.value[0]]
+                    NSLog("Picked team name \(self.gameData.teamName)")
                 }
                 
                 listPickerCell.listPicker.prompt = pickerPromptText
@@ -102,8 +102,6 @@ class TeamPickerTableViewController: FUIFormTableViewController {
                 return listPickerCell
                 
             case 1:
-                // Value Picker
-                
                 valuePickerCell = cell // keep reference for onChangeHandler
                 cell.keyName = "Match Number"
                 cell.valueOptions = valueOptions
@@ -152,6 +150,14 @@ class TeamPickerTableViewController: FUIFormTableViewController {
             valueOptions.append(String(n))
         }
         
+        // Set some initial values
+        // Team name
+        self.gameData.teamName = self.listOptions[0]
+        
+        // Team number
+        if let matchNo = Int(valueOptions[0]) {
+            self.gameData.match = matchNo
+        }
         
         // List Picker
         tableView.register(FUIListPickerFormCell.self, forCellReuseIdentifier: FUIListPickerFormCell.reuseIdentifier)

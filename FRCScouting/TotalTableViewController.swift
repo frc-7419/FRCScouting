@@ -22,10 +22,19 @@ class TotalTableViewController: FUIFormTableViewController {
             let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName),
             let gameData = self.gameData
             else { preconditionFailure()}
-        
         var csvText = "Team Name, Match Number, Crossed Line, Ally Collision, Rocket 1 Hatch, Rocket 1 Cargo, Rocket 2 Hatch, Rocket 2 Cargo, Cargo Ship Hatch, Cargo Ship Cargo, Penalty, Notes, Active Defense, Failed Climb, Disconnect, Defended Against, Total\n"
+        
+        // We need to remove the commas from the 2D array and notes
+        // TOD): Figure out the CSV escaping so we do not have to do this!
+        let r1RocketHatchString = "\(gameData.r1RocketHatch)".replacingOccurrences(of: ",", with: "")
+        let r1RocketCargoString = "\(gameData.r1RocketCargo)".replacingOccurrences(of: ",", with: "")
+        let r2RocketHatchString = "\(gameData.r2RocketHatch)".replacingOccurrences(of: ",", with: "")
+        let r2RocketCargoString = "\(gameData.r2RocketCargo)".replacingOccurrences(of: ",", with: "")
+        let cargoShipHatchString = "\(gameData.cargoShipHatch)".replacingOccurrences(of: ",", with: "")
+        let cargoShipCargoString = "\(gameData.cargoShipCargo)".replacingOccurrences(of: ",", with: "")
+        let fixedNotes = "\(gameData.notes)".replacingOccurrences(of: ",", with: "")
         let newLine = """
-        \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(gameData.r1RocketHatch), \(gameData.r1RocketCargo), \(gameData.r2RocketHatch), \(gameData.r2RocketCargo) \(gameData.cargoShipHatch), \(gameData.cargoShipCargo), \(gameData.penaltyPoints), \(gameData.notes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
+        \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(r1RocketHatchString), \(r1RocketCargoString), \(r2RocketHatchString), \(r2RocketCargoString), \(cargoShipHatchString), \(cargoShipCargoString), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
         
         """
         
@@ -89,25 +98,25 @@ class TotalTableViewController: FUIFormTableViewController {
         //self.gameData?.rocketCargo = [[true,true],[false,true]]
         
         // Adding Cargo Points
-        for row in self.gameData?.r1RocketCargo ?? [[Bool]]() {
+        for row in self.gameData?.r1RocketCargo ?? [[Int]]() {
             for column in row {
-                if column {
+                if column == 1 {
                     self.netPoints += 3
                 }
             }
         }
         
-        for row in self.gameData?.r2RocketCargo ?? [[Bool]]() {
+        for row in self.gameData?.r2RocketCargo ?? [[Int]]() {
             for column in row {
-                if column {
+                if column == 1 {
                     self.netPoints += 3
                 }
             }
         }
         
-        for row in self.gameData?.cargoShipCargo ?? [[Bool]]() {
+        for row in self.gameData?.cargoShipCargo ?? [[Int]]() {
             for column in row {
-                if column {
+                if column == 1 {
                     self.netPoints += 3
                 }
             }
@@ -115,25 +124,25 @@ class TotalTableViewController: FUIFormTableViewController {
         //
         
         // Adding Hatch points
-        for row in self.gameData?.r1RocketHatch ?? [[Bool]]() {
+        for row in self.gameData?.r1RocketHatch ?? [[Int]]() {
             for column in row {
-                if column {
+                if column == 1 {
                     self.netPoints += 2
                 }
             }
         }
         
-        for row in self.gameData?.r2RocketHatch ?? [[Bool]]() {
+        for row in self.gameData?.r2RocketHatch ?? [[Int]]() {
             for column in row {
-                if column {
+                if column == 1 {
                     self.netPoints += 2
                 }
             }
         }
         
-        for row in self.gameData?.cargoShipHatch ?? [[Bool]]() {
+        for row in self.gameData?.cargoShipHatch ?? [[Int]]() {
             for column in row {
-                if column {
+                if column == 1 {
                     self.netPoints += 2
                 }
             }

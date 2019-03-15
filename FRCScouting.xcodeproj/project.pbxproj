@@ -20,7 +20,6 @@
 		AACB9D932217B19100B7E84B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AACB9D922217B19100B7E84B /* Assets.xcassets */; };
 		AACB9D962217B19100B7E84B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACB9D942217B19100B7E84B /* LaunchScreen.storyboard */; };
 		AACB9D9E2217B29400B7E84B /* SandstormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9D9D2217B29400B7E84B /* SandstormTableViewController.swift */; };
-		AACB9DA02217B2C300B7E84B /* TeleOpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9D9F2217B2C300B7E84B /* TeleOpTableViewController.swift */; };
 		AACB9DA22217B2E000B7E84B /* TotalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9DA12217B2E000B7E84B /* TotalTableViewController.swift */; };
 		B43C97642235D2AE001F3AC8 /* SAPFiori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A0E52DD2231F80F007ACCE1 /* SAPFiori.framework */; };
 		B43C97652235D2AE001F3AC8 /* SAPFiori.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2A0E52DD2231F80F007ACCE1 /* SAPFiori.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -69,7 +68,6 @@
 		AACB9D952217B19100B7E84B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AACB9D972217B19100B7E84B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AACB9D9D2217B29400B7E84B /* SandstormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandstormTableViewController.swift; sourceTree = "<group>"; };
-		AACB9D9F2217B2C300B7E84B /* TeleOpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleOpTableViewController.swift; sourceTree = "<group>"; };
 		AACB9DA12217B2E000B7E84B /* TotalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalTableViewController.swift; sourceTree = "<group>"; };
 		B43C97682235D365001F3AC8 /* ModelObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObject.swift; sourceTree = "<group>"; };
 		B43C976A2235DCE5001F3AC8 /* FRCScouting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FRCScouting.entitlements; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				B43C97682235D365001F3AC8 /* ModelObject.swift */,
 				AACB9D8D2217B19100B7E84B /* TeamPickerTableViewController.swift */,
 				AACB9D9D2217B29400B7E84B /* SandstormTableViewController.swift */,
-				AACB9D9F2217B2C300B7E84B /* TeleOpTableViewController.swift */,
 				AACB9DA12217B2E000B7E84B /* TotalTableViewController.swift */,
 				2A0E52EA22322036007ACCE1 /* OldTotalTableViewController.swift */,
 				AACB9D8F2217B19100B7E84B /* Main.storyboard */,
@@ -229,7 +226,6 @@
 				AACB9D8E2217B19100B7E84B /* TeamPickerTableViewController.swift in Sources */,
 				B43C97692235D365001F3AC8 /* ModelObject.swift in Sources */,
 				AACB9D9E2217B29400B7E84B /* SandstormTableViewController.swift in Sources */,
-				AACB9DA02217B2C300B7E84B /* TeleOpTableViewController.swift in Sources */,
 				AACB9DA22217B2E000B7E84B /* TotalTableViewController.swift in Sources */,
 				F6157A832235E028001033E1 /* TeleOpViewController.swift in Sources */,
 				2A0E52EB22322036007ACCE1 /* OldTotalTableViewController.swift in Sources */,
