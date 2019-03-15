@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2A0E52EB22322036007ACCE1 /* OldTotalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E52EA22322036007ACCE1 /* OldTotalTableViewController.swift */; };
-		A1B64D3A223C305300738133 /* SAPFiori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B64D34223C305200738133 /* SAPFiori.framework */; };
-		A1B64D40223C319800738133 /* SAPFiori.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1B64D34223C305200738133 /* SAPFiori.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A1B64D43223C321100738133 /* SAPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B64D42223C321100738133 /* SAPCommon.framework */; };
-		A1B64D44223C322000738133 /* SAPCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1B64D42223C321100738133 /* SAPCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A19C9EDE223C417D00F9193C /* SAPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EDC223C417D00F9193C /* SAPCommon.framework */; };
+		A19C9EDF223C417D00F9193C /* SAPCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EDC223C417D00F9193C /* SAPCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A19C9EE0223C417D00F9193C /* SAPFiori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EDD223C417D00F9193C /* SAPFiori.framework */; };
+		A19C9EE1223C417D00F9193C /* SAPFiori.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EDD223C417D00F9193C /* SAPFiori.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AACB9D8C2217B19100B7E84B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9D8B2217B19100B7E84B /* AppDelegate.swift */; };
 		AACB9D8E2217B19100B7E84B /* TeamPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9D8D2217B19100B7E84B /* TeamPickerTableViewController.swift */; };
 		AACB9D912217B19100B7E84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACB9D8F2217B19100B7E84B /* Main.storyboard */; };
@@ -25,14 +25,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2A0E5306223232F7007ACCE1 /* Embed Frameworks */ = {
+		A1089E7A223C3ED50017AF4B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A1B64D40223C319800738133 /* SAPFiori.framework in Embed Frameworks */,
-				A1B64D44223C322000738133 /* SAPCommon.framework in Embed Frameworks */,
+				A19C9EDF223C417D00F9193C /* SAPCommon.framework in Embed Frameworks */,
+				A19C9EE1223C417D00F9193C /* SAPFiori.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,8 +41,8 @@
 
 /* Begin PBXFileReference section */
 		2A0E52EA22322036007ACCE1 /* OldTotalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldTotalTableViewController.swift; sourceTree = "<group>"; };
-		A1B64D34223C305200738133 /* SAPFiori.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPFiori.framework; path = FRCScouting/SAPFiori.framework; sourceTree = "<group>"; };
-		A1B64D42223C321100738133 /* SAPCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPCommon.framework; path = FRCScouting/SAPCommon.framework; sourceTree = "<group>"; };
+		A19C9EDC223C417D00F9193C /* SAPCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPCommon.framework; path = "Frameworks/Release-iphoneos/SAPCommon.framework"; sourceTree = "<group>"; };
+		A19C9EDD223C417D00F9193C /* SAPFiori.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPFiori.framework; path = "Frameworks/Release-iphoneos/SAPFiori.framework"; sourceTree = "<group>"; };
 		AACB9D882217B19100B7E84B /* FRCScouting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FRCScouting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACB9D8B2217B19100B7E84B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AACB9D8D2217B19100B7E84B /* TeamPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPickerTableViewController.swift; sourceTree = "<group>"; };
@@ -63,29 +63,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1B64D3A223C305300738133 /* SAPFiori.framework in Frameworks */,
-				A1B64D43223C321100738133 /* SAPCommon.framework in Frameworks */,
+				A19C9EDE223C417D00F9193C /* SAPCommon.framework in Frameworks */,
+				A19C9EE0223C417D00F9193C /* SAPFiori.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A0E52E12231F96A007ACCE1 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A1B64D42223C321100738133 /* SAPCommon.framework */,
-				A1B64D34223C305200738133 /* SAPFiori.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		AACB9D7F2217B19100B7E84B = {
 			isa = PBXGroup;
 			children = (
+				A19C9EDC223C417D00F9193C /* SAPCommon.framework */,
+				A19C9EDD223C417D00F9193C /* SAPFiori.framework */,
 				AACB9D8A2217B19100B7E84B /* FRCScouting */,
 				AACB9D892217B19100B7E84B /* Products */,
-				2A0E52E12231F96A007ACCE1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,7 +119,7 @@
 				AACB9D842217B19100B7E84B /* Sources */,
 				AACB9D852217B19100B7E84B /* Frameworks */,
 				AACB9D862217B19100B7E84B /* Resources */,
-				2A0E5306223232F7007ACCE1 /* Embed Frameworks */,
+				A1089E7A223C3ED50017AF4B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -347,12 +339,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = MJGRJBXP25;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/FRCScouting",
+					"$(PROJECT_DIR)/SAPML-Dependencies",
+					"$(PROJECT_DIR)/Frameworks/Release-fat",
+					"$(PROJECT_DIR)/Frameworks/Release-iphoneos",
 				);
 				INFOPLIST_FILE = FRCScouting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -361,6 +357,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.quarrylane.frc.scouting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = FRCScouting_DevProvProfile;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -370,12 +367,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = MJGRJBXP25;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/FRCScouting",
+					"$(PROJECT_DIR)/SAPML-Dependencies",
+					"$(PROJECT_DIR)/Frameworks/Release-fat",
+					"$(PROJECT_DIR)/Frameworks/Release-iphoneos",
 				);
 				INFOPLIST_FILE = FRCScouting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -384,6 +386,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.quarrylane.frc.scouting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = FRCScouting_DistProvProfile;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
