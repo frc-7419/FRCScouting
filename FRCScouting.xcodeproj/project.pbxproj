@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2A0E52EB22322036007ACCE1 /* OldTotalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E52EA22322036007ACCE1 /* OldTotalTableViewController.swift */; };
-		A19C9EDE223C417D00F9193C /* SAPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EDC223C417D00F9193C /* SAPCommon.framework */; };
-		A19C9EDF223C417D00F9193C /* SAPCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EDC223C417D00F9193C /* SAPCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A19C9EE0223C417D00F9193C /* SAPFiori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EDD223C417D00F9193C /* SAPFiori.framework */; };
-		A19C9EE1223C417D00F9193C /* SAPFiori.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EDD223C417D00F9193C /* SAPFiori.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A19C9EE5223C68FA00F9193C /* SAPFiori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EE3223C68FA00F9193C /* SAPFiori.framework */; };
+		A19C9EE6223C68FA00F9193C /* SAPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EE4223C68FA00F9193C /* SAPCommon.framework */; };
+		A19C9EE7223C690500F9193C /* SAPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EE4223C68FA00F9193C /* SAPCommon.framework */; };
+		A19C9EE8223C690500F9193C /* SAPCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EE4223C68FA00F9193C /* SAPCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A19C9EE9223C690500F9193C /* SAPFiori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EE3223C68FA00F9193C /* SAPFiori.framework */; };
+		A19C9EEA223C690500F9193C /* SAPFiori.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A19C9EE3223C68FA00F9193C /* SAPFiori.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AACB9D8C2217B19100B7E84B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9D8B2217B19100B7E84B /* AppDelegate.swift */; };
 		AACB9D8E2217B19100B7E84B /* TeamPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9D8D2217B19100B7E84B /* TeamPickerTableViewController.swift */; };
 		AACB9D912217B19100B7E84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACB9D8F2217B19100B7E84B /* Main.storyboard */; };
@@ -31,8 +33,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A19C9EDF223C417D00F9193C /* SAPCommon.framework in Embed Frameworks */,
-				A19C9EE1223C417D00F9193C /* SAPFiori.framework in Embed Frameworks */,
+				A19C9EE8223C690500F9193C /* SAPCommon.framework in Embed Frameworks */,
+				A19C9EEA223C690500F9193C /* SAPFiori.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,8 +43,8 @@
 
 /* Begin PBXFileReference section */
 		2A0E52EA22322036007ACCE1 /* OldTotalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldTotalTableViewController.swift; sourceTree = "<group>"; };
-		A19C9EDC223C417D00F9193C /* SAPCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPCommon.framework; path = "Frameworks/Release-iphoneos/SAPCommon.framework"; sourceTree = "<group>"; };
-		A19C9EDD223C417D00F9193C /* SAPFiori.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPFiori.framework; path = "Frameworks/Release-iphoneos/SAPFiori.framework"; sourceTree = "<group>"; };
+		A19C9EE3223C68FA00F9193C /* SAPFiori.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPFiori.framework; path = "Frameworks/Release-fat/SAPFiori.framework"; sourceTree = "<group>"; };
+		A19C9EE4223C68FA00F9193C /* SAPCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPCommon.framework; path = "Frameworks/Release-fat/SAPCommon.framework"; sourceTree = "<group>"; };
 		AACB9D882217B19100B7E84B /* FRCScouting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FRCScouting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACB9D8B2217B19100B7E84B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AACB9D8D2217B19100B7E84B /* TeamPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPickerTableViewController.swift; sourceTree = "<group>"; };
@@ -63,8 +65,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A19C9EDE223C417D00F9193C /* SAPCommon.framework in Frameworks */,
-				A19C9EE0223C417D00F9193C /* SAPFiori.framework in Frameworks */,
+				A19C9EE6223C68FA00F9193C /* SAPCommon.framework in Frameworks */,
+				A19C9EE7223C690500F9193C /* SAPCommon.framework in Frameworks */,
+				A19C9EE5223C68FA00F9193C /* SAPFiori.framework in Frameworks */,
+				A19C9EE9223C690500F9193C /* SAPFiori.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,8 +78,8 @@
 		AACB9D7F2217B19100B7E84B = {
 			isa = PBXGroup;
 			children = (
-				A19C9EDC223C417D00F9193C /* SAPCommon.framework */,
-				A19C9EDD223C417D00F9193C /* SAPFiori.framework */,
+				A19C9EE4223C68FA00F9193C /* SAPCommon.framework */,
+				A19C9EE3223C68FA00F9193C /* SAPFiori.framework */,
 				AACB9D8A2217B19100B7E84B /* FRCScouting */,
 				AACB9D892217B19100B7E84B /* Products */,
 			);
@@ -120,6 +124,7 @@
 				AACB9D852217B19100B7E84B /* Frameworks */,
 				AACB9D862217B19100B7E84B /* Resources */,
 				A1089E7A223C3ED50017AF4B /* Embed Frameworks */,
+				A19C9EEB223C69D600F9193C /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -181,6 +186,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A19C9EEB223C69D600F9193C /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#!/bin/bash\n\n# This bash script will remove iOS simulator architectures from both of our frameworks when executing release builds\n# http://ikennd.ac/blog/2015/02/stripping-unwanted-architectures-from-dynamic-libraries-in-xcode/\nset -x\nAPP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\n    FRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\n    FRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\n    echo \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\n    EXTRACTED_ARCHS=()\n\n    for ARCH in $ARCHS\n    do\n        echo \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\n        lipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\n        EXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\n    done\n\n    echo \"Merging extracted architectures: ${ARCHS}\"\n    lipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\n    rm \"${EXTRACTED_ARCHS[@]}\"\n\n    echo \"Replacing original executable with thinned version\"\n    rm \"$FRAMEWORK_EXECUTABLE_PATH\"\n    mv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AACB9D842217B19100B7E84B /* Sources */ = {
