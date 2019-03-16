@@ -32,7 +32,7 @@ class TotalTableViewController: FUIFormTableViewController {
         let r2RocketCargoString = "\(gameData.r2RocketCargo)".replacingOccurrences(of: ",", with: "")
         let cargoShipHatchString = "\(gameData.cargoShipHatch)".replacingOccurrences(of: ",", with: "")
         let cargoShipCargoString = "\(gameData.cargoShipCargo)".replacingOccurrences(of: ",", with: "")
-        let fixedNotes = "\(gameData.notes)".replacingOccurrences(of: ",", with: "")
+        let fixedNotes = "\(gameData.notes)".replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "\n", with: " ")
         let newLine = """
         \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(r1RocketHatchString), \(r1RocketCargoString), \(r2RocketHatchString), \(r2RocketCargoString), \(cargoShipHatchString), \(cargoShipCargoString), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
         
