@@ -66,7 +66,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
     // Value Picker
     var valuePickerCell: FUIValuePickerFormCell?
     
-    var ROUNDS = 50
+    var ROUNDS = 100
     
     var valueOptions = ["1"]
     
