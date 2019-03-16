@@ -99,6 +99,7 @@ class TotalTableViewController: FUIFormTableViewController {
         
         // Adding Cargo Points
         for row in self.gameData?.r1RocketCargo ?? [[Int]]() {
+            print (row)
             for column in row {
                 if column == 1 {
                     self.netPoints += 3
@@ -125,6 +126,7 @@ class TotalTableViewController: FUIFormTableViewController {
         
         // Adding Hatch points
         for row in self.gameData?.r1RocketHatch ?? [[Int]]() {
+            print (row)
             for column in row {
                 if column == 1 {
                     self.netPoints += 2
@@ -199,7 +201,7 @@ class TotalTableViewController: FUIFormTableViewController {
                     else {
                         self.gameData?.penaltyPoints = 0
                     }
-                    self.gameData?.grandTotal = self.netPoints - (penalty ?? 0)
+                    //self.gameData?.grandTotal = self.netPoints - (penalty ?? 0)
                     tableView.reloadRows(at: [[0,0]], with: UITableView.RowAnimation.none)
                 }
                 return penaltyPoints

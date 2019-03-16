@@ -463,7 +463,7 @@ class TeleOpViewController: UIViewController {
         [
             [Int(r1CargoGrid.topLeft), Int(r1CargoGrid.topRight)],
             [Int(r1CargoGrid.centerLeft), Int(r1CargoGrid.centerRight)],
-            [Int(r1HatchGrid.bottomLeft), Int(r1HatchGrid.bottomRight)]
+            [Int(r1CargoGrid.bottomLeft), Int(r1CargoGrid.bottomRight)]
         ]
         gameData.r2RocketHatch =
         [
@@ -475,7 +475,7 @@ class TeleOpViewController: UIViewController {
         [
             [Int(r2CargoGrid.topLeft), Int(r2CargoGrid.topRight)],
             [Int(r2CargoGrid.centerLeft), Int(r2CargoGrid.centerRight)],
-            [Int(r2HatchGrid.bottomLeft), Int(r2HatchGrid.bottomRight)]
+            [Int(r2CargoGrid.bottomLeft), Int(r2CargoGrid.bottomRight)]
         ]
         gameData.cargoShipHatch =
         [
