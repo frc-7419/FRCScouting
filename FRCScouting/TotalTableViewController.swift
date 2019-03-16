@@ -16,25 +16,41 @@ class TotalTableViewController: FUIFormTableViewController {
     var gameData: ModelObject?
     var netPoints = 0
     
+    func flattenArray(someArray: [[Int]]) -> String {
+        var flattenedArray = [Int]()
+        for row in someArray {
+            for column in row {
+                flattenedArray.append(column)
+            }
+        }
+        
+        let rocketString = flattenedArray.map({"\($0)"}).joined(separator: ",")
+        return rocketString
+    }
+    
     @objc func shareCSV(sender: UIButton) {
         let fileName = "Q_\(gameData?.match ?? 0)_\(gameData?.teamName ?? "").csv"
         guard
             let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName),
             let gameData = self.gameData
             else { preconditionFailure()}
-        var csvText = "Team Name, Match Number, Crossed Line, Ally Collision, Rocket 1 Hatch, Rocket 1 Cargo, Rocket 2 Hatch, Rocket 2 Cargo, Cargo Ship Hatch, Cargo Ship Cargo, Penalty, Notes, Active Defense, Failed Climb, Disconnect, Defended Against, Total\n"
+        var csvText = "Team Name, Match Number, Crossed Line, Ally Collision, R1 Hatch Top Left, R1 Hatch Top Right, R1 Hatch Center Left, R1 Hatch Center Right, R1 Hatch Bottom Left, R1 Hatch Bottom Right, R1 Cargo Top Left, R1 Cargo Top Right, R1 Cargo Center Left, R1 Cargo Center Right, R1 Cargo Bottom Left, R1 Cargo Bottom Right, R2 Hatch Top Left, R2 Hatch Top Right, R2 Hatch Center Left, R2 Hatch Center Right, R2 Hatch Bottom Left, R2 Hatch Bottom Right, R2 Cargo Top Left, R2 Cargo Top Right, R2 Cargo Center Left, R2 Cargo Center Right, R2 Cargo Bottom Left, R2 Cargo Bottom Right, Cargo Ship Hatch Top 1, Cargo Ship Hatch Top 2, Cargo Ship Hatch Top 3, Cargo Ship Hatch Top 4, Cargo Ship Hatch Bottom 1, Cargo Ship Hatch Bottom 2, Cargo Ship Hatch Bottom 3, Cargo Ship Hatch Bottom 4, Cargo Ship Cargo Top 1, Cargo Ship Cargo Top 2, Cargo Ship Cargo Top 3, Cargo Ship Cargo Top 4, Cargo Ship Cargo Bottom 1, Cargo Ship Cargo Bottom 2, Cargo Ship Cargo Bottom 3, Cargo Ship Cargo Bottom 4, Penalty, Notes, Active Defense, Failed Climb, Disconnect, Defended Against, Total\n"
         
         // We need to remove the commas from the 2D array and notes
-        // TOD): Figure out the CSV escaping so we do not have to do this!
-        let r1RocketHatchString = "\(gameData.r1RocketHatch)".replacingOccurrences(of: ",", with: "")
-        let r1RocketCargoString = "\(gameData.r1RocketCargo)".replacingOccurrences(of: ",", with: "")
-        let r2RocketHatchString = "\(gameData.r2RocketHatch)".replacingOccurrences(of: ",", with: "")
-        let r2RocketCargoString = "\(gameData.r2RocketCargo)".replacingOccurrences(of: ",", with: "")
-        let cargoShipHatchString = "\(gameData.cargoShipHatch)".replacingOccurrences(of: ",", with: "")
-        let cargoShipCargoString = "\(gameData.cargoShipCargo)".replacingOccurrences(of: ",", with: "")
+        // TODO: Figure out the CSV escaping so we do not have to do this!
+        
+       
+        /*let r1RocketHatchString = "\(gameData.r1RocketHatch)".replacingOccurrences(of: ",", with: "")
+         let r1RocketCargoString = "\(gameData.r1RocketCargo)".replacingOccurrences(of: ",", with: "")
+         let r2RocketHatchString = "\(gameData.r2RocketHatch)".replacingOccurrences(of: ",", with: "")
+         let r2RocketCargoString = "\(gameData.r2RocketCargo)".replacingOccurrences(of: ",", with: "")
+         let cargoShipHatchString = "\(gameData.cargoShipHatch)".replacingOccurrences(of: ",", with: "")
+         let cargoShipCargoString = "\(gameData.cargoShipCargo)".replacingOccurrences(of: ",", with: "")*/
+        
         let fixedNotes = "\(gameData.notes)".replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "\n", with: " ")
+        
         let newLine = """
-        \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(r1RocketHatchString), \(r1RocketCargoString), \(r2RocketHatchString), \(r2RocketCargoString), \(cargoShipHatchString), \(cargoShipCargoString), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
+        \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(flattenArray(someArray: gameData.r1RocketHatch)), \(flattenArray(someArray: gameData.r1RocketCargo)), \(flattenArray(someArray: gameData.r2RocketHatch)), \(flattenArray(someArray: gameData.r2RocketCargo)), \(flattenArray(someArray: gameData.cargoShipHatch)), \(flattenArray(someArray: gameData.cargoShipCargo)), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
         
         """
         
