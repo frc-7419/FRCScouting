@@ -36,6 +36,7 @@ class TotalTableViewController: FUIFormTableViewController {
         return rocketString
     }
     
+    
     func RocketCalc(r1: [[Int]], r2: [[Int]]) -> (Int,Int,Int){
         var Top = 0
         var Mid = 0
@@ -87,7 +88,8 @@ class TotalTableViewController: FUIFormTableViewController {
             let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName),
             let gameData = self.gameData
             else { preconditionFailure()}
-        var csvText = "Team Name, Match Number, Crossed Line, Ally Collision, Rocket Hatch Top, Rocket Hatch Mid, Rocket Hatch Bottom, Rocket Cargo Top, Rocket Cargo Mid, Rocket Cargo Bottom, Penalty, Notes, Active Defense, Failed Climb, Disconnect, Defended Against, Total\n"
+        var csvText = "Team Name, Match Number, Crossed Line, Ally Collision, Rocket Hatch Top, Rocket Hatch Mid, Rocket Hatch Bottom, Rocket Cargo Top, Rocket Cargo Mid, Rocket Cargo Bottom, Cargo Ship Hatch, Cargo Ship Cargo, Penalty, Notes, Active Defense, Failed Climb, Disconnect, Defended Against, Total\n"
+        print(csvText)
         
         // We need to remove the commas from the 2D array and notes
         // TODO: Figure out the CSV escaping so we do not have to do this!
@@ -100,12 +102,15 @@ class TotalTableViewController: FUIFormTableViewController {
          let cargoShipHatchString = "\(gameData.cargoShipHatch)".replacingOccurrences(of: ",", with: "")
          let cargoShipCargoString = "\(gameData.cargoShipCargo)".replacingOccurrences(of: ",", with: "")*/
         
+        let numCargoShipHatch = calcCargoShip(_matrix: gameData.cargoShipHatch)
+        let numCargoShipCargo = calcCargoShip(_matrix: gameData.cargoShipCargo)
+        
         let fixedNotes = "\(gameData.notes)".replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "\n", with: " ")
         
         let newLine = """
-        \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(RocketHatchT), \(RocketHatchM), \(RocketHatchB), \(RocketCargoT), \(RocketCargoM), \(RocketCargoB), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
-        
+        \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(RocketHatchT), \(RocketHatchM), \(RocketHatchB), \(RocketCargoT), \(RocketCargoM), \(RocketCargoB), \(numCargoShipHatch), \(numCargoShipCargo), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
         """
+        print(newLine)
         
         /*let newLine = """
          \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(flattenArray(someArray: gameData.r1RocketHatch)), \(flattenArray(someArray: gameData.r1RocketCargo)), \(flattenArray(someArray: gameData.r2RocketHatch)), \(flattenArray(someArray: gameData.r2RocketCargo)), \(flattenArray(someArray: gameData.cargoShipHatch)), \(flattenArray(someArray: gameData.cargoShipCargo)), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
@@ -240,10 +245,11 @@ class TotalTableViewController: FUIFormTableViewController {
         //
         gameData?.grandTotal = netPoints
         
+        
                 //tableView.reloadRows(at: [[0,0]], with: UITableView.RowAnimation.none)
         
     }
-    func getNumHatches (_matrix:[[Int]]) -> Int {
+    func calcCargoShip (_matrix:[[Int]]) -> Int {
         var numHatches = 0
         for (rowIndex, row) in _matrix.enumerated() {
             for (columnIndex, column) in row.enumerated() {
