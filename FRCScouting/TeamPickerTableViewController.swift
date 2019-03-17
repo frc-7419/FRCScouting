@@ -170,6 +170,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
         tableView.register(FUIValuePickerFormCell.self, forCellReuseIdentifier: FUIValuePickerFormCell.reuseIdentifier)
         tableView.estimatedRowHeight = 44.5
         tableView.rowHeight = UITableView.automaticDimension
+        
     }
     
     @objc func pushNextViewController(sender: UIButton) {

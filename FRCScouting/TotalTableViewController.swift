@@ -88,6 +88,7 @@ class TotalTableViewController: FUIFormTableViewController {
         self.present(alertController, animated: true, completion: nil)
         
     }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: Return the number of cells
         if self.gameData == nil {
@@ -167,10 +168,22 @@ class TotalTableViewController: FUIFormTableViewController {
         }
         //
         gameData?.grandTotal = netPoints
-        //tableView.reloadRows(at: [[0,0]], with: UITableView.RowAnimation.none)
+        
+                //tableView.reloadRows(at: [[0,0]], with: UITableView.RowAnimation.none)
         
     }
-    
+    func getNumHatches (_matrix:[[Int]]) -> Int {
+        var numHatches = 0
+        for (rowIndex, row) in _matrix.enumerated() {
+            for (columnIndex, column) in row.enumerated() {
+                if (_matrix[rowIndex][columnIndex] == 1) {
+                    numHatches += 1
+                }
+            }
+        }
+        return numHatches
+    }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // TODO: Implement FUI Form Cells
