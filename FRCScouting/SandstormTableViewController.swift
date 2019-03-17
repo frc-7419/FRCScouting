@@ -164,9 +164,9 @@ class SandstormTableViewController: UITableViewController {
     }
     
     @objc func pushNextViewController(sender: UIButton) {
-        let nextVC = TeleOpTableViewController()
+//        let nextVC = TeleOpTableViewController()
         //nextVC.info = self.info
-        self.navigationController?.pushViewController(nextVC, animated: true)
+//        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
 }

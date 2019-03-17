@@ -15,7 +15,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
     private var multiSelection = false
     private var pickerPromptText = "Select One Item"
     private var selectedValues = [0]
-    var listOptions = ["100 - The WildHats",
+    let listOptions = ["100 - The WildHats",
                        "115 - MVRT",
                        "253 - Boba Bots",
                        "254 - Cheesy Poofs",
@@ -66,11 +66,11 @@ class TeamPickerTableViewController: FUIFormTableViewController {
     // Value Picker
     var valuePickerCell: FUIValuePickerFormCell?
     
-    var ROUNDS = 10
+    var ROUNDS = 100
     
     var valueOptions = ["1"]
     
-    var info = ModelObject()
+    var gameData = ModelObject()
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // List Picker
@@ -83,9 +83,8 @@ class TeamPickerTableViewController: FUIFormTableViewController {
             switch indexPath.row{
             case 0:
                 
-                
                 listPickerCell.keyName = "Team"
-                listPickerCell.value = [listOptions.firstIndex(of: info.teamName) ?? 0]
+                listPickerCell.value = [listOptions.firstIndex(of: gameData.teamName) ?? 0]
                 listPickerCell.isEditable = isEditable
                 listPickerCell.allowsMultipleSelection = multiSelection
                 listPickerCell.allowsEmptySelection = allowsEmptySelection
@@ -94,7 +93,8 @@ class TeamPickerTableViewController: FUIFormTableViewController {
                 listPickerCell.valueOptions = listOptions
                 listPickerCell.onChangeHandler = { [unowned self] newValues in
                     self.selectedValues = newValues
-                    self.info.teamName = self.listOptions[cell.value]
+                    self.gameData.teamName = self.listOptions[listPickerCell.value[0]]
+                    NSLog("Picked team name \(self.gameData.teamName)")
                 }
                 
                 listPickerCell.listPicker.prompt = pickerPromptText
@@ -102,15 +102,13 @@ class TeamPickerTableViewController: FUIFormTableViewController {
                 return listPickerCell
                 
             case 1:
-                // Value Picker
-                
                 valuePickerCell = cell // keep reference for onChangeHandler
                 cell.keyName = "Match Number"
                 cell.valueOptions = valueOptions
-                cell.value = self.info.match - 1  // index of first value as default
+                cell.value = self.gameData.match - 1  // index of first value as default
                 cell.onChangeHandler = { newValue in
                     print("Selected value option: \(self.valueOptions[newValue])")
-                    self.info.match = newValue + 1
+                    self.gameData.match = newValue + 1
                 }
                 
                 return cell
@@ -152,6 +150,14 @@ class TeamPickerTableViewController: FUIFormTableViewController {
             valueOptions.append(String(n))
         }
         
+        // Set some initial values
+        // Team name
+        self.gameData.teamName = self.listOptions[0]
+        
+        // Team number
+        if let matchNo = Int(valueOptions[0]) {
+            self.gameData.match = matchNo
+        }
         
         // List Picker
         tableView.register(FUIListPickerFormCell.self, forCellReuseIdentifier: FUIListPickerFormCell.reuseIdentifier)
@@ -164,11 +170,12 @@ class TeamPickerTableViewController: FUIFormTableViewController {
         tableView.register(FUIValuePickerFormCell.self, forCellReuseIdentifier: FUIValuePickerFormCell.reuseIdentifier)
         tableView.estimatedRowHeight = 44.5
         tableView.rowHeight = UITableView.automaticDimension
+        
     }
     
     @objc func pushNextViewController(sender: UIButton) {
         let nextVC =         UIStoryboard.init(name: "TeleOp", bundle: Bundle.main).instantiateViewController(withIdentifier: "TeleOpViewController") as! TeleOpViewController
-//        nextVC.info = self.info
+        nextVC.gameData = self.gameData
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }

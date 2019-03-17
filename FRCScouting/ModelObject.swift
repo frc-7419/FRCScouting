@@ -16,10 +16,12 @@ struct ModelObject {
     /// During Sandstorm
     var allyCollision = Bool()
     
-    var rocketHatch = [[Bool]]()
-    var rocketCargo = [[Bool]]()
-    var cargoShipHatch = [[Bool]]()
-    var cargoShipCargo = [[Bool]]()
+    var r1RocketHatch = [[Int]]()
+    var r2RocketHatch = [[Int]]()
+    var r1RocketCargo = [[Int]]()
+    var r2RocketCargo = [[Int]]()
+    var cargoShipHatch = [[Int]]()
+    var cargoShipCargo = [[Int]]()
     
     var penaltyPoints = Int()
     var notes = String()
@@ -29,4 +31,12 @@ struct ModelObject {
     var defendedAgainst = Bool()
     
     var grandTotal = Int()
+}
+
+// Helper to convert Ints to bool
+// Where false is 0 and 1 is true
+public extension Int {
+    public init(_ bool: Bool) {
+        self = bool ? 1 : 0
+    }
 }
