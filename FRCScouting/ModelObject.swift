@@ -15,7 +15,11 @@ struct ModelObject {
     
     /// During Sandstorm
     var allyCollision = Bool()
-    
+    var attemptSandstorm = Bool()
+    var successfulDescent = Bool()
+    var sandstormItem = String()
+    var suceedSandstorm = Bool()
+    // During TeleOp
     var r1RocketHatch = [[Int]]()
     var r2RocketHatch = [[Int]]()
     var r1RocketCargo = [[Int]]()

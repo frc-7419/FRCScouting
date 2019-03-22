@@ -174,7 +174,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
     }
     
     @objc func pushNextViewController(sender: UIButton) {
-        let nextVC =         UIStoryboard.init(name: "TeleOp", bundle: Bundle.main).instantiateViewController(withIdentifier: "TeleOpViewController") as! TeleOpViewController
+        let nextVC = SandstormTableViewController()
         nextVC.gameData = self.gameData
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
