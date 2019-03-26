@@ -161,16 +161,10 @@ class TotalTableViewController: FUIFormTableViewController {
         }
     }
     
-    @objc func pushNextViewController(sender: UIButton) {
-        let nextVC = UIStoryboard.init(name: "REVIEW", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReViewController") as! TeleOpViewController
-        nextVC.gameData = self.gameData
-        self.navigationController?.pushViewController(nextVC, animated: true)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Totals"
-        let nextButton = UIBarButtonItem(title: "Finish", style: .done, target: self, action: #selector(alert(sender:)))
+        let nextButton = UIBarButtonItem(title: "Reset", style: .done, target: self, action: #selector(alert(sender:)))
         self.navigationItem.rightBarButtonItem = nextButton
         
         tableView.register(FUISwitchFormCell.self, forCellReuseIdentifier: FUISwitchFormCell.reuseIdentifier)
