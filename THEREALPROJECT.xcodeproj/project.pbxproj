@@ -445,11 +445,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-<<<<<<< HEAD:THEREALPROJECT.xcodeproj/project.pbxproj
 				PRODUCT_BUNDLE_IDENTIFIER = "Ayush-Bajaj";
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = "Karan-Saini";
->>>>>>> e09e4f4764fe21f928fb3b78f8e4665351be5cf6:FRCScouting.xcodeproj/project.pbxproj
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -509,11 +505,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-<<<<<<< HEAD:THEREALPROJECT.xcodeproj/project.pbxproj
 				PRODUCT_BUNDLE_IDENTIFIER = "Ayush-Bajaj";
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = "Karan-Saini";
->>>>>>> e09e4f4764fe21f928fb3b78f8e4665351be5cf6:FRCScouting.xcodeproj/project.pbxproj
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
