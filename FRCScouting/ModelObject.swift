@@ -13,10 +13,8 @@ struct ModelObject {
     var match = Int()
     var crossedLine = Bool()
     
-    
-    
-    
     /// During Sandstorm
+    var allyCollision = Bool()
     var attemptSandstorm = Bool()
     var successfulDescent = Bool()
     var sandstormItem = String()
@@ -29,7 +27,6 @@ struct ModelObject {
     var cargoShipHatch = [[Int]]()
     var cargoShipCargo = [[Int]]()
     
-    var allyCollision = Bool()
     var penaltyPoints = Int()
     var notes = String()
     var aggressiveDefense = Bool()
