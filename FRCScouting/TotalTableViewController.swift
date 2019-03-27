@@ -24,6 +24,9 @@ class TotalTableViewController: FUIFormTableViewController {
     var RocketHatchM = 0
     var RocketHatchB = 0
     
+    var numCargoShipCargo = 0
+    var numCargoShipHatch = 0
+    
     func flattenArray(someArray: [[Int]]) -> String {
         var flattenedArray = [Int]()
         for row in someArray {
@@ -82,13 +85,13 @@ class TotalTableViewController: FUIFormTableViewController {
         return (Top,Mid,Bot)
     }
     
-    @objc func shareCSV(sender: UIButton) {
+   /* @objc func shareCSV(sender: UIButton) {
         let fileName = "Q_\(gameData?.match ?? 0)_\(gameData?.teamName ?? "").csv"
         guard
             let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName),
             let gameData = self.gameData
             else { preconditionFailure()}
-        var csvText = "Team Name, Match Number, Crossed Line, Ally Collision, Rocket Hatch Top, Rocket Hatch Mid, Rocket Hatch Bottom, Rocket Cargo Top, Rocket Cargo Mid, Rocket Cargo Bottom, Cargo Ship Hatch, Cargo Ship Cargo, Penalty, Notes, Active Defense, Failed Climb, Disconnect, Defended Against, Total\n"
+       var csvText = "Team Name, Match Number, Crossed Line, Ally Collision, Attempt Sandstorm, Successful Descent, Sandstorm Item, Suceed Sandstorm, Rocket Hatch Top, Rocket Hatch Mid, Rocket Hatch Bottom, Rocket Cargo Top, Rocket Cargo Mid, Rocket Cargo Bottom, Cargo Ship Hatch, Cargo Ship Cargo, Penalty, Notes, Active Defense, Failed Climb, Disconnect, Defended Against, Total\n"
         print(csvText)
         
         // We need to remove the commas from the 2D array and notes
@@ -102,13 +105,15 @@ class TotalTableViewController: FUIFormTableViewController {
          let cargoShipHatchString = "\(gameData.cargoShipHatch)".replacingOccurrences(of: ",", with: "")
          let cargoShipCargoString = "\(gameData.cargoShipCargo)".replacingOccurrences(of: ",", with: "")*/
         
-        let numCargoShipHatch = calcCargoShip(_matrix: gameData.cargoShipHatch)
-        let numCargoShipCargo = calcCargoShip(_matrix: gameData.cargoShipCargo)
+        numCargoShipHatch = calcCargoShip(_matrix: gameData.cargoShipHatch)
+        print("Before: \(numCargoShipHatch)")
+        numCargoShipCargo = calcCargoShip(_matrix: gameData.cargoShipCargo)
+        print("Before: \(numCargoShipCargo)")
         
         let fixedNotes = "\(gameData.notes)".replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "\n", with: " ")
         
         let newLine = """
-        \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(RocketHatchT), \(RocketHatchM), \(RocketHatchB), \(RocketCargoT), \(RocketCargoM), \(RocketCargoB), \(numCargoShipHatch), \(numCargoShipCargo), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
+        \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(gameData.attemptSandstorm), \(gameData.successfulDescent), \(gameData.sandstormItem), \(gameData.suceedSandstorm), \(RocketHatchT), \(RocketHatchM), \(RocketHatchB), \(RocketCargoT), \(RocketCargoM), \(RocketCargoB), \(numCargoShipHatch), \(numCargoShipCargo), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
         """
         print(newLine)
         
@@ -133,7 +138,7 @@ class TotalTableViewController: FUIFormTableViewController {
         
         let vc = UIActivityViewController(activityItems: [path], applicationActivities: [])
         present(vc, animated: true, completion: nil)
-    }
+    } */
     
     @objc func alert(sender: UIButton) {
         let alertController = UIAlertController(title: "Are You Sure", message: "Going back home will erase any entered data", preferredStyle: .alert)
@@ -157,14 +162,38 @@ class TotalTableViewController: FUIFormTableViewController {
         if self.gameData == nil {
             return 0
         } else {
-            return 9
+            return 8
         }
+    }
+    
+    @objc func pushNextViewController(sender: UIButton) {
+        
+        let nextVC = ReViewController()
+        nextVC.gameData = self.gameData
+        
+        numCargoShipHatch = calcCargoShip(_matrix: gameData!.cargoShipHatch)
+        print("Before: \(numCargoShipHatch)")
+        numCargoShipCargo = calcCargoShip(_matrix: gameData!.cargoShipCargo)
+        print("Before: \(numCargoShipCargo)")
+        
+        nextVC.numCargoShipCargo = self.numCargoShipCargo
+        print("After: \(numCargoShipCargo)")
+        nextVC.numCargoShipHatch = self.numCargoShipHatch
+        print("After: \(numCargoShipHatch)")
+        nextVC.RocketCargoT = self.RocketCargoT
+        nextVC.RocketCargoM = self.RocketCargoM
+        nextVC.RocketCargoB = self.RocketCargoB
+        
+        nextVC.RocketHatchT = self.RocketHatchT
+        nextVC.RocketHatchM = self.RocketHatchM
+        nextVC.RocketHatchB = self.RocketHatchB
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Totals"
-        let nextButton = UIBarButtonItem(title: "Reset", style: .done, target: self, action: #selector(alert(sender:)))
+        let nextButton = UIBarButtonItem(title: "Finish", style: .done, target: self, action: #selector(pushNextViewController(sender:)))
         self.navigationItem.rightBarButtonItem = nextButton
         
         tableView.register(FUISwitchFormCell.self, forCellReuseIdentifier: FUISwitchFormCell.reuseIdentifier)
@@ -333,7 +362,7 @@ class TotalTableViewController: FUIFormTableViewController {
                 }
                 return switchFormCell
             case 5:
-                switchFormCell.keyName = "Disconnection"
+                switchFormCell.keyName = "Disconnection?"
                 switchFormCell.value = false
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
                     self.gameData?.disconnect = newValue
@@ -356,12 +385,7 @@ class TotalTableViewController: FUIFormTableViewController {
                 }
                 noteCell.isTrackingLiveChanges = true
                 return noteCell
-            case 8:
-                saveButton.button.setTitle("Save", for: .normal)
-                saveButton.button.didSelectHandler = { btn in
-                    self.shareCSV(sender: btn)
-                }
-                return saveButton
+                
             default:
                 switchFormCell.value = true
                 switchFormCell.keyName = "Error"

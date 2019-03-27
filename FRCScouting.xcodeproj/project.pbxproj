@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A0E52EB22322036007ACCE1 /* OldTotalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E52EA22322036007ACCE1 /* OldTotalTableViewController.swift */; };
+		2A5ACCD7224A21C7008109E7 /* ReViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5ACCD6224A21C7008109E7 /* ReViewController.swift */; };
 		AACB9D8C2217B19100B7E84B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9D8B2217B19100B7E84B /* AppDelegate.swift */; };
 		AACB9D8E2217B19100B7E84B /* TeamPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9D8D2217B19100B7E84B /* TeamPickerTableViewController.swift */; };
 		AACB9D912217B19100B7E84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACB9D8F2217B19100B7E84B /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		2A0E52EA22322036007ACCE1 /* OldTotalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldTotalTableViewController.swift; sourceTree = "<group>"; };
+		2A5ACCD6224A21C7008109E7 /* ReViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReViewController.swift; sourceTree = "<group>"; };
 		AACB9D882217B19100B7E84B /* FRCScouting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FRCScouting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACB9D8B2217B19100B7E84B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AACB9D8D2217B19100B7E84B /* TeamPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPickerTableViewController.swift; sourceTree = "<group>"; };
@@ -118,13 +120,14 @@
 			isa = PBXGroup;
 			children = (
 				F6157A822235E028001033E1 /* TeleOp.storyboard */,
-				F6157A812235E028001033E1 /* TeleOpViewController.swift */,
 				B43C976A2235DCE5001F3AC8 /* FRCScouting.entitlements */,
 				AACB9D8B2217B19100B7E84B /* AppDelegate.swift */,
 				B43C97682235D365001F3AC8 /* ModelObject.swift */,
 				AACB9D8D2217B19100B7E84B /* TeamPickerTableViewController.swift */,
 				AACB9D9D2217B29400B7E84B /* SandstormTableViewController.swift */,
+				F6157A812235E028001033E1 /* TeleOpViewController.swift */,
 				AACB9DA12217B2E000B7E84B /* TotalTableViewController.swift */,
+				2A5ACCD6224A21C7008109E7 /* ReViewController.swift */,
 				2A0E52EA22322036007ACCE1 /* OldTotalTableViewController.swift */,
 				AACB9D8F2217B19100B7E84B /* Main.storyboard */,
 				AACB9D922217B19100B7E84B /* Assets.xcassets */,
@@ -248,6 +251,7 @@
 				F6157A832235E028001033E1 /* TeleOpViewController.swift in Sources */,
 				2A0E52EB22322036007ACCE1 /* OldTotalTableViewController.swift in Sources */,
 				AACB9D8C2217B19100B7E84B /* AppDelegate.swift in Sources */,
+				2A5ACCD7224A21C7008109E7 /* ReViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

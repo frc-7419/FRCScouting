@@ -39,6 +39,7 @@ class SandstormTableViewController: UITableViewController {
             sandstormCell.keyName = "What Did They Attempt?"
             sandstormCell.isEditable = true
             sandstormCell.value = 0 // Default selected index
+            self.gameData?.sandstormItem = "None" // Default gameData value
             sandstormCell.onChangeHandler = { newValue in
                  if (newValue == 0) {
                     self.gameData?.sandstormItem = "None"
