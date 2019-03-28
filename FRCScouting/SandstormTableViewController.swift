@@ -10,126 +10,78 @@ import UIKit
 
 class SandstormTableViewController: UITableViewController {
     
-    var cargoNum = 0
-    var hatchNum = 0
-    var bonus = 0
-    var total = 0
-    
-    
-    var shipCargoMin = Float(0)
-    var shipCargoMax = Float(12)
-    var shipCargoUnit = Unit.init(symbol: "Cargo")
-    
-    var shipHatchMin = Float(0)
-    var shipHatchMax = Float(12)
-    var shipHatchUnit = Unit.init(symbol: "Hatch")
-    
-    var sliderKeyName = "Number:"
-    var sliderUnitStyle = Formatter.UnitStyle.medium
-    
-    var sliderValue = Float(0)
-    
-    var info = ModelObject()
+    var gameData: ModelObject?
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // TODO: Implement FUI Form Cells
-        let sandstormCell = self.tableView.dequeueReusableCell(withIdentifier: FUISegmentedControlFormCell.reuseIdentifier, for: indexPath) as! FUISegmentedControlFormCell
-        let sandstormitems = ["0", "1", "2"]
+        let switchFormCell = tableView.dequeueReusableCell(withIdentifier: FUISwitchFormCell.reuseIdentifier, for: indexPath) as! FUISwitchFormCell
         
-        let rocketCell = self.tableView.dequeueReusableCell(withIdentifier: FUISegmentedControlFormCell.reuseIdentifier, for: indexPath) as! FUISegmentedControlFormCell
-        let rocketitems = ["Top", "Middle", "Bottom"]
+        let multipleOptionCell = self.tableView.dequeueReusableCell(withIdentifier: FUISegmentedControlFormCell.reuseIdentifier, for: indexPath) as! FUISegmentedControlFormCell
+        let cargoAndHatchOptions = ["0", "1", "2"]
+        let startingOptions = ["1", "2"]
+        let missOptions = ["None", "H", "C", "Both"]
         
-        let shipCargo = tableView.dequeueReusableCell(withIdentifier: FUISliderFormCell.reuseIdentifier, for: indexPath) as! FUISliderFormCell
-        
-        let rockethatchCell = self.tableView.dequeueReusableCell(withIdentifier: FUISegmentedControlFormCell.reuseIdentifier, for: indexPath) as! FUISegmentedControlFormCell
-        let rockethatchitems = ["Top", "Middle", "Bottom"]
-        
-        let shipHatch = tableView.dequeueReusableCell(withIdentifier: FUISliderFormCell.reuseIdentifier, for: indexPath) as! FUISliderFormCell
-        
-        let textFieldCell = tableView.dequeueReusableCell(withIdentifier: FUITextFieldFormCell.reuseIdentifier, for: indexPath) as! FUITextFieldFormCell
-        
-        switch indexPath.section{
+        switch indexPath.row {
         case 0:
-            switch indexPath.row{
-            case 0:
-                sandstormCell.valueOptions = sandstormitems
-                sandstormCell.keyName = "Sandstorm Bonus"
-                sandstormCell.isEditable = true
-                sandstormCell.value = 0 // Default selected index
-                sandstormCell.onChangeHandler = { newValue in
-                    sandstormCell.value = newValue
-                    self.bonus = Int(newValue)
-                    tableView.reloadRows(at: [[0,5]], with: UITableView.RowAnimation.none)
-                }
-                return sandstormCell
-            case 1:
-                rocketCell.valueOptions = rocketitems
-                rocketCell.keyName = "Rocket Cargo"
-                rocketCell.isEditable = true
-                rocketCell.value = 1 // Default selected index
-                rocketCell.onChangeHandler = { newValue in
-                    print("Selected item index: \(newValue)")
-                }
-                return rocketCell
-            case 2:
-                shipCargo.keyName = sliderKeyName
-                shipCargo.minimumValue = shipCargoMin
-                shipCargo.maximumValue = shipCargoMax
-                shipCargo.formatter.unitStyle = sliderUnitStyle
-                shipCargo.unit = shipCargoUnit
-                shipCargo.value = sliderValue
-                
-                shipCargo.onChangeHandler = { [weak self] newValue in
-                    let roundedValue = round(newValue)
-                    shipCargo.value = roundedValue
-                    //let temporaryIndexPath = IndexPath(item: 5, section: 0)
-                    self?.cargoNum = Int(roundedValue)
-                    tableView.reloadRows(at: [[0,5]], with: UITableView.RowAnimation.none)
-                }
-                return shipCargo
-                
-            case 3:
-                rockethatchCell.valueOptions = rockethatchitems
-                rockethatchCell.keyName = "Rocket Hatch"
-                rockethatchCell.isEditable = true
-                rockethatchCell.value = 1 // Default selected index
-                rockethatchCell.onChangeHandler = { newValue in
-                    print("Selected item index: \(newValue)")
-                }
-                return rockethatchCell
-            case 4:
-                shipHatch.keyName = sliderKeyName
-                shipHatch.minimumValue = shipHatchMin
-                shipHatch.maximumValue = shipHatchMax
-                shipHatch.formatter.unitStyle = sliderUnitStyle
-                shipHatch.unit = shipHatchUnit
-                shipHatch.value = sliderValue
-                
-                shipHatch.onChangeHandler = { [weak self] newValue in
-                    let roundedValue = round(newValue)
-                    shipHatch.value = roundedValue
-                    //let temporaryIndexPath = IndexPath(item: 5, section: 0)
-                    self?.hatchNum = Int(roundedValue)
-                    tableView.reloadRows(at: [[0,5]], with: UITableView.RowAnimation.none)
-                }
-                return shipHatch
-            case 5:
-                textFieldCell.keyName = "Total"
-                total = 2*hatchNum + 3*cargoNum + 3*bonus
-                textFieldCell.value = String(total)
-                textFieldCell.isEditable = false
-                return textFieldCell
-            default:
-                print ("Error")
+            switchFormCell.keyName = "Attempt Sandstorm?"
+            switchFormCell.value = false
+            switchFormCell.onChangeHandler = { [unowned self] newValue in
+                self.gameData?.attemptSandstorm = newValue
             }
-        default :
-            print ("Error")
+            return switchFormCell
+        case 1:
+            multipleOptionCell.valueOptions = startingOptions
+            multipleOptionCell.keyName = "Starting Platform"
+            multipleOptionCell.isEditable = true
+            multipleOptionCell.onChangeHandler = { newValue in
+                if (newValue == 0) {
+                    self.gameData?.startingLevel = 1
+                }
+                else {
+                    self.gameData?.startingLevel = 2
+                }
+            }
+            return multipleOptionCell
+        case 2:
+            switchFormCell.keyName = "Successful Descent?"
+            switchFormCell.value = false
+            switchFormCell.onChangeHandler = { [unowned self] newValue in
+                self.gameData?.successfulDescent = newValue
+            }
+            return switchFormCell
+        case 3:
+            multipleOptionCell.valueOptions = cargoAndHatchOptions
+            multipleOptionCell.keyName = "Hatches"
+            multipleOptionCell.isEditable = true
+            multipleOptionCell.onChangeHandler = { newValue in
+                self.gameData?.sandstormHatch = newValue
+            }
+            return multipleOptionCell
+        case 4:
+            multipleOptionCell.valueOptions = cargoAndHatchOptions
+            multipleOptionCell.keyName = "Cargo"
+            multipleOptionCell.isEditable = true
+            multipleOptionCell.onChangeHandler = { newValue in
+                self.gameData?.sandstormCargo = newValue
+            }
+            return multipleOptionCell
+        case 5:
+            multipleOptionCell.valueOptions = missOptions
+            multipleOptionCell.keyName = "Misses?"
+            multipleOptionCell.isEditable = true
+            multipleOptionCell.onChangeHandler = { newValue in
+                if (newValue == 0) {
+                    self.gameData?.misses = "None"
+                }
+            }
+            return multipleOptionCell
+        default:
+            return multipleOptionCell
         }
-        return sandstormCell
     }
     
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: Return the number of cells
         return 6
     }
     
@@ -148,25 +100,22 @@ class SandstormTableViewController: UITableViewController {
         // Selection Buttons
         tableView.register(FUISegmentedControlFormCell.self, forCellReuseIdentifier: FUISegmentedControlFormCell.reuseIdentifier)
         
-        // Text Field
-        tableView.register(FUITextFieldFormCell.self, forCellReuseIdentifier: FUITextFieldFormCell.reuseIdentifier)
+        // Switcher
+        tableView.register(FUISwitchFormCell.self, forCellReuseIdentifier: FUISwitchFormCell.reuseIdentifier)
         
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
-        
-        // Slider
-        tableView.register(FUISliderFormCell.self, forCellReuseIdentifier: FUISliderFormCell.reuseIdentifier)
-        
+
         tableView.estimatedRowHeight = 180
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
     }
     
     @objc func pushNextViewController(sender: UIButton) {
-//        let nextVC = TeleOpTableViewController()
-        //nextVC.info = self.info
-//        self.navigationController?.pushViewController(nextVC, animated: true)
+        let nextVC = UIStoryboard.init(name: "TeleOp", bundle: Bundle.main).instantiateViewController(withIdentifier: "TeleOpViewController") as! TeleOpViewController
+        nextVC.gameData = self.gameData
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
 }
