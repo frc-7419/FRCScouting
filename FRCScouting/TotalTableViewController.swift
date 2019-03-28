@@ -331,7 +331,6 @@ class TotalTableViewController: FUIFormTableViewController {
                 multipleOptionCell.valueOptions = endingOptions
                 multipleOptionCell.keyName = "Ending Platform"
                 multipleOptionCell.isEditable = true
-                multipleOptionCell.value = 0
                 multipleOptionCell.onChangeHandler = { newValue in
                     if (newValue == 0) {
                         self.gameData?.endingLevel = "None"
@@ -372,7 +371,6 @@ class TotalTableViewController: FUIFormTableViewController {
                 multipleOptionCell.valueOptions = endingOptions
                 multipleOptionCell.keyName = "Failed Climb Platform"
                 multipleOptionCell.isEditable = true
-                multipleOptionCell.value = 0
                 multipleOptionCell.onChangeHandler = { newValue in
                     if (newValue == 0) {
                        self.gameData?.failedLevel = "None"

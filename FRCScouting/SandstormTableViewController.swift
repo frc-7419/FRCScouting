@@ -33,7 +33,6 @@ class SandstormTableViewController: UITableViewController {
             multipleOptionCell.valueOptions = startingOptions
             multipleOptionCell.keyName = "Starting Platform"
             multipleOptionCell.isEditable = true
-            multipleOptionCell.value = 0 // Default selected index
             multipleOptionCell.onChangeHandler = { newValue in
                 if (newValue == 0) {
                     self.gameData?.startingLevel = 1
@@ -54,7 +53,6 @@ class SandstormTableViewController: UITableViewController {
             multipleOptionCell.valueOptions = cargoAndHatchOptions
             multipleOptionCell.keyName = "Hatches"
             multipleOptionCell.isEditable = true
-            multipleOptionCell.value = 0 // Default selected index
             multipleOptionCell.onChangeHandler = { newValue in
                 self.gameData?.sandstormHatch = newValue
             }
@@ -63,7 +61,6 @@ class SandstormTableViewController: UITableViewController {
             multipleOptionCell.valueOptions = cargoAndHatchOptions
             multipleOptionCell.keyName = "Cargo"
             multipleOptionCell.isEditable = true
-            multipleOptionCell.value = 0 // Default selected index
             multipleOptionCell.onChangeHandler = { newValue in
                 self.gameData?.sandstormCargo = newValue
             }
@@ -72,7 +69,6 @@ class SandstormTableViewController: UITableViewController {
             multipleOptionCell.valueOptions = missOptions
             multipleOptionCell.keyName = "Misses?"
             multipleOptionCell.isEditable = true
-            multipleOptionCell.value = 0 // Default selected index
             multipleOptionCell.onChangeHandler = { newValue in
                 if (newValue == 0) {
                     self.gameData?.misses = "None"
