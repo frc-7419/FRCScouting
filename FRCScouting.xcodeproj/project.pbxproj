@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2A0E52EB22322036007ACCE1 /* OldTotalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0E52EA22322036007ACCE1 /* OldTotalTableViewController.swift */; };
 		2A5ACCD7224A21C7008109E7 /* ReViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5ACCD6224A21C7008109E7 /* ReViewController.swift */; };
+
+
 		AACB9D8C2217B19100B7E84B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9D8B2217B19100B7E84B /* AppDelegate.swift */; };
 		AACB9D8E2217B19100B7E84B /* TeamPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9D8D2217B19100B7E84B /* TeamPickerTableViewController.swift */; };
 		AACB9D912217B19100B7E84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACB9D8F2217B19100B7E84B /* Main.storyboard */; };
@@ -16,6 +18,10 @@
 		AACB9D962217B19100B7E84B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACB9D942217B19100B7E84B /* LaunchScreen.storyboard */; };
 		AACB9D9E2217B29400B7E84B /* SandstormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9D9D2217B29400B7E84B /* SandstormTableViewController.swift */; };
 		AACB9DA22217B2E000B7E84B /* TotalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9DA12217B2E000B7E84B /* TotalTableViewController.swift */; };
+		B412E759224A9F3900103EE8 /* SAPFiori.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B412E757224A9F3900103EE8 /* SAPFiori.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B412E75A224A9F3900103EE8 /* SAPCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B412E758224A9F3900103EE8 /* SAPCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B412E75B224A9F3D00103EE8 /* SAPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B412E758224A9F3900103EE8 /* SAPCommon.framework */; };
+		B412E75C224A9F3D00103EE8 /* SAPFiori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B412E757224A9F3900103EE8 /* SAPFiori.framework */; };
 		B43C97692235D365001F3AC8 /* ModelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43C97682235D365001F3AC8 /* ModelObject.swift */; };
 		F6157A832235E028001033E1 /* TeleOpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6157A812235E028001033E1 /* TeleOpViewController.swift */; };
 		F6157A842235E028001033E1 /* TeleOp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6157A822235E028001033E1 /* TeleOp.storyboard */; };
@@ -40,12 +46,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+
 				F6A0492E223EC4140036B116 /* SAPCommon.framework in Embed Frameworks */,
 				F6A04930223EC4140036B116 /* SAPFiori.framework in Embed Frameworks */,
 				F6A04932223EC4140036B116 /* SAPFoundation.framework in Embed Frameworks */,
 				F6A04936223EC4140036B116 /* SAPOData.framework in Embed Frameworks */,
 				F6A0492C223EC4140036B116 /* SAPOfflineOData.framework in Embed Frameworks */,
 				F6A04934223EC4140036B116 /* SAPFioriFlows.framework in Embed Frameworks */,
+
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +72,8 @@
 		AACB9D972217B19100B7E84B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AACB9D9D2217B29400B7E84B /* SandstormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandstormTableViewController.swift; sourceTree = "<group>"; };
 		AACB9DA12217B2E000B7E84B /* TotalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalTableViewController.swift; sourceTree = "<group>"; };
+		B412E757224A9F3900103EE8 /* SAPFiori.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPFiori.framework; path = "Frameworks/Release-fat/SAPFiori.framework"; sourceTree = "<group>"; };
+		B412E758224A9F3900103EE8 /* SAPCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPCommon.framework; path = "Frameworks/Release-fat/SAPCommon.framework"; sourceTree = "<group>"; };
 		B43C97682235D365001F3AC8 /* ModelObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObject.swift; sourceTree = "<group>"; };
 		B43C976A2235DCE5001F3AC8 /* FRCScouting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FRCScouting.entitlements; sourceTree = "<group>"; };
 		F6157A812235E028001033E1 /* TeleOpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeleOpViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +97,7 @@
 				F6A04935223EC4140036B116 /* SAPOData.framework in Frameworks */,
 				F6A0492B223EC4140036B116 /* SAPOfflineOData.framework in Frameworks */,
 				F6A04933223EC4140036B116 /* SAPFioriFlows.framework in Frameworks */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,12 +107,14 @@
 		AACB9D7F2217B19100B7E84B = {
 			isa = PBXGroup;
 			children = (
+
 				F6A04926223EC4130036B116 /* SAPCommon.framework */,
 				F6A04927223EC4130036B116 /* SAPFiori.framework */,
 				F6A04929223EC4130036B116 /* SAPFioriFlows.framework */,
 				F6A04928223EC4130036B116 /* SAPFoundation.framework */,
 				F6A0492A223EC4140036B116 /* SAPOData.framework */,
 				F6A04925223EC4130036B116 /* SAPOfflineOData.framework */,
+
 				AACB9D8A2217B19100B7E84B /* FRCScouting */,
 				AACB9D892217B19100B7E84B /* Products */,
 				B4EFC883223EB4D500F3F99E /* Frameworks */,
@@ -186,7 +199,10 @@
 					};
 				};
 			};
+
 			buildConfigurationList = AACB9D832217B19100B7E84B /* Build configuration list for PBXProject "FRCScouting" */;
+
+
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -400,7 +416,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+
 				DEVELOPMENT_TEAM = 752MG2K5H2;
+
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -420,7 +438,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+
 				PRODUCT_BUNDLE_IDENTIFIER = wv3477;
+
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -435,7 +455,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+
 				DEVELOPMENT_TEAM = 752MG2K5H2;
+
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -455,7 +477,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+
 				PRODUCT_BUNDLE_IDENTIFIER = wv3477;
+
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -466,7 +490,9 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+
 		AACB9D832217B19100B7E84B /* Build configuration list for PBXProject "FRCScouting" */ = {
+
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AACB9D982217B19100B7E84B /* Debug */,
