@@ -18,9 +18,13 @@ struct ModelObject {
     
     /// During Sandstorm
     var attemptSandstorm = Bool()
+    var startingLevel = Int()
     var successfulDescent = Bool()
-    var sandstormItem = String()
-    var suceedSandstorm = Bool()
+    var sandstormHatch = Int()
+    var sandstormCargo = Int()
+    var sandstormMisses = String()
+    var misses = String()
+    
     // During TeleOp
     var r1RocketHatch = [[Int]]()
     var r2RocketHatch = [[Int]]()
@@ -29,13 +33,16 @@ struct ModelObject {
     var cargoShipHatch = [[Int]]()
     var cargoShipCargo = [[Int]]()
     
+    // Total View Controller
     var allyCollision = Bool()
     var penaltyPoints = Int()
     var notes = String()
-    var aggressiveDefense = Bool()
-    var failedClimb = Bool()
+    var attemptedDefense = Bool()
+    var effectiveDefense = Bool()
+    var failedLevel = String()
     var disconnect = Bool()
     var defendedAgainst = Bool()
+    var endingLevel = String()
     
     var grandTotal = Int()
 }
