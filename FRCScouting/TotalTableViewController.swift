@@ -13,7 +13,7 @@ import SAPFoundation
 
 class TotalTableViewController: FUIFormTableViewController {
     
-    var gameData: ModelObject?
+    var gameData = ModelObject.shared
     var netPoints = 0
     
     var RocketCargoT = 0
@@ -159,11 +159,7 @@ class TotalTableViewController: FUIFormTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: Return the number of cells
-        if self.gameData == nil {
-            return 0
-        } else {
             return 8
-        }
     }
     
     @objc func pushNextViewController(sender: UIButton) {
@@ -171,22 +167,22 @@ class TotalTableViewController: FUIFormTableViewController {
         let nextVC = ReViewController()
         nextVC.gameData = self.gameData
         
-        numCargoShipHatch = calcCargoShip(_matrix: gameData!.cargoShipHatch)
+        numCargoShipHatch = calcCargoShip(_matrix: gameData.cargoShipHatch)
         print("Before: \(numCargoShipHatch)")
-        numCargoShipCargo = calcCargoShip(_matrix: gameData!.cargoShipCargo)
+        numCargoShipCargo = calcCargoShip(_matrix: gameData.cargoShipCargo)
         print("Before: \(numCargoShipCargo)")
         
-        nextVC.numCargoShipCargo = self.numCargoShipCargo
+        gameData.numCargoShipCargo = self.numCargoShipCargo
         print("After: \(numCargoShipCargo)")
-        nextVC.numCargoShipHatch = self.numCargoShipHatch
+        gameData.numCargoShipHatch = self.numCargoShipHatch
         print("After: \(numCargoShipHatch)")
-        nextVC.RocketCargoT = self.RocketCargoT
-        nextVC.RocketCargoM = self.RocketCargoM
-        nextVC.RocketCargoB = self.RocketCargoB
+        gameData.RocketCargoT = self.RocketCargoT
+        gameData.RocketCargoM = self.RocketCargoM
+        gameData.RocketCargoB = self.RocketCargoB
         
-        nextVC.RocketHatchT = self.RocketHatchT
-        nextVC.RocketHatchM = self.RocketHatchM
-        nextVC.RocketHatchB = self.RocketHatchB
+        gameData.RocketHatchT = self.RocketHatchT
+        gameData.RocketHatchM = self.RocketHatchM
+        gameData.RocketHatchB = self.RocketHatchB
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
@@ -207,9 +203,9 @@ class TotalTableViewController: FUIFormTableViewController {
         //self.gameData?.rocketCargo = [[true,true],[false,true]]
         
         
-        (RocketCargoT,RocketCargoM,RocketCargoB) = RocketCalc(r1: self.gameData?.r1RocketCargo ?? [[Int]](), r2: self.gameData?.r2RocketCargo ?? [[Int]]())
+        (RocketCargoT,RocketCargoM,RocketCargoB) = RocketCalc(r1: self.gameData.r1RocketCargo , r2: self.gameData.r2RocketCargo )
         
-        (RocketHatchT,RocketHatchM,RocketHatchB) = RocketCalc(r1: self.gameData?.r1RocketHatch ?? [[Int]](), r2: self.gameData?.r2RocketHatch ?? [[Int]]())
+        (RocketHatchT,RocketHatchM,RocketHatchB) = RocketCalc(r1: self.gameData.r1RocketHatch , r2: self.gameData.r2RocketHatch )
         
         print ("Cargo: ")
         print (RocketCargoT)
@@ -222,7 +218,7 @@ class TotalTableViewController: FUIFormTableViewController {
         print (RocketHatchB)
         
         // Adding Cargo Points
-        for row in self.gameData?.r1RocketCargo ?? [[Int]]() {
+        for row in self.gameData.r1RocketCargo {
             for column in row {
                 if column == 1 {
                     self.netPoints += 3
@@ -230,7 +226,7 @@ class TotalTableViewController: FUIFormTableViewController {
             }
         }
         
-        for row in self.gameData?.r2RocketCargo ?? [[Int]]() {
+        for row in self.gameData.r2RocketCargo {
             for column in row {
                 if column == 1 {
                     self.netPoints += 3
@@ -238,7 +234,7 @@ class TotalTableViewController: FUIFormTableViewController {
             }
         }
         
-        for row in self.gameData?.cargoShipCargo ?? [[Int]]() {
+        for row in self.gameData.cargoShipCargo {
             for column in row {
                 if column == 1 {
                     self.netPoints += 3
@@ -248,7 +244,7 @@ class TotalTableViewController: FUIFormTableViewController {
         //
         
         // Adding Hatch points
-        for row in self.gameData?.r1RocketHatch ?? [[Int]]() {
+        for row in self.gameData.r1RocketHatch {
             for column in row {
                 if column == 1 {
                     self.netPoints += 2
@@ -256,7 +252,7 @@ class TotalTableViewController: FUIFormTableViewController {
             }
         }
         
-        for row in self.gameData?.r2RocketHatch ?? [[Int]]() {
+        for row in self.gameData.r2RocketHatch {
             for column in row {
                 if column == 1 {
                     self.netPoints += 2
@@ -264,7 +260,7 @@ class TotalTableViewController: FUIFormTableViewController {
             }
         }
         
-        for row in self.gameData?.cargoShipHatch ?? [[Int]]() {
+        for row in self.gameData.cargoShipHatch {
             for column in row {
                 if column == 1 {
                     self.netPoints += 2
@@ -272,7 +268,7 @@ class TotalTableViewController: FUIFormTableViewController {
             }
         }
         //
-        gameData?.grandTotal = netPoints
+        gameData.grandTotal = netPoints
         
         
                 //tableView.reloadRows(at: [[0,0]], with: UITableView.RowAnimation.none)
@@ -281,7 +277,7 @@ class TotalTableViewController: FUIFormTableViewController {
     func calcCargoShip (_matrix:[[Int]]) -> Int {
         var numHatches = 0
         for (rowIndex, row) in _matrix.enumerated() {
-            for (columnIndex, column) in row.enumerated() {
+            for (columnIndex, _) in row.enumerated() {
                 if (_matrix[rowIndex][columnIndex] == 1) {
                     numHatches += 1
                 }
@@ -305,11 +301,11 @@ class TotalTableViewController: FUIFormTableViewController {
         let saveButton = tableView.dequeueReusableCell(withIdentifier: FUIMapDetailPanel.ButtonTableViewCell.reuseIdentifier, for: indexPath) as! FUIMapDetailPanel.ButtonTableViewCell
         
         
-        guard let gameData = self.gameData else {
+       /* guard let gameData = self.gameData else {
             switchFormCell.value = true
             switchFormCell.keyName = "Error"
             return switchFormCell
-        }
+        } */
         
         switch indexPath.section {
         case 0:
@@ -331,10 +327,10 @@ class TotalTableViewController: FUIFormTableViewController {
                 penaltyPoints.onChangeHandler = { [unowned self] newValue in
                     let penalty = Int(newValue)
                     if penalty != nil {
-                        self.gameData?.penaltyPoints = penalty ?? 0
+                        self.gameData.penaltyPoints = penalty ?? 0
                     }
                     else {
-                        self.gameData?.penaltyPoints = 0
+                        self.gameData.penaltyPoints = 0
                     }
                     //self.gameData?.grandTotal = self.netPoints - (penalty ?? 0)
                     tableView.reloadRows(at: [[0,0]], with: UITableView.RowAnimation.none)
@@ -344,35 +340,35 @@ class TotalTableViewController: FUIFormTableViewController {
                 switchFormCell.keyName = "Aggressive Defense?"
                 switchFormCell.value = false
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
-                    self.gameData?.aggressiveDefense = newValue
+                    self.gameData.aggressiveDefense = newValue
                 }
                 return switchFormCell
             case 3:
                 switchFormCell.keyName = "Terrible Collision with Ally?"
                 switchFormCell.value = false
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
-                    self.gameData?.allyCollision = newValue
+                    self.gameData.allyCollision = newValue
                 }
                 return switchFormCell
             case 4:
                 switchFormCell.keyName = "Failed Climbing Attempt?"
                 switchFormCell.value = false
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
-                    self.gameData?.failedClimb = newValue
+                    self.gameData.failedClimb = newValue
                 }
                 return switchFormCell
             case 5:
                 switchFormCell.keyName = "Disconnection?"
                 switchFormCell.value = false
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
-                    self.gameData?.disconnect = newValue
+                    self.gameData.disconnect = newValue
                 }
                 return switchFormCell
             case 6:
                 switchFormCell.keyName = "Defended Against?"
                 switchFormCell.value = false
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
-                    self.gameData?.defendedAgainst = newValue
+                    self.gameData.defendedAgainst = newValue
                 }
                 return switchFormCell
             case 7:
@@ -381,7 +377,7 @@ class TotalTableViewController: FUIFormTableViewController {
                 noteCell.placeholder.text = "Enter Additional Thoughts Here"
                 noteCell.maxNumberOfLines = 12
                 noteCell.onChangeHandler = { [unowned self] newValue in
-                    self.gameData?.notes = newValue
+                    self.gameData.notes = newValue
                 }
                 noteCell.isTrackingLiveChanges = true
                 return noteCell

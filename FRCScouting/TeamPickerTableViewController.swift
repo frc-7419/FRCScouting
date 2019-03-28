@@ -86,7 +86,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
     
     var valueOptions = ["1"]
     
-    var gameData = ModelObject()
+    var gameData = ModelObject.shared
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // List Picker

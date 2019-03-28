@@ -10,7 +10,7 @@ import UIKit
 
 class SandstormTableViewController: UITableViewController {
     
-    var gameData: ModelObject?
+    var gameData = ModelObject.shared
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // TODO: Implement FUI Form Cells
@@ -22,33 +22,39 @@ class SandstormTableViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             switchFormCell.keyName = "Attempt Sandstorm?"
-            switchFormCell.value = false
+            switchFormCell.value = gameData.attemptSandstorm
             switchFormCell.onChangeHandler = { [unowned self] newValue in
-                self.gameData?.attemptSandstorm = newValue
+                self.gameData.attemptSandstorm = newValue
             }
             return switchFormCell
         case 1:
             switchFormCell.keyName = "Successful Descent?"
-            switchFormCell.value = false
+            switchFormCell.value = gameData.successfulDescent
             switchFormCell.onChangeHandler = { [unowned self] newValue in
-                self.gameData?.successfulDescent = newValue
+                self.gameData.successfulDescent = newValue
             }
             return switchFormCell
         case 2:
             sandstormCell.valueOptions = sandstormItems
             sandstormCell.keyName = "What Did They Attempt?"
             sandstormCell.isEditable = true
+            switch gameData.sandstormItem {
+                case "None":
+                    sandstormCell.value = 0
+            case "Hatch":
+                
+            }
             sandstormCell.value = 0 // Default selected index
-            self.gameData?.sandstormItem = "None" // Default gameData value
+            self.gameData.sandstormItem = "None" // Default gameData value
             sandstormCell.onChangeHandler = { newValue in
                  if (newValue == 0) {
-                    self.gameData?.sandstormItem = "None"
+                    self.gameData.sandstormItem = "None"
                 }
                 else if (newValue == 1) {
-                    self.gameData?.sandstormItem = "Hatch"
+                    self.gameData.sandstormItem = "Hatch"
                 }
                 else {
-                    self.gameData?.sandstormItem = "Ball"
+                    self.gameData.sandstormItem = "Ball"
                 }
             }
             return sandstormCell
@@ -56,13 +62,14 @@ class SandstormTableViewController: UITableViewController {
             switchFormCell.keyName = "Did They Suceed?"
             switchFormCell.value = false
             switchFormCell.onChangeHandler = { [unowned self] newValue in
-                self.gameData?.suceedSandstorm = newValue
+                self.gameData.suceedSandstorm = newValue
             }
             return switchFormCell
         default:
             return sandstormCell
         }
     }
+    
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -8,33 +8,52 @@
 
 import Foundation
 
-struct ModelObject {
-    var teamName = String()
-    var match = Int()
-    var crossedLine = Bool()
+class ModelObject {
+    
+      static let shared = ModelObject()
+    
+    private init() {
+        
+    }
+    
+    var teamName = ""
+    var match = 0
+    var crossedLine = false
     
     /// During Sandstorm
-    var allyCollision = Bool()
-    var attemptSandstorm = Bool()
-    var successfulDescent = Bool()
-    var sandstormItem = String()
-    var suceedSandstorm = Bool()
+    var allyCollision = false
+    var attemptSandstorm = false
+    var successfulDescent = false
+    var sandstormItem = "None"
+    var suceedSandstorm = false
     // During TeleOp
-    var r1RocketHatch = [[Int]]()
-    var r2RocketHatch = [[Int]]()
-    var r1RocketCargo = [[Int]]()
-    var r2RocketCargo = [[Int]]()
-    var cargoShipHatch = [[Int]]()
-    var cargoShipCargo = [[Int]]()
+    var r1RocketHatch = [[0, 0], [0, 0], [0, 0]]
+    var r2RocketHatch = [[0, 0], [0, 0], [0, 0]]
+    var r1RocketCargo = [[0, 0], [0, 0], [0, 0]]
+    var r2RocketCargo = [[0, 0], [0, 0], [0, 0]]
+    var cargoShipHatch = [[0, 0, 0, 0], [0, 0, 0, 0]]
+    var cargoShipCargo = [[0, 0, 0, 0], [0, 0, 0, 0]]
+
     
-    var penaltyPoints = Int()
-    var notes = String()
-    var aggressiveDefense = Bool()
-    var failedClimb = Bool()
-    var disconnect = Bool()
-    var defendedAgainst = Bool()
+    var RocketCargoT = 0
+    var RocketCargoM = 0
+    var RocketCargoB = 0
     
-    var grandTotal = Int()
+    var RocketHatchT = 0
+    var RocketHatchM = 0
+    var RocketHatchB = 0
+    
+    var numCargoShipCargo = 0
+    var numCargoShipHatch = 0
+    
+    var penaltyPoints = 0
+    var notes = ""
+    var aggressiveDefense = false
+    var failedClimb = false
+    var disconnect = false
+    var defendedAgainst = false
+    
+    var grandTotal = 0
 }
 
 // Helper to convert Ints to bool

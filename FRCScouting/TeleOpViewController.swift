@@ -11,7 +11,7 @@ import UIKit
 
 class TeleOpViewController: UIViewController {
     
-    var gameData: ModelObject?
+    var gameData = ModelObject.shared
     
     struct RocketGrid {
         var topLeft: Bool = false
@@ -449,10 +449,6 @@ class TeleOpViewController: UIViewController {
         }
     }
     func fillGameData() {
-        guard var gameData = gameData
-        else {
-                return
-        }
         gameData.r1RocketHatch =
         [
             [Int(r1HatchGrid.topLeft), Int(r1HatchGrid.topRight)],
@@ -487,6 +483,5 @@ class TeleOpViewController: UIViewController {
             [Int(cargoShipCargoGrid.top1), Int(cargoShipCargoGrid.top2), Int(cargoShipCargoGrid.top3), Int(cargoShipCargoGrid.top4)],
             [Int(cargoShipCargoGrid.bottom1), Int(cargoShipCargoGrid.bottom2), Int(cargoShipCargoGrid.bottom3), Int(cargoShipCargoGrid.bottom4)]
         ]
-        self.gameData = gameData
     }
 }
