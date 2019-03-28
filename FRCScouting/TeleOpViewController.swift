@@ -103,6 +103,13 @@ class TeleOpViewController: UIViewController {
         self.title = "TeleOp"
         let nextButton = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(pushNextViewController(sender:)))
         self.navigationItem.rightBarButtonItem = nextButton
+        
+        // Alert thing
+        let alert = UIAlertController(title: "IMPORTANT", message: "Fill out what happened in sandstorm as well", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        alert.addAction(dismissAction)
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     @objc func pushNextViewController(sender: UIButton) {
@@ -111,7 +118,6 @@ class TeleOpViewController: UIViewController {
         nextVC.gameData = self.gameData
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
-    
     
     
     override func viewDidAppear(_ animated: Bool) {
