@@ -32,7 +32,6 @@ struct ModelObject {
     var cargoShipCargo = [[Int]]()
     
     // Total View Controller
-    var allyCollision = Bool()
     var penaltyPoints = Int()
     var notes = String()
     var attemptedDefense = Bool()

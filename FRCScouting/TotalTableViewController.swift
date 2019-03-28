@@ -163,7 +163,7 @@ class TotalTableViewController: FUIFormTableViewController {
         if self.gameData == nil {
             return 0
         } else {
-            return 11
+            return 10
         }
     }
     
@@ -314,7 +314,6 @@ class TotalTableViewController: FUIFormTableViewController {
         let grandTextFieldCell = tableView.dequeueReusableCell(withIdentifier: FUITextFieldFormCell.reuseIdentifier, for: indexPath) as! FUITextFieldFormCell
         let penaltyPoints = tableView.dequeueReusableCell(withIdentifier: FUITextFieldFormCell.reuseIdentifier, for: indexPath) as! FUITextFieldFormCell
         let noteCell = tableView.dequeueReusableCell(withIdentifier: FUINoteFormCell.reuseIdentifier, for: indexPath) as! FUINoteFormCell
-        let saveButton = tableView.dequeueReusableCell(withIdentifier: FUIMapDetailPanel.ButtonTableViewCell.reuseIdentifier, for: indexPath) as! FUIMapDetailPanel.ButtonTableViewCell
         let multipleOptionCell = self.tableView.dequeueReusableCell(withIdentifier: FUISegmentedControlFormCell.reuseIdentifier, for: indexPath) as! FUISegmentedControlFormCell
         
         let endingOptions = ["None", "1", "2", "3"]
@@ -371,7 +370,7 @@ class TotalTableViewController: FUIFormTableViewController {
                 return multipleOptionCell
             case 1:
                 multipleOptionCell.valueOptions = endingOptions
-                multipleOptionCell.keyName = "Failed Climb Attempt"
+                multipleOptionCell.keyName = "Failed Climb Platform"
                 multipleOptionCell.isEditable = true
                 multipleOptionCell.value = 0
                 multipleOptionCell.onChangeHandler = { newValue in
@@ -460,12 +459,6 @@ class TotalTableViewController: FUIFormTableViewController {
                 }
                 noteCell.isTrackingLiveChanges = true
                 return noteCell
-            case 10:
-                saveButton.button.setTitle("Save", for: .normal)
-                saveButton.button.didSelectHandler = { btn in
-                    self.shareCSV(sender: btn)
-                }
-                return saveButton
             default:
                 switchFormCell.value = true
                 switchFormCell.keyName = "Error"
