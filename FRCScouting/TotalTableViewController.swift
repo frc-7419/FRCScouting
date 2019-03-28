@@ -25,6 +25,9 @@ class TotalTableViewController: FUIFormTableViewController {
     var RocketHatchM = 0
     var RocketHatchB = 0
     
+    var numCargoShipCargo = 0
+    var numCargoShipHatch = 0
+    
     func flattenArray(someArray: [[Int]]) -> String {
         var flattenedArray = [Int]()
         for row in someArray {
@@ -83,7 +86,7 @@ class TotalTableViewController: FUIFormTableViewController {
         return (Top,Mid,Bot)
     }
     
-    @objc func shareCSV(sender: UIButton) {
+   /* @objc func shareCSV(sender: UIButton) {
         let fileName = "Q_\(gameData?.match ?? 0)_\(gameData?.teamName ?? "").csv"
         guard
             let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName),
@@ -103,8 +106,10 @@ class TotalTableViewController: FUIFormTableViewController {
          let cargoShipHatchString = "\(gameData.cargoShipHatch)".replacingOccurrences(of: ",", with: "")
          let cargoShipCargoString = "\(gameData.cargoShipCargo)".replacingOccurrences(of: ",", with: "")*/
         
-        let numCargoShipHatch = calcCargoShip(_matrix: gameData.cargoShipHatch)
-        let numCargoShipCargo = calcCargoShip(_matrix: gameData.cargoShipCargo)
+        numCargoShipHatch = calcCargoShip(_matrix: gameData.cargoShipHatch)
+        print("Before: \(numCargoShipHatch)")
+        numCargoShipCargo = calcCargoShip(_matrix: gameData.cargoShipCargo)
+        print("Before: \(numCargoShipCargo)")
         
         let fixedNotes = "\(gameData.notes)".replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "\n", with: " ")
         
@@ -134,7 +139,7 @@ class TotalTableViewController: FUIFormTableViewController {
         
         let vc = UIActivityViewController(activityItems: [path], applicationActivities: [])
         present(vc, animated: true, completion: nil)
-    }
+    } */
     
     @objc func alert(sender: UIButton) {
         let alertController = UIAlertController(title: "Are You Sure", message: "Going back home will erase any entered data", preferredStyle: .alert)
@@ -162,10 +167,34 @@ class TotalTableViewController: FUIFormTableViewController {
         }
     }
     
+    @objc func pushNextViewController(sender: UIButton) {
+        
+        let nextVC = ReViewController()
+        nextVC.gameData = self.gameData
+        
+        numCargoShipHatch = calcCargoShip(_matrix: gameData!.cargoShipHatch)
+        print("Before: \(numCargoShipHatch)")
+        numCargoShipCargo = calcCargoShip(_matrix: gameData!.cargoShipCargo)
+        print("Before: \(numCargoShipCargo)")
+        
+        nextVC.numCargoShipCargo = self.numCargoShipCargo
+        print("After: \(numCargoShipCargo)")
+        nextVC.numCargoShipHatch = self.numCargoShipHatch
+        print("After: \(numCargoShipHatch)")
+        nextVC.RocketCargoT = self.RocketCargoT
+        nextVC.RocketCargoM = self.RocketCargoM
+        nextVC.RocketCargoB = self.RocketCargoB
+        
+        nextVC.RocketHatchT = self.RocketHatchT
+        nextVC.RocketHatchM = self.RocketHatchM
+        nextVC.RocketHatchB = self.RocketHatchB
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Totals"
-        let nextButton = UIBarButtonItem(title: "Reset", style: .done, target: self, action: #selector(alert(sender:)))
+        let nextButton = UIBarButtonItem(title: "Finish", style: .done, target: self, action: #selector(pushNextViewController(sender:)))
         self.navigationItem.rightBarButtonItem = nextButton
         
         tableView.register(FUISwitchFormCell.self, forCellReuseIdentifier: FUISwitchFormCell.reuseIdentifier)

@@ -77,15 +77,6 @@ class SandstormTableViewController: UITableViewController {
                 if (newValue == 0) {
                     self.gameData?.misses = "None"
                 }
-                else if (newValue == 1) {
-                    self.gameData?.misses = "Hatch"
-                }
-                else if (newValue == 2) {
-                    self.gameData?.misses = "Cargo"
-                }
-                else {
-                    self.gameData?.misses = "Both"
-                }
             }
             return multipleOptionCell
         default:

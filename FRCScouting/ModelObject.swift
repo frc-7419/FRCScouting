@@ -13,10 +13,8 @@ struct ModelObject {
     var match = Int()
     var crossedLine = Bool()
     
-    
-    
-    
     /// During Sandstorm
+    var allyCollision = Bool()
     var attemptSandstorm = Bool()
     var startingLevel = Int()
     var successfulDescent = Bool()
