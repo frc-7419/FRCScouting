@@ -15,6 +15,7 @@ class TotalTableViewController: FUIFormTableViewController {
     
     var gameData = ModelObject.shared
     var netPoints = 0
+    var endLevelPlaceholder = 0
     
     var RocketCargoT = 0
     var RocketCargoM = 0
@@ -91,7 +92,7 @@ class TotalTableViewController: FUIFormTableViewController {
             let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName),
             let gameData = self.gameData
             else { preconditionFailure()}
-       var csvText = "Team Name, Match Number, Crossed Line, Ally Collision, Attempt Sandstorm, Successful Descent, Sandstorm Item, Suceed Sandstorm, Rocket Hatch Top, Rocket Hatch Mid, Rocket Hatch Bottom, Rocket Cargo Top, Rocket Cargo Mid, Rocket Cargo Bottom, Cargo Ship Hatch, Cargo Ship Cargo, Penalty, Notes, Active Defense, Failed Climb, Disconnect, Defended Against, Total\n"
+        var csvText = "Team Name, Match Number, Ally Collision, Attempt Sandstorm, Starting Level, Successful Descent, Sandstorm Hatches, Sandstorm Cargo, Sandstorm Misses, Rocket Hatch Top, Rocket Hatch Mid, Rocket Hatch Bottom, Rocket Cargo Top, Rocket Cargo Mid, Rocket Cargo Bottom, Cargo Ship Hatch, Cargo Ship Cargo, Ending Level, Penalty, Notes, Attempted Defense, Defense Effective, Failed Climb, Disconnect, Defended Against, Total\n"
         print(csvText)
         
         // We need to remove the commas from the 2D array and notes
@@ -113,7 +114,7 @@ class TotalTableViewController: FUIFormTableViewController {
         let fixedNotes = "\(gameData.notes)".replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "\n", with: " ")
         
         let newLine = """
-        \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(gameData.attemptSandstorm), \(gameData.successfulDescent), \(gameData.sandstormItem), \(gameData.suceedSandstorm), \(RocketHatchT), \(RocketHatchM), \(RocketHatchB), \(RocketCargoT), \(RocketCargoM), \(RocketCargoB), \(numCargoShipHatch), \(numCargoShipCargo), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
+        \(gameData.teamName), \(gameData.match), \(gameData.allyCollision), \(gameData.attemptSandstorm), \(gameData.startingLevel), \(gameData.successfulDescent), \(gameData.sandstormHatch), \(gameData.sandstormCargo), \(gameData.misses), \(RocketHatchT), \(RocketHatchM), \(RocketHatchB), \(RocketCargoT), \(RocketCargoM), \(RocketCargoB), \(numCargoShipHatch), \(numCargoShipCargo), \(gameData.endingLevel), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.attemptedDefense), \(gameData.effectiveDefense), \(gameData.failedLevel), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
         """
         print(newLine)
         
@@ -159,7 +160,15 @@ class TotalTableViewController: FUIFormTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: Return the number of cells
+<<<<<<< HEAD
             return 8
+=======
+        if self.gameData == nil {
+            return 0
+        } else {
+            return 10
+        }
+>>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
     }
     
     @objc func pushNextViewController(sender: UIButton) {
@@ -196,6 +205,7 @@ class TotalTableViewController: FUIFormTableViewController {
         tableView.register(FUITextFieldFormCell.self, forCellReuseIdentifier: FUITextFieldFormCell.reuseIdentifier)
         tableView.register(FUINoteFormCell.self, forCellReuseIdentifier: FUINoteFormCell.reuseIdentifier)
         tableView.register(FUIMapDetailPanel.ButtonTableViewCell.self, forCellReuseIdentifier: FUIMapDetailPanel.ButtonTableViewCell.reuseIdentifier)
+        tableView.register(FUISegmentedControlFormCell.self, forCellReuseIdentifier: FUISegmentedControlFormCell.reuseIdentifier)
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
@@ -268,7 +278,21 @@ class TotalTableViewController: FUIFormTableViewController {
             }
         }
         //
+<<<<<<< HEAD
         gameData.grandTotal = netPoints
+=======
+        
+        if (gameData?.successfulDescent == true) {
+            if (gameData?.startingLevel == 1) {
+                self.netPoints += 3
+            }
+            else {
+                self.netPoints += 6
+            }
+        }
+        gameData?.grandTotal = netPoints
+>>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
+        
         
         
                 //tableView.reloadRows(at: [[0,0]], with: UITableView.RowAnimation.none)
@@ -298,8 +322,9 @@ class TotalTableViewController: FUIFormTableViewController {
         let grandTextFieldCell = tableView.dequeueReusableCell(withIdentifier: FUITextFieldFormCell.reuseIdentifier, for: indexPath) as! FUITextFieldFormCell
         let penaltyPoints = tableView.dequeueReusableCell(withIdentifier: FUITextFieldFormCell.reuseIdentifier, for: indexPath) as! FUITextFieldFormCell
         let noteCell = tableView.dequeueReusableCell(withIdentifier: FUINoteFormCell.reuseIdentifier, for: indexPath) as! FUINoteFormCell
-        let saveButton = tableView.dequeueReusableCell(withIdentifier: FUIMapDetailPanel.ButtonTableViewCell.reuseIdentifier, for: indexPath) as! FUIMapDetailPanel.ButtonTableViewCell
+        let multipleOptionCell = self.tableView.dequeueReusableCell(withIdentifier: FUISegmentedControlFormCell.reuseIdentifier, for: indexPath) as! FUISegmentedControlFormCell
         
+        let endingOptions = ["None", "1", "2", "3"]
         
        /* guard let gameData = self.gameData else {
             switchFormCell.value = true
@@ -311,6 +336,65 @@ class TotalTableViewController: FUIFormTableViewController {
         case 0:
             switch indexPath.row {
             case 0:
+                multipleOptionCell.valueOptions = endingOptions
+                multipleOptionCell.keyName = "Ending Platform"
+                multipleOptionCell.isEditable = true
+                multipleOptionCell.onChangeHandler = { newValue in
+                    if (newValue == 0) {
+                        self.gameData?.endingLevel = "None"
+
+                        self.gameData?.grandTotal = self.netPoints - self.endLevelPlaceholder
+                        self.endLevelPlaceholder = 0
+                        self.gameData?.grandTotal = self.netPoints + self.endLevelPlaceholder
+                    }
+                    else if (newValue == 1) {
+                        self.gameData?.endingLevel = "1"
+                        
+                        self.gameData?.grandTotal = self.netPoints - self.endLevelPlaceholder
+                        self.endLevelPlaceholder = 0
+                        self.endLevelPlaceholder += 3
+                        self.gameData?.grandTotal = self.netPoints + self.endLevelPlaceholder
+                        
+                    }
+                    else if (newValue == 2) {
+                        self.gameData?.endingLevel = "2"
+                        
+                        self.gameData?.grandTotal = self.netPoints - self.endLevelPlaceholder
+                        self.endLevelPlaceholder = 0
+                        self.endLevelPlaceholder += 6
+                        self.gameData?.grandTotal = self.netPoints + self.endLevelPlaceholder
+                    }
+                    else {
+                        self.gameData?.endingLevel = "3"
+                        
+                        self.gameData?.grandTotal = self.netPoints - self.endLevelPlaceholder
+                        self.endLevelPlaceholder = 0
+                        self.endLevelPlaceholder += 12
+                        self.gameData?.grandTotal = self.netPoints + self.endLevelPlaceholder
+                    }
+                    tableView.reloadRows(at: [[0,2]], with: UITableView.RowAnimation.none)
+                }
+                return multipleOptionCell
+            case 1:
+                multipleOptionCell.valueOptions = endingOptions
+                multipleOptionCell.keyName = "Failed Climb Platform"
+                multipleOptionCell.isEditable = true
+                multipleOptionCell.onChangeHandler = { newValue in
+                    if (newValue == 0) {
+                       self.gameData?.failedLevel = "None"
+                    }
+                    else if (newValue == 1) {
+                        self.gameData?.failedLevel = "1"
+                    }
+                    else if (newValue == 2) {
+                        self.gameData?.failedLevel = "2"
+                    }
+                    else {
+                        self.gameData?.failedLevel = "3"
+                    }
+                }
+                return multipleOptionCell
+            case 2:
                 grandTextFieldCell.keyName = "Grand Total"
                 grandTextFieldCell.value = "\(gameData.grandTotal)"
                 grandTextFieldCell.isTrackingLiveChanges = true
@@ -318,7 +402,7 @@ class TotalTableViewController: FUIFormTableViewController {
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 grandTextFieldCell.isEditable = false
                 return grandTextFieldCell
-            case 1:
+            case 3:
                 penaltyPoints.isEditable = true
                 penaltyPoints.keyName = "Penalty Points Earned"
                 penaltyPoints.placeholderText = "Enter Points Here"
@@ -336,42 +420,54 @@ class TotalTableViewController: FUIFormTableViewController {
                     tableView.reloadRows(at: [[1,0]], with: UITableView.RowAnimation.none)
                 }
                 return penaltyPoints
-            case 2:
-                switchFormCell.keyName = "Aggressive Defense?"
-                switchFormCell.value = false
-                switchFormCell.onChangeHandler = { [unowned self] newValue in
-                    self.gameData.aggressiveDefense = newValue
-                }
-                return switchFormCell
-            case 3:
-                switchFormCell.keyName = "Terrible Collision with Ally?"
-                switchFormCell.value = false
-                switchFormCell.onChangeHandler = { [unowned self] newValue in
-                    self.gameData.allyCollision = newValue
-                }
-                return switchFormCell
             case 4:
-                switchFormCell.keyName = "Failed Climbing Attempt?"
+                switchFormCell.keyName = "Attempted Defense?"
                 switchFormCell.value = false
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
-                    self.gameData.failedClimb = newValue
+<<<<<<< HEAD
+                    self.gameData.aggressiveDefense = newValue
+=======
+                    self.gameData?.attemptedDefense = newValue
+>>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
                 }
                 return switchFormCell
             case 5:
-                switchFormCell.keyName = "Disconnection?"
+                switchFormCell.keyName = "If so, was it effective?"
+                switchFormCell.value = false
+                switchFormCell.onChangeHandler = { [unowned self] newValue in
+<<<<<<< HEAD
+                    self.gameData.allyCollision = newValue
+=======
+                    self.gameData?.effectiveDefense = newValue
+>>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
+                }
+                return switchFormCell
+            case 6:
+                switchFormCell.keyName = "Terrible Collision with Ally?"
+                switchFormCell.value = false
+                switchFormCell.onChangeHandler = { [unowned self] newValue in
+<<<<<<< HEAD
+                    self.gameData.failedClimb = newValue
+=======
+                    self.gameData?.allyCollision = newValue
+>>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
+                }
+                return switchFormCell
+            case 7:
+                switchFormCell.keyName = "Disconnection"
                 switchFormCell.value = false
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
                     self.gameData.disconnect = newValue
                 }
                 return switchFormCell
-            case 6:
+            case 8:
                 switchFormCell.keyName = "Defended Against?"
                 switchFormCell.value = false
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
                     self.gameData.defendedAgainst = newValue
                 }
                 return switchFormCell
-            case 7:
+            case 9:
                 noteCell.isEditable = true
                 noteCell.value = ""
                 noteCell.placeholder.text = "Enter Additional Thoughts Here"
@@ -381,7 +477,6 @@ class TotalTableViewController: FUIFormTableViewController {
                 }
                 noteCell.isTrackingLiveChanges = true
                 return noteCell
-                
             default:
                 switchFormCell.value = true
                 switchFormCell.keyName = "Error"
@@ -397,16 +492,3 @@ class TotalTableViewController: FUIFormTableViewController {
     
     
 }
-
-
-
-/*
- +----------------------------------------+
- | 🛑 Do not modify code below this line  |
- +----------------------------------------+
- */
-
-
-
-
-

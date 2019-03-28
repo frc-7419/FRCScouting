@@ -16,8 +16,10 @@ class SandstormTableViewController: UITableViewController {
         // TODO: Implement FUI Form Cells
         let switchFormCell = tableView.dequeueReusableCell(withIdentifier: FUISwitchFormCell.reuseIdentifier, for: indexPath) as! FUISwitchFormCell
         
-        let sandstormCell = self.tableView.dequeueReusableCell(withIdentifier: FUISegmentedControlFormCell.reuseIdentifier, for: indexPath) as! FUISegmentedControlFormCell
-        let sandstormItems = ["None", "Hatch", "Ball"]
+        let multipleOptionCell = self.tableView.dequeueReusableCell(withIdentifier: FUISegmentedControlFormCell.reuseIdentifier, for: indexPath) as! FUISegmentedControlFormCell
+        let cargoAndHatchOptions = ["0", "1", "2"]
+        let startingOptions = ["1", "2"]
+        let missOptions = ["None", "H", "C", "Both"]
         
         switch indexPath.row {
         case 0:
@@ -28,6 +30,7 @@ class SandstormTableViewController: UITableViewController {
             }
             return switchFormCell
         case 1:
+<<<<<<< HEAD
             switchFormCell.keyName = "Successful Descent?"
             switchFormCell.value = gameData.successfulDescent
             switchFormCell.onChangeHandler = { [unowned self] newValue in
@@ -60,25 +63,73 @@ class SandstormTableViewController: UITableViewController {
                 }
                 else {
                     self.gameData.sandstormItem = "Ball"
+=======
+            multipleOptionCell.valueOptions = startingOptions
+            multipleOptionCell.keyName = "Starting Platform"
+            multipleOptionCell.isEditable = true
+            multipleOptionCell.onChangeHandler = { newValue in
+                if (newValue == 0) {
+                    self.gameData?.startingLevel = 1
+                }
+                else {
+                    self.gameData?.startingLevel = 2
+>>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
                 }
             }
+<<<<<<< HEAD
             return sandstormCell
         case 3:
             switchFormCell.keyName = "Did They Suceed?"
             switchFormCell.value = gameData.suceedSandstorm
+=======
+            return multipleOptionCell
+        case 2:
+            switchFormCell.keyName = "Successful Descent?"
+            switchFormCell.value = false
+>>>>>>> parent of cfb5f2d... Revert "Updated sandstorm and storyboard"
             switchFormCell.onChangeHandler = { [unowned self] newValue in
+<<<<<<< HEAD
                 self.gameData.suceedSandstorm = newValue
+=======
+                self.gameData?.successfulDescent = newValue
+>>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
             }
             return switchFormCell
+        case 3:
+            multipleOptionCell.valueOptions = cargoAndHatchOptions
+            multipleOptionCell.keyName = "Hatches"
+            multipleOptionCell.isEditable = true
+            multipleOptionCell.onChangeHandler = { newValue in
+                self.gameData?.sandstormHatch = newValue
+            }
+            return multipleOptionCell
+        case 4:
+            multipleOptionCell.valueOptions = cargoAndHatchOptions
+            multipleOptionCell.keyName = "Cargo"
+            multipleOptionCell.isEditable = true
+            multipleOptionCell.onChangeHandler = { newValue in
+                self.gameData?.sandstormCargo = newValue
+            }
+            return multipleOptionCell
+        case 5:
+            multipleOptionCell.valueOptions = missOptions
+            multipleOptionCell.keyName = "Misses?"
+            multipleOptionCell.isEditable = true
+            multipleOptionCell.onChangeHandler = { newValue in
+                if (newValue == 0) {
+                    self.gameData?.misses = "None"
+                }
+            }
+            return multipleOptionCell
         default:
-            return sandstormCell
+            return multipleOptionCell
         }
     }
     
     
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 6
     }
     
     /*
