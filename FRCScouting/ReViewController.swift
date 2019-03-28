@@ -51,18 +51,9 @@ class ReViewController: FUIFormTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: Return the number of cells
-<<<<<<< HEAD
     
             return 27
         
-=======
-        if self.gameData == nil {
-            print("You screwed up")
-            return 0
-        } else {
-            return 31
-        }
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
     }
     
     @objc func shareCSV(sender: UIButton) {
@@ -70,7 +61,7 @@ class ReViewController: FUIFormTableViewController {
         guard
             let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
             else { preconditionFailure()}
-        var csvText = "Team Name, Match Number, Ally Collision, Attempt Sandstorm, Starting Level, Successful Descent, Sandstorm Hatches, Sandstorm Cargo, Sandstorm Misses, Rocket Hatch Top, Rocket Hatch Mid, Rocket Hatch Bottom, Rocket Cargo Top, Rocket Cargo Mid, Rocket Cargo Bottom, Cargo Ship Hatch, Cargo Ship Cargo, Ending Level, Penalty, Notes, Attempted Defense, Defense Effective, Failed Climb Level, Disconnect, Defended Against, Total\n"
+        var csvText = "Team Name, Match Number, Crossed Line, Ally Collision, Attempt Sandstorm, Successful Descent, Sandstorm Item, Suceed Sandstorm, Rocket Hatch Top, Rocket Hatch Mid, Rocket Hatch Bottom, Rocket Cargo Top, Rocket Cargo Mid, Rocket Cargo Bottom, Cargo Ship Hatch, Cargo Ship Cargo, Penalty, Notes, Active Defense, Failed Climb, Disconnect, Defended Against, Total\n"
         print(csvText)
         
         // We need to remove the commas from the 2D array and notes
@@ -89,11 +80,7 @@ class ReViewController: FUIFormTableViewController {
         let fixedNotes = "\(gameData.notes)".replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "\n", with: " ")
         
         let newLine = """
-<<<<<<< HEAD
         \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(gameData.attemptSandstorm), \(gameData.successfulDescent), \(gameData.sandstormItem), \(gameData.suceedSandstorm), \(gameData.RocketHatchT), \(gameData.RocketHatchM), \(gameData.RocketHatchB), \(gameData.RocketCargoT), \(gameData.RocketCargoM), \(gameData.RocketCargoB), \(gameData.numCargoShipHatch), \(gameData.numCargoShipCargo), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
-=======
-        \(gameData.teamName), \(gameData.match), \(gameData.allyCollision), \(gameData.attemptSandstorm), \(gameData.startingLevel), \(gameData.successfulDescent), \(gameData.sandstormHatch), \(gameData.sandstormCargo), \(gameData.misses), \(RocketHatchT), \(RocketHatchM), \(RocketHatchB), \(RocketCargoT), \(RocketCargoM), \(RocketCargoB), \(numCargoShipHatch), \(numCargoShipCargo), \(gameData.endingLevel), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.attemptedDefense), \(gameData.effectiveDefense), \(gameData.failedLevel), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
         """
         print(newLine)
         
@@ -174,213 +161,146 @@ class ReViewController: FUIFormTableViewController {
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 return switchFormCell
             case 5:
-                textFieldCell.keyName = "Starting Platform"
-                textFieldCell.value = "\(gameData.startingLevel)"
-                textFieldCell.isEditable = false
-                let temporaryIndexPath = IndexPath(item: 5, section: 0)
-                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
-                return textFieldCell
-            case 6:
                 switchFormCell.keyName = "Successful Descent?"
                 switchFormCell.value = gameData.successfulDescent
                 switchFormCell.isEditable = false
-                let temporaryIndexPath = IndexPath(item: 6, section: 0)
+                let temporaryIndexPath = IndexPath(item: 5, section: 0)
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 return switchFormCell
-            case 7:
-                textFieldCell.keyName = "Sandstorm Hatches"
-                textFieldCell.value = "\(gameData.sandstormHatch)"
+            case 6:
+                // Similar problem here: Default option is none, but when they go to this page it won't put anything. Only when something else is picked first, then None, will None be put. Below code doesn't fix it
+                textFieldCell.keyName = "What did they attempt?"
+                textFieldCell.value = "\(gameData.sandstormItem)"
                 textFieldCell.isEditable = false
+                let temporaryIndexPath = IndexPath(item: 6, section: 0)
+                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
+                return textFieldCell
+            case 7:
+                switchFormCell.keyName = "Did they succeed?"
+                switchFormCell.value = gameData.suceedSandstorm
+                switchFormCell.isEditable = false
                 let temporaryIndexPath = IndexPath(item: 7, section: 0)
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
-                return textFieldCell
+                return switchFormCell
             case 8:
-                textFieldCell.keyName = "Sandstorm Cargo"
-                textFieldCell.value = "\(gameData.sandstormCargo)"
-                textFieldCell.isEditable = false
-                let temporaryIndexPath = IndexPath(item: 8, section: 0)
-                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
-                return textFieldCell
-            case 9:
-                textFieldCell.keyName = "Misses"
-                textFieldCell.value = "\(gameData.misses)"
-                textFieldCell.isEditable = false
-                let temporaryIndexPath = IndexPath(item: 9, section: 0)
-                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
-                return textFieldCell
-            case 10:
                 textFieldCell.keyName = "TeleOp:"
                 textFieldCell.value = ""
                 textFieldCell.placeholderText = ""
                 textFieldCell.isEditable = false
                 return textFieldCell
-            case 11:
+            case 9:
                 textFieldCell.isEditable = false
                 textFieldCell.keyName = "Number of Rocket Hatches (Top)"
-<<<<<<< HEAD
                 textFieldCell.value = "\(gameData.RocketHatchT)"
                 let temporaryIndexPath = IndexPath(item: 9, section: 0)
-=======
-                textFieldCell.value = "\(RocketHatchT!)"
+                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
+                return textFieldCell
+            case 10:
+                textFieldCell.isEditable = false
+                textFieldCell.keyName = "Number of Rocket Hatches (Middle)"
+                textFieldCell.value = "\(gameData.RocketHatchM)"
+                let temporaryIndexPath = IndexPath(item: 10, section: 0)
+                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
+                return textFieldCell
+            case 11:
+                textFieldCell.isEditable = false
+                textFieldCell.keyName = "Number of Rocket Hatches (Bottom)"
+                textFieldCell.value = "\(gameData.RocketHatchB)"
                 let temporaryIndexPath = IndexPath(item: 11, section: 0)
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 return textFieldCell
             case 12:
                 textFieldCell.isEditable = false
-                textFieldCell.keyName = "Number of Rocket Hatches (Middle)"
-<<<<<<< HEAD
-                textFieldCell.value = "\(gameData.RocketHatchM)"
-                let temporaryIndexPath = IndexPath(item: 10, section: 0)
-=======
-                textFieldCell.value = "\(RocketHatchM!)"
+                textFieldCell.keyName = "Number of Rocket Cargo (Top)"
+                textFieldCell.value = "\(gameData.RocketCargoT)"
                 let temporaryIndexPath = IndexPath(item: 12, section: 0)
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 return textFieldCell
             case 13:
                 textFieldCell.isEditable = false
-                textFieldCell.keyName = "Number of Rocket Hatches (Bottom)"
-<<<<<<< HEAD
-                textFieldCell.value = "\(gameData.RocketHatchB)"
-                let temporaryIndexPath = IndexPath(item: 11, section: 0)
-=======
-                textFieldCell.value = "\(RocketHatchB!)"
+                textFieldCell.keyName = "Number of Rocket Cargo (Middle)"
+                textFieldCell.value = "\(gameData.RocketCargoM)"
                 let temporaryIndexPath = IndexPath(item: 13, section: 0)
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 return textFieldCell
             case 14:
                 textFieldCell.isEditable = false
-                textFieldCell.keyName = "Number of Rocket Cargo (Top)"
-<<<<<<< HEAD
-                textFieldCell.value = "\(gameData.RocketCargoT)"
-                let temporaryIndexPath = IndexPath(item: 12, section: 0)
-=======
-                textFieldCell.value = "\(RocketCargoT!)"
+                textFieldCell.keyName = "Number of Rocket Cargo (Bottom)"
+                textFieldCell.value = "\(gameData.RocketCargoB)"
                 let temporaryIndexPath = IndexPath(item: 14, section: 0)
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 return textFieldCell
             case 15:
                 textFieldCell.isEditable = false
-                textFieldCell.keyName = "Number of Rocket Cargo (Middle)"
-<<<<<<< HEAD
-                textFieldCell.value = "\(gameData.RocketCargoM)"
-                let temporaryIndexPath = IndexPath(item: 13, section: 0)
-=======
-                textFieldCell.value = "\(RocketCargoM!)"
+                print("Total Hatches: \(gameData.numCargoShipHatch)")
+                textFieldCell.keyName = "Number of Cargo Ship Hatches"
+                textFieldCell.value = "\(gameData.numCargoShipHatch)"
                 let temporaryIndexPath = IndexPath(item: 15, section: 0)
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 return textFieldCell
             case 16:
                 textFieldCell.isEditable = false
-                textFieldCell.keyName = "Number of Rocket Cargo (Bottom)"
-<<<<<<< HEAD
-                textFieldCell.value = "\(gameData.RocketCargoB)"
-                let temporaryIndexPath = IndexPath(item: 14, section: 0)
-=======
-                textFieldCell.value = "\(RocketCargoB!)"
+                print("Total Hatches: \(gameData.numCargoShipCargo)")
+                textFieldCell.keyName = "Number of Cargo Ship Cargo"
+                textFieldCell.value = "\(gameData.numCargoShipCargo)"
                 let temporaryIndexPath = IndexPath(item: 16, section: 0)
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 return textFieldCell
             case 17:
-                textFieldCell.isEditable = false
-                print("Total Hatches: \(gameData.numCargoShipHatch)")
-                textFieldCell.keyName = "Number of Cargo Ship Hatches"
-<<<<<<< HEAD
-                textFieldCell.value = "\(gameData.numCargoShipHatch)"
-                let temporaryIndexPath = IndexPath(item: 15, section: 0)
-=======
-                textFieldCell.value = "\(numCargoShipHatch!)"
-                let temporaryIndexPath = IndexPath(item: 17, section: 0)
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
-                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
-                return textFieldCell
-            case 18:
-                textFieldCell.isEditable = false
-                print("Total Hatches: \(gameData.numCargoShipCargo)")
-                textFieldCell.keyName = "Number of Cargo Ship Cargo"
-<<<<<<< HEAD
-                textFieldCell.value = "\(gameData.numCargoShipCargo)"
-                let temporaryIndexPath = IndexPath(item: 16, section: 0)
-=======
-                textFieldCell.value = "\(numCargoShipCargo!)"
-                let temporaryIndexPath = IndexPath(item: 18, section: 0)
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
-                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
-                return textFieldCell
-            case 19:
-                textFieldCell.keyName = "Ending Platform"
-                textFieldCell.value = "\(gameData.endingLevel)"
-                textFieldCell.isEditable = false
-                let temporaryIndexPath = IndexPath(item: 19, section: 0)
-                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
-                return textFieldCell
-            case 20:
-                textFieldCell.keyName = "Failed Climb Platform"
-                textFieldCell.value = "\(gameData.failedLevel)"
-                textFieldCell.isEditable = false
-                let temporaryIndexPath = IndexPath(item: 20, section: 0)
-                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
-                return textFieldCell
-            case 21:
                 textFieldCell.keyName = "Totals:"
                 textFieldCell.value = ""
                 textFieldCell.placeholderText = ""
                 textFieldCell.isEditable = false
                 return textFieldCell
-            case 22:
+            case 18:
                 textFieldCell.isEditable = false
                 textFieldCell.keyName = "Penalty Points Earned"
                 textFieldCell.value = "\(gameData.penaltyPoints)"
-                let temporaryIndexPath = IndexPath(item: 22, section: 0)
+                let temporaryIndexPath = IndexPath(item: 18, section: 0)
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 return textFieldCell
+            case 19:
+                switchFormCell.keyName = "Aggressive Defense?"
+                switchFormCell.value = gameData.aggressiveDefense
+                switchFormCell.isEditable = false
+                let temporaryIndexPath = IndexPath(item: 19, section: 0)
+                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
+                return switchFormCell
+            case 20:
+                switchFormCell.keyName = "Collision with Ally?"
+                switchFormCell.value = gameData.allyCollision
+                switchFormCell.isEditable = false
+                let temporaryIndexPath = IndexPath(item: 20, section: 0)
+                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
+                return switchFormCell
+            case 21:
+                switchFormCell.keyName = "Failed Climbing Attempt?"
+                switchFormCell.value = gameData.failedClimb
+                switchFormCell.isEditable = false
+                let temporaryIndexPath = IndexPath(item: 21, section: 0)
+                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
+                return switchFormCell
+            case 22:
+                switchFormCell.keyName = "Disconnection?"
+                switchFormCell.value = gameData.disconnect
+                switchFormCell.isEditable = false
+                let temporaryIndexPath = IndexPath(item: 22, section: 0)
+                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
+                return switchFormCell
             case 23:
-                switchFormCell.keyName = "Attempted Defense?"
-                switchFormCell.value = gameData.attemptedDefense
+                switchFormCell.keyName = "Defended Against?"
+                switchFormCell.value = gameData.defendedAgainst
                 switchFormCell.isEditable = false
                 let temporaryIndexPath = IndexPath(item: 23, section: 0)
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 return switchFormCell
             case 24:
-                switchFormCell.keyName = "Effective Defense?"
-                switchFormCell.value = gameData.effectiveDefense
-                switchFormCell.isEditable = false
-                let temporaryIndexPath = IndexPath(item: 24, section: 0)
-                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
-                return switchFormCell
-            case 25:
-                switchFormCell.keyName = "Ally Collision"
-                switchFormCell.value = gameData.allyCollision
-                switchFormCell.isEditable = false
-                let temporaryIndexPath = IndexPath(item: 25, section: 0)
-                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
-                return switchFormCell
-            case 26:
-                switchFormCell.keyName = "Disconnection?"
-                switchFormCell.value = gameData.disconnect
-                switchFormCell.isEditable = false
-                let temporaryIndexPath = IndexPath(item: 26, section: 0)
-                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
-                return switchFormCell
-            case 27:
-                switchFormCell.keyName = "Defended Against?"
-                switchFormCell.value = gameData.defendedAgainst
-                switchFormCell.isEditable = false
-                let temporaryIndexPath = IndexPath(item: 27, section: 0)
-                tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
-                return switchFormCell
-            case 28:
                 textFieldCell.keyName = "Notes:"
                 textFieldCell.value = ""
                 textFieldCell.placeholderText = ""
                 textFieldCell.isEditable = false
                 return textFieldCell
-            case 29:
+            case 25:
                 noteCell.isEditable = false
                 noteCell.value = gameData.notes
                 noteCell.maxNumberOfLines = 12
@@ -388,7 +308,7 @@ class ReViewController: FUIFormTableViewController {
                 let temporaryIndexPath = IndexPath(item: 24, section: 0)
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 return noteCell
-            case 30:
+            case 26:
                 saveButton.button.setTitle("Save", for: .normal)
                 saveButton.button.didSelectHandler = { btn in
                     self.shareCSV(sender: btn)

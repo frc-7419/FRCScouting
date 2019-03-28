@@ -21,7 +21,6 @@ class ModelObject {
     var crossedLine = false
     
     /// During Sandstorm
-<<<<<<< HEAD
     var allyCollision = false
     var attemptSandstorm = false
     var successfulDescent = false
@@ -56,36 +55,6 @@ class ModelObject {
     var defendedAgainst = false
     
     var grandTotal = 0
-=======
-    var allyCollision = Bool()
-    var attemptSandstorm = Bool()
-    var startingLevel = Int()
-    var successfulDescent = Bool()
-    var sandstormHatch = Int()
-    var sandstormCargo = Int()
-    var sandstormMisses = String()
-    var misses = String()
-    
-    // During TeleOp
-    var r1RocketHatch = [[Int]]()
-    var r2RocketHatch = [[Int]]()
-    var r1RocketCargo = [[Int]]()
-    var r2RocketCargo = [[Int]]()
-    var cargoShipHatch = [[Int]]()
-    var cargoShipCargo = [[Int]]()
-    
-    // Total View Controller
-    var penaltyPoints = Int()
-    var notes = String()
-    var attemptedDefense = Bool()
-    var effectiveDefense = Bool()
-    var failedLevel = String()
-    var disconnect = Bool()
-    var defendedAgainst = Bool()
-    var endingLevel = String()
-    
-    var grandTotal = Int()
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
 }
 
 // Helper to convert Ints to bool
