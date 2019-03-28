@@ -25,6 +25,7 @@ class ModelObject {
     var attemptSandstorm = false
     var successfulDescent = false
     var sandstormItem = "None"
+    var sandstormItemValue = 0
     var suceedSandstorm = false
     // During TeleOp
     var r1RocketHatch = [[0, 0], [0, 0], [0, 0]]

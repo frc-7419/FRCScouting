@@ -38,14 +38,19 @@ class SandstormTableViewController: UITableViewController {
             sandstormCell.valueOptions = sandstormItems
             sandstormCell.keyName = "What Did They Attempt?"
             sandstormCell.isEditable = true
+            self.gameData.sandstormItem = gameData.sandstormItem // Default gameData value
             switch gameData.sandstormItem {
                 case "None":
-                    sandstormCell.value = 0
-            case "Hatch":
-                
+                    gameData.sandstormItemValue = 0
+                case "Hatch":
+                    gameData.sandstormItemValue = 1
+                case "Ball":
+                    gameData.sandstormItemValue = 2
+                default:
+                    sandstormCell.isEditable = false
             }
-            sandstormCell.value = 0 // Default selected index
-            self.gameData.sandstormItem = "None" // Default gameData value
+            sandstormCell.value = gameData.sandstormItemValue
+            // Default selected index
             sandstormCell.onChangeHandler = { newValue in
                  if (newValue == 0) {
                     self.gameData.sandstormItem = "None"
@@ -60,7 +65,7 @@ class SandstormTableViewController: UITableViewController {
             return sandstormCell
         case 3:
             switchFormCell.keyName = "Did They Suceed?"
-            switchFormCell.value = false
+            switchFormCell.value = gameData.suceedSandstorm
             switchFormCell.onChangeHandler = { [unowned self] newValue in
                 self.gameData.suceedSandstorm = newValue
             }
