@@ -75,7 +75,7 @@ class ReViewController: FUIFormTableViewController {
             let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName),
             let gameData = self.gameData
             else { preconditionFailure()}
-        var csvText = "Team Name, Match Number, Ally Collision, Attempt Sandstorm, Starting Level, Successful Descent, Sandstorm Hatches, Sandstorm Cargo, Sandstorm Misses, Rocket Hatch Top, Rocket Hatch Mid, Rocket Hatch Bottom, Rocket Cargo Top, Rocket Cargo Mid, Rocket Cargo Bottom, Cargo Ship Hatch, Cargo Ship Cargo, Ending Level, Penalty, Notes, Attempted Defense, Defense Effective, Failed Climb, Disconnect, Defended Against, Total\n"
+        var csvText = "Team Name, Match Number, Ally Collision, Attempt Sandstorm, Starting Level, Successful Descent, Sandstorm Hatches, Sandstorm Cargo, Sandstorm Misses, Rocket Hatch Top, Rocket Hatch Mid, Rocket Hatch Bottom, Rocket Cargo Top, Rocket Cargo Mid, Rocket Cargo Bottom, Cargo Ship Hatch, Cargo Ship Cargo, Ending Level, Penalty, Notes, Attempted Defense, Defense Effective, Failed Climb Level, Disconnect, Defended Against, Total\n"
         print(csvText)
         
         // We need to remove the commas from the 2D array and notes
