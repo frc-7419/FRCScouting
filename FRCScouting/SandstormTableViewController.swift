@@ -10,7 +10,7 @@ import UIKit
 
 class SandstormTableViewController: UITableViewController {
     
-    var gameData: ModelObject?
+    var gameData = ModelObject.shared
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // TODO: Implement FUI Form Cells
@@ -26,7 +26,7 @@ class SandstormTableViewController: UITableViewController {
             switchFormCell.keyName = "Attempt Sandstorm?"
             switchFormCell.value = false
             switchFormCell.onChangeHandler = { [unowned self] newValue in
-                self.gameData?.attemptSandstorm = newValue
+                self.gameData.attemptSandstorm = newValue
             }
             return switchFormCell
         case 1:
@@ -35,10 +35,10 @@ class SandstormTableViewController: UITableViewController {
             multipleOptionCell.isEditable = true
             multipleOptionCell.onChangeHandler = { newValue in
                 if (newValue == 0) {
-                    self.gameData?.startingLevel = 1
+                    self.gameData.startingLevel = 1
                 }
                 else {
-                    self.gameData?.startingLevel = 2
+                    self.gameData.startingLevel = 2
                 }
             }
             return multipleOptionCell
@@ -46,7 +46,7 @@ class SandstormTableViewController: UITableViewController {
             switchFormCell.keyName = "Successful Descent?"
             switchFormCell.value = false
             switchFormCell.onChangeHandler = { [unowned self] newValue in
-                self.gameData?.successfulDescent = newValue
+                self.gameData.successfulDescent = newValue
             }
             return switchFormCell
         case 3:
@@ -54,7 +54,7 @@ class SandstormTableViewController: UITableViewController {
             multipleOptionCell.keyName = "Hatches"
             multipleOptionCell.isEditable = true
             multipleOptionCell.onChangeHandler = { newValue in
-                self.gameData?.sandstormHatch = newValue
+                self.gameData.sandstormHatch = newValue
             }
             return multipleOptionCell
         case 4:
@@ -62,7 +62,7 @@ class SandstormTableViewController: UITableViewController {
             multipleOptionCell.keyName = "Cargo"
             multipleOptionCell.isEditable = true
             multipleOptionCell.onChangeHandler = { newValue in
-                self.gameData?.sandstormCargo = newValue
+                self.gameData.sandstormCargo = newValue
             }
             return multipleOptionCell
         case 5:
@@ -71,7 +71,7 @@ class SandstormTableViewController: UITableViewController {
             multipleOptionCell.isEditable = true
             multipleOptionCell.onChangeHandler = { newValue in
                 if (newValue == 0) {
-                    self.gameData?.misses = "None"
+                    self.gameData.misses = "None"
                 }
             }
             return multipleOptionCell
@@ -80,7 +80,7 @@ class SandstormTableViewController: UITableViewController {
         }
     }
     
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
@@ -106,7 +106,7 @@ class SandstormTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
-
+        
         tableView.estimatedRowHeight = 180
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
