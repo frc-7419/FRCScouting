@@ -24,75 +24,29 @@ class SandstormTableViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             switchFormCell.keyName = "Attempt Sandstorm?"
-            switchFormCell.value = gameData.attemptSandstorm
+            switchFormCell.value = false
             switchFormCell.onChangeHandler = { [unowned self] newValue in
                 self.gameData.attemptSandstorm = newValue
             }
             return switchFormCell
         case 1:
-<<<<<<< HEAD
-            switchFormCell.keyName = "Successful Descent?"
-            switchFormCell.value = gameData.successfulDescent
-            switchFormCell.onChangeHandler = { [unowned self] newValue in
-                self.gameData.successfulDescent = newValue
-            }
-            return switchFormCell
-        case 2:
-            sandstormCell.valueOptions = sandstormItems
-            sandstormCell.keyName = "What Did They Attempt?"
-            sandstormCell.isEditable = true
-            self.gameData.sandstormItem = gameData.sandstormItem // Default gameData value
-            switch gameData.sandstormItem {
-                case "None":
-                    gameData.sandstormItemValue = 0
-                case "Hatch":
-                    gameData.sandstormItemValue = 1
-                case "Ball":
-                    gameData.sandstormItemValue = 2
-                default:
-                    sandstormCell.isEditable = false
-            }
-            sandstormCell.value = gameData.sandstormItemValue
-            // Default selected index
-            sandstormCell.onChangeHandler = { newValue in
-                 if (newValue == 0) {
-                    self.gameData.sandstormItem = "None"
-                }
-                else if (newValue == 1) {
-                    self.gameData.sandstormItem = "Hatch"
-                }
-                else {
-                    self.gameData.sandstormItem = "Ball"
-=======
             multipleOptionCell.valueOptions = startingOptions
             multipleOptionCell.keyName = "Starting Platform"
             multipleOptionCell.isEditable = true
             multipleOptionCell.onChangeHandler = { newValue in
                 if (newValue == 0) {
-                    self.gameData?.startingLevel = 1
+                    self.gameData.startingLevel = 1
                 }
                 else {
-                    self.gameData?.startingLevel = 2
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
+                    self.gameData.startingLevel = 2
                 }
             }
-<<<<<<< HEAD
-            return sandstormCell
-        case 3:
-            switchFormCell.keyName = "Did They Suceed?"
-            switchFormCell.value = gameData.suceedSandstorm
-=======
             return multipleOptionCell
         case 2:
             switchFormCell.keyName = "Successful Descent?"
             switchFormCell.value = false
->>>>>>> parent of cfb5f2d... Revert "Updated sandstorm and storyboard"
             switchFormCell.onChangeHandler = { [unowned self] newValue in
-<<<<<<< HEAD
-                self.gameData.suceedSandstorm = newValue
-=======
-                self.gameData?.successfulDescent = newValue
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
+                self.gameData.successfulDescent = newValue
             }
             return switchFormCell
         case 3:
@@ -100,7 +54,7 @@ class SandstormTableViewController: UITableViewController {
             multipleOptionCell.keyName = "Hatches"
             multipleOptionCell.isEditable = true
             multipleOptionCell.onChangeHandler = { newValue in
-                self.gameData?.sandstormHatch = newValue
+                self.gameData.sandstormHatch = newValue
             }
             return multipleOptionCell
         case 4:
@@ -108,7 +62,7 @@ class SandstormTableViewController: UITableViewController {
             multipleOptionCell.keyName = "Cargo"
             multipleOptionCell.isEditable = true
             multipleOptionCell.onChangeHandler = { newValue in
-                self.gameData?.sandstormCargo = newValue
+                self.gameData.sandstormCargo = newValue
             }
             return multipleOptionCell
         case 5:
@@ -117,7 +71,7 @@ class SandstormTableViewController: UITableViewController {
             multipleOptionCell.isEditable = true
             multipleOptionCell.onChangeHandler = { newValue in
                 if (newValue == 0) {
-                    self.gameData?.misses = "None"
+                    self.gameData.misses = "None"
                 }
             }
             return multipleOptionCell
@@ -127,7 +81,6 @@ class SandstormTableViewController: UITableViewController {
     }
     
     
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
@@ -153,7 +106,7 @@ class SandstormTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
-
+        
         tableView.estimatedRowHeight = 180
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none

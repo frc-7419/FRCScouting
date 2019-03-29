@@ -160,15 +160,11 @@ class TotalTableViewController: FUIFormTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: Return the number of cells
-<<<<<<< HEAD
-            return 8
-=======
         if self.gameData == nil {
             return 0
         } else {
             return 10
         }
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
     }
     
     @objc func pushNextViewController(sender: UIButton) {
@@ -278,20 +274,16 @@ class TotalTableViewController: FUIFormTableViewController {
             }
         }
         //
-<<<<<<< HEAD
-        gameData.grandTotal = netPoints
-=======
         
-        if (gameData?.successfulDescent == true) {
-            if (gameData?.startingLevel == 1) {
+        if (gameData.successfulDescent == true) {
+            if (gameData.startingLevel == 1) {
                 self.netPoints += 3
             }
             else {
                 self.netPoints += 6
             }
         }
-        gameData?.grandTotal = netPoints
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
+        gameData.grandTotal = netPoints
         
         
         
@@ -341,36 +333,36 @@ class TotalTableViewController: FUIFormTableViewController {
                 multipleOptionCell.isEditable = true
                 multipleOptionCell.onChangeHandler = { newValue in
                     if (newValue == 0) {
-                        self.gameData?.endingLevel = "None"
+                        self.gameData.endingLevel = "None"
 
-                        self.gameData?.grandTotal = self.netPoints - self.endLevelPlaceholder
+                        self.gameData.grandTotal = self.netPoints - self.endLevelPlaceholder
                         self.endLevelPlaceholder = 0
-                        self.gameData?.grandTotal = self.netPoints + self.endLevelPlaceholder
+                        self.gameData.grandTotal = self.netPoints + self.endLevelPlaceholder
                     }
                     else if (newValue == 1) {
-                        self.gameData?.endingLevel = "1"
+                        self.gameData.endingLevel = "1"
                         
-                        self.gameData?.grandTotal = self.netPoints - self.endLevelPlaceholder
+                        self.gameData.grandTotal = self.netPoints - self.endLevelPlaceholder
                         self.endLevelPlaceholder = 0
                         self.endLevelPlaceholder += 3
-                        self.gameData?.grandTotal = self.netPoints + self.endLevelPlaceholder
+                        self.gameData.grandTotal = self.netPoints + self.endLevelPlaceholder
                         
                     }
                     else if (newValue == 2) {
-                        self.gameData?.endingLevel = "2"
+                        self.gameData.endingLevel = "2"
                         
-                        self.gameData?.grandTotal = self.netPoints - self.endLevelPlaceholder
+                        self.gameData.grandTotal = self.netPoints - self.endLevelPlaceholder
                         self.endLevelPlaceholder = 0
                         self.endLevelPlaceholder += 6
-                        self.gameData?.grandTotal = self.netPoints + self.endLevelPlaceholder
+                        self.gameData.grandTotal = self.netPoints + self.endLevelPlaceholder
                     }
                     else {
-                        self.gameData?.endingLevel = "3"
+                        self.gameData.endingLevel = "3"
                         
-                        self.gameData?.grandTotal = self.netPoints - self.endLevelPlaceholder
+                        self.gameData.grandTotal = self.netPoints - self.endLevelPlaceholder
                         self.endLevelPlaceholder = 0
                         self.endLevelPlaceholder += 12
-                        self.gameData?.grandTotal = self.netPoints + self.endLevelPlaceholder
+                        self.gameData.grandTotal = self.netPoints + self.endLevelPlaceholder
                     }
                     tableView.reloadRows(at: [[0,2]], with: UITableView.RowAnimation.none)
                 }
@@ -381,16 +373,16 @@ class TotalTableViewController: FUIFormTableViewController {
                 multipleOptionCell.isEditable = true
                 multipleOptionCell.onChangeHandler = { newValue in
                     if (newValue == 0) {
-                       self.gameData?.failedLevel = "None"
+                        self.gameData.failedLevel = "None"
                     }
                     else if (newValue == 1) {
-                        self.gameData?.failedLevel = "1"
+                        self.gameData.failedLevel = "1"
                     }
                     else if (newValue == 2) {
-                        self.gameData?.failedLevel = "2"
+                        self.gameData.failedLevel = "2"
                     }
                     else {
-                        self.gameData?.failedLevel = "3"
+                        self.gameData.failedLevel = "3"
                     }
                 }
                 return multipleOptionCell
@@ -424,33 +416,21 @@ class TotalTableViewController: FUIFormTableViewController {
                 switchFormCell.keyName = "Attempted Defense?"
                 switchFormCell.value = false
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
-<<<<<<< HEAD
-                    self.gameData.aggressiveDefense = newValue
-=======
-                    self.gameData?.attemptedDefense = newValue
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
+                    self.gameData.attemptedDefense = newValue
                 }
                 return switchFormCell
             case 5:
                 switchFormCell.keyName = "If so, was it effective?"
                 switchFormCell.value = false
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
-<<<<<<< HEAD
-                    self.gameData.allyCollision = newValue
-=======
-                    self.gameData?.effectiveDefense = newValue
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
+                    self.gameData.effectiveDefense = newValue
                 }
                 return switchFormCell
             case 6:
                 switchFormCell.keyName = "Terrible Collision with Ally?"
                 switchFormCell.value = false
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
-<<<<<<< HEAD
-                    self.gameData.failedClimb = newValue
-=======
-                    self.gameData?.allyCollision = newValue
->>>>>>> 66431ff5d4a768e7d5b76e23af585f62b1151e99
+                    self.gameData.allyCollision = newValue
                 }
                 return switchFormCell
             case 7:
