@@ -390,7 +390,7 @@ class TotalTableViewController: FUIFormTableViewController {
                 grandTextFieldCell.keyName = "Grand Total"
                 grandTextFieldCell.value = "\(gameData.grandTotal)"
                 grandTextFieldCell.isTrackingLiveChanges = true
-                let temporaryIndexPath = IndexPath(item: 0, section: 0)
+                let temporaryIndexPath = IndexPath(item: 2, section: 0)
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 grandTextFieldCell.isEditable = false
                 return grandTextFieldCell
@@ -409,7 +409,7 @@ class TotalTableViewController: FUIFormTableViewController {
                         self.gameData.penaltyPoints = 0
                     }
                     //self.gameData?.grandTotal = self.netPoints - (penalty ?? 0)
-                    tableView.reloadRows(at: [[1,0]], with: UITableView.RowAnimation.none)
+                    //tableView.reloadRows(at: [IndexPath.init(row: 3, section: 0)], with: UITableView.RowAnimation.none)
                 }
                 return penaltyPoints
             case 4:
