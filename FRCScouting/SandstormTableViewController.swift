@@ -24,13 +24,17 @@ class SandstormTableViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             switchFormCell.keyName = "Attempt Sandstorm?"
-            switchFormCell.value = false
+            switchFormCell.value = gameData.attemptSandstorm
             switchFormCell.onChangeHandler = { [unowned self] newValue in
                 self.gameData.attemptSandstorm = newValue
             }
             return switchFormCell
         case 1:
             multipleOptionCell.valueOptions = startingOptions
+            // TODO: Use switch statement to permanently save starting platform
+//            switch gameData.startingLevel {
+//            case 1:
+//            }
             multipleOptionCell.keyName = "Starting Platform"
             multipleOptionCell.isEditable = true
             multipleOptionCell.onChangeHandler = { newValue in
