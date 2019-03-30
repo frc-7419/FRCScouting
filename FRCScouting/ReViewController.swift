@@ -15,6 +15,9 @@ class ReViewController: FUIFormTableViewController {
     
     var gameData = ModelObject.shared
     
+    let csvFileTitle = "gameData.csv"
+    
+    let csvHeader = "Team Name, Match Number, Ally Collision, Attempt Sandstorm, Starting Level, Successful Descent, Sandstorm Hatches, Sandstorm Cargo, Sandstorm Misses, Rocket Hatch Top, Rocket Hatch Mid, Rocket Hatch Bottom, Rocket Cargo Top, Rocket Cargo Mid, Rocket Cargo Bottom, Cargo Ship Hatch, Cargo Ship Cargo, Ending Level, Penalty, Notes, Attempted Defense, Defense Effective, Failed Climb Level, Disconnect, Defended Against, Total"
     
     @objc func alert(sender: UIButton) {
         let alertController = UIAlertController(title: "Are You Sure?", message: "Going back home will erase any entered data", preferredStyle: .alert)
@@ -32,6 +35,32 @@ class ReViewController: FUIFormTableViewController {
         self.present(alertController, animated: true, completion: nil)
         
     }
+    
+    func saveToCSV() {
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let url = NSURL(fileURLWithPath: path)
+        if let pathComponent = url.appendingPathComponent(csvFileTitle) {
+            let filePath = pathComponent.path
+            let fileManager = FileManager.default
+            
+            let fixedNotes = "\(gameData.notes)".replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "\n", with: " ")
+            let newLine = """
+            \(gameData.teamName), \(gameData.match), \(gameData.allyCollision), \(gameData.attemptSandstorm), \(gameData.startingLevel), \(gameData.successfulDescent), \(gameData.sandstormHatch), \(gameData.sandstormCargo), \(gameData.misses), \(gameData.RocketHatchT), \(gameData.RocketHatchM), \(gameData.RocketHatchB), \(gameData.RocketCargoT), \(gameData.RocketCargoM), \(gameData.RocketCargoB), \(gameData.numCargoShipHatch), \(gameData.numCargoShipCargo), \(gameData.endingLevel), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.attemptedDefense), \(gameData.effectiveDefense), \(gameData.failedLevel), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
+            """
+            do {
+                if !fileManager.fileExists(atPath: filePath) {
+                    try csvHeader.appendLineToURL(fileURL: pathComponent)
+                }
+                try newLine.appendLineToURL(fileURL: pathComponent)
+                FUIToastMessage.show(message: "Saving Successful")
+            } catch {
+                print("Error")
+                FUIToastMessage.show(message: "Error")
+            }
+        }
+    }
+                
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,59 +84,26 @@ class ReViewController: FUIFormTableViewController {
             print("You screwed up")
             return 0
         } else {
-            return 31
+            return 32
         }
     }
     
-    @objc func shareCSV(sender: UIButton) {
-        let fileName = "Q_\(gameData.match)_\(gameData.teamName).csv"
-        guard
-            let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-            else { preconditionFailure()}
-        var csvText = "Team Name, Match Number, Ally Collision, Attempt Sandstorm, Starting Level, Successful Descent, Sandstorm Hatches, Sandstorm Cargo, Sandstorm Misses, Rocket Hatch Top, Rocket Hatch Mid, Rocket Hatch Bottom, Rocket Cargo Top, Rocket Cargo Mid, Rocket Cargo Bottom, Cargo Ship Hatch, Cargo Ship Cargo, Ending Level, Penalty, Notes, Attempted Defense, Defense Effective, Failed Climb Level, Disconnect, Defended Against, Total\n"
-        print(csvText)
+    @objc func exportCSV(sender: UIButton) {
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let url = NSURL(fileURLWithPath: path)
+        guard let pathComponent = url.appendingPathComponent(csvFileTitle) else {preconditionFailure()}
         
-        // We need to remove the commas from the 2D array and notes
-        // TODO: Figure out the CSV escaping so we do not have to do this!
-        
-        
-        /*let r1RocketHatchString = "\(gameData.r1RocketHatch)".replacingOccurrences(of: ",", with: "")
-         let r1RocketCargoString = "\(gameData.r1RocketCargo)".replacingOccurrences(of: ",", with: "")
-         let r2RocketHatchString = "\(gameData.r2RocketHatch)".replacingOccurrences(of: ",", with: "")
-         let r2RocketCargoString = "\(gameData.r2RocketCargo)".replacingOccurrences(of: ",", with: "")
-         let cargoShipHatchString = "\(gameData.cargoShipHatch)".replacingOccurrences(of: ",", with: "")
-         let cargoShipCargoString = "\(gameData.cargoShipCargo)".replacingOccurrences(of: ",", with: "")*/
-        
-       
-        
-        let fixedNotes = "\(gameData.notes)".replacingOccurrences(of: ",", with: "").replacingOccurrences(of: "\n", with: " ")
-        
-        let newLine = """
-        \(gameData.teamName), \(gameData.match), \(gameData.allyCollision), \(gameData.attemptSandstorm), \(gameData.startingLevel), \(gameData.successfulDescent), \(gameData.sandstormHatch), \(gameData.sandstormCargo), \(gameData.misses), \(gameData.RocketHatchT), \(gameData.RocketHatchM), \(gameData.RocketHatchB), \(gameData.RocketCargoT), \(gameData.RocketCargoM), \(gameData.RocketCargoB), \(gameData.numCargoShipHatch), \(gameData.numCargoShipCargo), \(gameData.endingLevel), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.attemptedDefense), \(gameData.effectiveDefense), \(gameData.failedLevel), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)
-        """
-        print(newLine)
-        
-        /*let newLine = """
-         \(gameData.teamName), \(gameData.match), \(gameData.crossedLine), \(gameData.allyCollision), \(flattenArray(someArray: gameData.r1RocketHatch)), \(flattenArray(someArray: gameData.r1RocketCargo)), \(flattenArray(someArray: gameData.r2RocketHatch)), \(flattenArray(someArray: gameData.r2RocketCargo)), \(flattenArray(someArray: gameData.cargoShipHatch)), \(flattenArray(someArray: gameData.cargoShipCargo)), \(gameData.penaltyPoints), \(fixedNotes), \(gameData.aggressiveDefense), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), \(gameData.grandTotal)q
-         
-         """ */
-        
-        //        let newLine = """
-        //        \(gameData.grandTotal), \(gameData.penaltyPoints), \(gameData.aggressiveDefense), \(gameData.allyCollision), \(gameData.failedClimb), \(gameData.disconnect), \(gameData.defendedAgainst), "\(gameData.notes)"
-        //        """
-        csvText.append(contentsOf: newLine)
-        
-        
-        
-        do {
-            try csvText.write(to: path, atomically: true, encoding: String.Encoding.utf8)
-            print("It worked")
-        } catch {
-            print("Failed to create file")
+        let vc = UIActivityViewController(activityItems: [pathComponent], applicationActivities: [])
+        vc.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: Any?, error: Error?) in
+            if (completed) {
+                let alert = UIAlertController(title: "IMPORTANT", message: "Fill out what happened in sandstorm as well", preferredStyle: .alert)
+                let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+                alert.addAction(dismissAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+            
         }
-        
-        let vc = UIActivityViewController(activityItems: [path], applicationActivities: [])
-        present(vc, animated: true, completion: nil)
+        present(vc, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -123,6 +119,7 @@ class ReViewController: FUIFormTableViewController {
         let noteCell = tableView.dequeueReusableCell(withIdentifier: FUINoteFormCell.reuseIdentifier, for: indexPath) as! FUINoteFormCell
         let saveButton = tableView.dequeueReusableCell(withIdentifier: FUIMapDetailPanel.ButtonTableViewCell.reuseIdentifier, for: indexPath) as! FUIMapDetailPanel.ButtonTableViewCell
         let textFieldCell = tableView.dequeueReusableCell(withIdentifier: FUITextFieldFormCell.reuseIdentifier, for: indexPath) as! FUITextFieldFormCell
+        let exportButton = tableView.dequeueReusableCell(withIdentifier: FUIMapDetailPanel.ButtonTableViewCell.reuseIdentifier, for: indexPath) as! FUIMapDetailPanel.ButtonTableViewCell
         
         
       
@@ -341,9 +338,15 @@ class ReViewController: FUIFormTableViewController {
             case 30:
                 saveButton.button.setTitle("Save", for: .normal)
                 saveButton.button.didSelectHandler = { btn in
-                    self.shareCSV(sender: btn)
+                    self.saveToCSV()
                 }
                 return saveButton
+            case 31:
+                exportButton.button.setTitle("Export", for: .normal)
+                exportButton.button.didSelectHandler = { btn in
+                    self.exportCSV(sender: btn)
+                }
+                return exportButton
             default:
                 switchFormCell.value = true
                 switchFormCell.keyName = "Error"
@@ -359,3 +362,30 @@ class ReViewController: FUIFormTableViewController {
     
     
 }
+
+extension String {
+    func appendLineToURL(fileURL: URL) throws {
+        try (self + "\n").appendToURL(fileURL: fileURL)
+    }
+    
+    func appendToURL(fileURL: URL) throws {
+        let data = self.data(using: String.Encoding.utf8)!
+        try data.append(fileURL: fileURL)
+    }
+}
+
+extension Data {
+    func append(fileURL: URL) throws {
+        if let fileHandle = FileHandle(forWritingAtPath: fileURL.path) {
+            defer {
+                fileHandle.closeFile()
+            }
+            fileHandle.seekToEndOfFile()
+            fileHandle.write(self)
+        }
+        else {
+            try write(to: fileURL, options: .atomic)
+        }
+    }
+}
+
