@@ -86,6 +86,42 @@ class TotalTableViewController: FUIFormTableViewController {
         return (Top,Mid,Bot)
     }
     
+    func endingPlatformScore(endingLevel: Int) {
+        self.gameData.endingLevelIndex = endingLevel
+        if (endingLevel == 0) {
+            self.gameData.endingLevel = "None"
+            
+            self.gameData.grandTotal = self.netPoints - self.endLevelPlaceholder
+            self.endLevelPlaceholder = 0
+            self.gameData.grandTotal = self.netPoints + self.endLevelPlaceholder
+        }
+        else if (endingLevel == 1) {
+            self.gameData.endingLevel = "1"
+            
+            self.gameData.grandTotal = self.netPoints - self.endLevelPlaceholder
+            self.endLevelPlaceholder = 0
+            self.endLevelPlaceholder += 3
+            self.gameData.grandTotal = self.netPoints + self.endLevelPlaceholder
+            
+        }
+        else if (endingLevel == 2) {
+            self.gameData.endingLevel = "2"
+            
+            self.gameData.grandTotal = self.netPoints - self.endLevelPlaceholder
+            self.endLevelPlaceholder = 0
+            self.endLevelPlaceholder += 6
+            self.gameData.grandTotal = self.netPoints + self.endLevelPlaceholder
+        }
+        else {
+            self.gameData.endingLevel = "3"
+            
+            self.gameData.grandTotal = self.netPoints - self.endLevelPlaceholder
+            self.endLevelPlaceholder = 0
+            self.endLevelPlaceholder += 12
+            self.gameData.grandTotal = self.netPoints + self.endLevelPlaceholder
+        }
+    }
+    
    /* @objc func shareCSV(sender: UIButton) {
         let fileName = "Q_\(gameData?.match ?? 0)_\(gameData?.teamName ?? "").csv"
         guard
@@ -328,6 +364,7 @@ class TotalTableViewController: FUIFormTableViewController {
         case 0:
             switch indexPath.row {
             case 0:
+                self.endingPlatformScore(endingLevel: gameData.endingLevelIndex)
                 multipleOptionCell.valueOptions = endingOptions
                 multipleOptionCell.keyName = "Ending Platform"
                 switch gameData.endingLevel {
@@ -339,40 +376,7 @@ class TotalTableViewController: FUIFormTableViewController {
                 multipleOptionCell.value = gameData.endingLevelIndex
                 multipleOptionCell.isEditable = true
                 multipleOptionCell.onChangeHandler = { newValue in
-                    self.gameData.endingLevelIndex = newValue
-                    if (newValue == 0) {
-                        self.gameData.endingLevel = "None"
-
-                        self.gameData.grandTotal = self.netPoints - self.endLevelPlaceholder
-                        self.endLevelPlaceholder = 0
-                        self.gameData.grandTotal = self.netPoints + self.endLevelPlaceholder
-                    }
-                    else if (newValue == 1) {
-                        self.gameData.endingLevel = "1"
-                        
-                        self.gameData.grandTotal = self.netPoints - self.endLevelPlaceholder
-                        self.endLevelPlaceholder = 0
-                        self.endLevelPlaceholder += 3
-                        self.gameData.grandTotal = self.netPoints + self.endLevelPlaceholder
-                        
-                    }
-                    else if (newValue == 2) {
-                        self.gameData.endingLevel = "2"
-                        
-                        self.gameData.grandTotal = self.netPoints - self.endLevelPlaceholder
-                        self.endLevelPlaceholder = 0
-                        self.endLevelPlaceholder += 6
-                        self.gameData.grandTotal = self.netPoints + self.endLevelPlaceholder
-                    }
-                    else {
-                        self.gameData.endingLevel = "3"
-                        
-                        self.gameData.grandTotal = self.netPoints - self.endLevelPlaceholder
-                        self.endLevelPlaceholder = 0
-                        self.endLevelPlaceholder += 12
-                        self.gameData.grandTotal = self.netPoints + self.endLevelPlaceholder
-                    }
-                    
+                    self.endingPlatformScore(endingLevel: newValue)
                     tableView.reloadRows(at: [[0,2]], with: UITableView.RowAnimation.none)
                     grandTextFieldCell.value = "\(self.gameData.grandTotal)"
                 }

@@ -110,18 +110,6 @@ class TeleOpViewController: UIViewController {
         alert.addAction(dismissAction)
         self.present(alert, animated: true, completion: nil)
         
-    }
-    
-    @objc func pushNextViewController(sender: UIButton) {
-        fillGameData()
-        let nextVC = TotalTableViewController()
-        nextVC.gameData = self.gameData
-        self.navigationController?.pushViewController(nextVC, animated: true)
-    }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
         // R1 - Hatch
         topLeftHatchButton.isSelected = r1HatchGrid.topLeft
@@ -174,6 +162,285 @@ class TeleOpViewController: UIViewController {
         cargoShipCargoBottom2.isSelected = cargoShipCargoGrid.bottom2
         cargoShipCargoBottom3.isSelected = cargoShipCargoGrid.bottom3
         cargoShipCargoBottom4.isSelected = cargoShipCargoGrid.bottom4
+        
+    }
+    
+    @objc func pushNextViewController(sender: UIButton) {
+        fillGameData()
+        let nextVC = TotalTableViewController()
+        nextVC.gameData = self.gameData
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // R1 - Hatch
+        if (Bool(exactly: self.gameData.r1RocketHatch[0][0] as NSNumber) ?? false) {
+            topLeftHatchButton.isSelected = true
+            r1HatchGrid.topLeft = true
+            toggleHatchButtonBackground(for: topLeftHatchButton)
+        }
+        if (Bool(exactly: self.gameData.r1RocketHatch[0][1] as NSNumber) ?? false) {
+            topRightHatchButton.isSelected = true
+            r1HatchGrid.topRight = true
+            toggleHatchButtonBackground(for: topRightHatchButton)
+        }
+        if (Bool(exactly: self.gameData.r1RocketHatch[1][0] as NSNumber) ?? false) {
+            centerLeftHatchButton.isSelected = true
+            r1HatchGrid.centerLeft = true
+            toggleHatchButtonBackground(for: centerLeftHatchButton)
+        }
+        if (Bool(exactly: self.gameData.r1RocketHatch[1][1] as NSNumber) ?? false) {
+            centerRightHatchButton.isSelected = true
+            r1HatchGrid.centerRight = true
+            toggleHatchButtonBackground(for: centerRightHatchButton)
+        }
+        if (Bool(exactly: self.gameData.r1RocketHatch[2][0] as NSNumber) ?? false) {
+            bottomLeftHatchButton.isSelected = true
+            r1HatchGrid.bottomLeft = true
+            toggleHatchButtonBackground(for: bottomLeftHatchButton)
+        }
+        
+        // R2 Hatch
+        if (Bool(exactly: self.gameData.r2RocketHatch[0][0] as NSNumber) ?? false) {
+            topLeftHatchButton.isSelected = true
+            r2HatchGrid.topLeft = true
+            toggleHatchButtonBackground(for: topLeftHatchButton)
+        }
+        if (Bool(exactly: self.gameData.r2RocketHatch[0][1] as NSNumber) ?? false) {
+            topRightHatchButton.isSelected = true
+            r2HatchGrid.topRight = true
+            toggleHatchButtonBackground(for: topRightHatchButton)
+        }
+        if (Bool(exactly: self.gameData.r2RocketHatch[1][0] as NSNumber) ?? false) {
+            centerLeftHatchButton.isSelected = true
+            r2HatchGrid.centerLeft = true
+            toggleHatchButtonBackground(for: centerLeftHatchButton)
+        }
+        if (Bool(exactly: self.gameData.r2RocketHatch[1][1] as NSNumber) ?? false) {
+            centerRightHatchButton.isSelected = true
+            r2HatchGrid.centerRight = true
+            toggleHatchButtonBackground(for: centerRightHatchButton)
+        }
+        if (Bool(exactly: self.gameData.r2RocketHatch[2][0] as NSNumber) ?? false) {
+            bottomLeftHatchButton.isSelected = true
+            r2HatchGrid.bottomLeft = true
+            toggleHatchButtonBackground(for: bottomLeftHatchButton)
+        }
+        if (Bool(exactly: self.gameData.r2RocketHatch[2][1] as NSNumber) ?? false) {
+            bottomRightHatchButton.isSelected = true
+            r2HatchGrid.bottomRight = true
+            toggleHatchButtonBackground(for: bottomRightHatchButton)
+        }
+        
+        // R1 - Cargo
+        if (Bool(exactly: self.gameData.r1RocketCargo[0][0] as NSNumber) ?? false) {
+            topLeftCargoButton.isSelected = true
+            r1CargoGrid.topLeft = true
+            toggleHatchButtonBackground(for: topLeftCargoButton)
+        }
+        if (Bool(exactly: self.gameData.r1RocketCargo[0][1] as NSNumber) ?? false) {
+            topRightCargoButton.isSelected = true
+            r1CargoGrid.topRight = true
+            toggleHatchButtonBackground(for: topRightCargoButton)
+        }
+        if (Bool(exactly: self.gameData.r1RocketCargo[1][0] as NSNumber) ?? false) {
+            centerLeftCargoButton.isSelected = true
+            r1CargoGrid.centerLeft = true
+            toggleHatchButtonBackground(for: centerLeftCargoButton)
+        }
+        if (Bool(exactly: self.gameData.r1RocketCargo[1][1] as NSNumber) ?? false) {
+            centerRightCargoButton.isSelected = true
+            r1CargoGrid.centerRight = true
+            toggleHatchButtonBackground(for: centerRightCargoButton)
+        }
+        if (Bool(exactly: self.gameData.r1RocketCargo[2][0] as NSNumber) ?? false) {
+            bottomLeftCargoButton.isSelected = true
+            r1CargoGrid.bottomLeft = true
+            toggleHatchButtonBackground(for: bottomLeftCargoButton)
+        }
+        if (Bool(exactly: self.gameData.r1RocketCargo[2][1] as NSNumber) ?? false) {
+            bottomRightCargoButton.isSelected = true
+            r1CargoGrid.bottomRight = true
+            toggleHatchButtonBackground(for: bottomRightCargoButton)
+        }
+        
+        // R2 Cargo
+        if (Bool(exactly: self.gameData.r2RocketCargo[0][0] as NSNumber) ?? false) {
+            r2topLeftCargoButton.isSelected = true
+            r2CargoGrid.topLeft = true
+            toggleHatchButtonBackground(for: r2topLeftCargoButton)
+        }
+        if (Bool(exactly: self.gameData.r2RocketCargo[0][1] as NSNumber) ?? false) {
+            r2topRightCargoButton.isSelected = true
+            r2CargoGrid.topRight = true
+            toggleHatchButtonBackground(for: r2topRightCargoButton)
+        }
+        if (Bool(exactly: self.gameData.r2RocketCargo[1][0] as NSNumber) ?? false) {
+            r2centerLeftCargoButton.isSelected = true
+            r2CargoGrid.centerLeft = true
+            toggleHatchButtonBackground(for: r2centerLeftCargoButton)
+        }
+        if (Bool(exactly: self.gameData.r2RocketCargo[1][1] as NSNumber) ?? false) {
+            r2centerRightCargoButton.isSelected = true
+            r2CargoGrid.centerRight = true
+            toggleHatchButtonBackground(for: r2centerRightCargoButton)
+        }
+        if (Bool(exactly: self.gameData.r2RocketCargo[2][0] as NSNumber) ?? false) {
+            r2bottomLeftCargoButton.isSelected = true
+            r2CargoGrid.bottomLeft = true
+            toggleHatchButtonBackground(for: r2bottomLeftCargoButton)
+        }
+        if (Bool(exactly: self.gameData.r2RocketCargo[2][1] as NSNumber) ?? false) {
+            r2bottomRightCargoButton.isSelected = true
+            r2CargoGrid.bottomRight = true
+            toggleHatchButtonBackground(for: r2bottomRightCargoButton)
+        }
+        
+        // Cargo Ship Hatch
+        
+        if (Bool(exactly: self.gameData.cargoShipHatch[0][0] as NSNumber) ?? false) {
+            cargoShipHatchTop1.isSelected = true
+            cargoShipHatchGrid.top1 = true
+            toggleHatchButtonBackground(for: cargoShipHatchTop1)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[0][1] as NSNumber) ?? false) {
+            cargoShipHatchTop2.isSelected = true
+            cargoShipHatchGrid.top2 = true
+            toggleHatchButtonBackground(for: cargoShipHatchTop2)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[0][2] as NSNumber) ?? false) {
+            cargoShipHatchTop3.isSelected = true
+            cargoShipHatchGrid.top3 = true
+            toggleHatchButtonBackground(for: cargoShipHatchTop3)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[0][3] as NSNumber) ?? false) {
+            cargoShipHatchTop4.isSelected = true
+            cargoShipHatchGrid.top4 = true
+            toggleHatchButtonBackground(for: cargoShipHatchTop4)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[1][0] as NSNumber) ?? false) {
+            cargoShipHatchBottom1.isSelected = true
+            cargoShipHatchGrid.bottom1 = true
+            toggleHatchButtonBackground(for: cargoShipHatchBottom1)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[1][1] as NSNumber) ?? false) {
+            cargoShipHatchBottom2.isSelected = true
+            cargoShipHatchGrid.bottom2 = true
+            toggleHatchButtonBackground(for: cargoShipHatchBottom2)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[1][2] as NSNumber) ?? false) {
+            cargoShipHatchBottom3.isSelected = true
+            cargoShipHatchGrid.bottom3 = true
+            toggleHatchButtonBackground(for: cargoShipHatchBottom3)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[1][3] as NSNumber) ?? false) {
+            cargoShipHatchBottom4.isSelected = true
+            cargoShipHatchGrid.bottom4 = true
+            toggleHatchButtonBackground(for: cargoShipHatchBottom4)
+        }
+        
+        /// Cargo Ship Cargo
+        
+        if (Bool(exactly: self.gameData.cargoShipHatch[0][0] as NSNumber) ?? false) {
+            cargoShipCargoTop1.isSelected = true
+            cargoShipCargoGrid.top1 = true
+            toggleHatchButtonBackground(for: cargoShipCargoTop1)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[0][1] as NSNumber) ?? false) {
+            cargoShipCargoTop2.isSelected = true
+            cargoShipCargoGrid.top2 = true
+            toggleHatchButtonBackground(for: cargoShipCargoTop2)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[0][2] as NSNumber) ?? false) {
+            cargoShipCargoTop3.isSelected = true
+            cargoShipCargoGrid.top3 = true
+            toggleHatchButtonBackground(for: cargoShipCargoTop3)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[0][3] as NSNumber) ?? false) {
+            cargoShipCargoTop4.isSelected = true
+            cargoShipCargoGrid.top4 = true
+            toggleHatchButtonBackground(for: cargoShipCargoTop4)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[1][0] as NSNumber) ?? false) {
+            cargoShipCargoBottom1.isSelected = true
+            cargoShipCargoGrid.bottom1 = true
+            toggleHatchButtonBackground(for: cargoShipCargoBottom1)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[1][1] as NSNumber) ?? false) {
+            cargoShipCargoBottom2.isSelected = true
+            cargoShipCargoGrid.bottom2 = true
+            toggleHatchButtonBackground(for: cargoShipCargoBottom2)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[1][2] as NSNumber) ?? false) {
+            cargoShipCargoBottom3.isSelected = true
+            cargoShipCargoGrid.bottom3 = true
+            toggleHatchButtonBackground(for: cargoShipCargoBottom3)
+        }
+        if (Bool(exactly: self.gameData.cargoShipHatch[1][3] as NSNumber) ?? false) {
+            cargoShipCargoBottom4.isSelected = true
+            cargoShipCargoGrid.bottom4 = true
+            toggleHatchButtonBackground(for: cargoShipCargoBottom4)
+        }
+        
+        
+        
+
+
+        
+//
+////        topLeftHatchButton.isSelected = Bool(exactly: self.gameData.r1RocketHatch[0][0] as NSNumber) ?? false
+//        topRightHatchButton.isSelected = Bool(exactly: self.gameData.r1RocketHatch[0][1] as NSNumber) ?? false
+//        centerLeftHatchButton.isSelected = Bool(exactly: self.gameData.r1RocketHatch[1][0] as NSNumber) ?? false
+//        centerRightHatchButton.isSelected = Bool(exactly: self.gameData.r1RocketHatch[1][1] as NSNumber) ?? false
+//        bottomLeftHatchButton.isSelected = Bool(exactly: self.gameData.r1RocketHatch[2][0] as NSNumber) ?? false
+//        bottomRightHatchButton.isSelected = Bool(exactly: self.gameData.r1RocketHatch[2][1] as NSNumber) ?? false
+//
+//        // R2- Hatch
+//        r2topLeftHatchButton.isSelected = Bool(exactly: self.gameData.r2RocketHatch[0][0] as NSNumber) ?? false
+//        r2topRightHatchButton.isSelected = Bool(exactly: self.gameData.r2RocketHatch[0][1] as NSNumber) ?? false
+//        r2centerLeftHatchButton.isSelected = Bool(exactly: self.gameData.r2RocketHatch[1][0] as NSNumber) ?? false
+//        r2centerRightHatchButton.isSelected = Bool(exactly: self.gameData.r2RocketHatch[1][1] as NSNumber) ?? false
+//        r2bottomLeftHatchButton.isSelected = Bool(exactly: self.gameData.r2RocketHatch[2][0] as NSNumber) ?? false
+//        r2bottomRightHatchButton.isSelected = Bool(exactly: self.gameData.r2RocketHatch[2][1] as NSNumber) ?? false
+//
+//        // R1 - Cargo
+//        topLeftCargoButton.isSelected = Bool(exactly: self.gameData.r1RocketCargo[0][0] as NSNumber) ?? false
+//        topRightCargoButton.isSelected = Bool(exactly: self.gameData.r1RocketCargo[0][1] as NSNumber) ?? false
+//        centerLeftCargoButton.isSelected = Bool(exactly: self.gameData.r1RocketCargo[1][0] as NSNumber) ?? false
+//        centerRightCargoButton.isSelected = Bool(exactly: self.gameData.r1RocketCargo[1][1] as NSNumber) ?? false
+//        bottomLeftCargoButton.isSelected = Bool(exactly: self.gameData.r1RocketCargo[2][0] as NSNumber) ?? false
+//        bottomRightCargoButton.isSelected = Bool(exactly: self.gameData.r1RocketCargo[2][1] as NSNumber) ?? false
+//
+//        // R2 - Cargo
+//        r2topLeftCargoButton.isSelected = Bool(exactly: self.gameData.r2RocketCargo[0][0] as NSNumber) ?? false
+//        r2topRightCargoButton.isSelected = Bool(exactly: self.gameData.r2RocketCargo[0][1] as NSNumber) ?? false
+//        r2centerLeftCargoButton.isSelected = Bool(exactly: self.gameData.r2RocketCargo[1][0] as NSNumber) ?? false
+//        r2centerRightCargoButton.isSelected = Bool(exactly: self.gameData.r2RocketCargo[1][1] as NSNumber) ?? false
+//        r2bottomLeftCargoButton.isSelected = Bool(exactly: self.gameData.r2RocketCargo[2][0] as NSNumber) ?? false
+//        r2bottomRightCargoButton.isSelected = Bool(exactly: self.gameData.r2RocketCargo[2][1] as NSNumber) ?? false
+//
+//        // Cargo Ship - Hatch
+//        cargoShipHatchTop1.isSelected = Bool(exactly: self.gameData.cargoShipHatch[0][0] as NSNumber) ?? false
+//        cargoShipHatchTop2.isSelected = Bool(exactly: self.gameData.cargoShipHatch[0][1] as NSNumber) ?? false
+//        cargoShipHatchTop3.isSelected = Bool(exactly: self.gameData.cargoShipHatch[0][2] as NSNumber) ?? false
+//        cargoShipHatchTop4.isSelected = Bool(exactly: self.gameData.cargoShipHatch[0][3] as NSNumber) ?? false
+//        cargoShipHatchBottom1.isSelected = Bool(exactly: self.gameData.cargoShipHatch[1][0] as NSNumber) ?? false
+//        cargoShipHatchBottom2.isSelected = Bool(exactly: self.gameData.cargoShipHatch[1][1] as NSNumber) ?? false
+//        cargoShipHatchBottom3.isSelected = Bool(exactly: self.gameData.cargoShipHatch[1][2] as NSNumber) ?? false
+//        cargoShipHatchBottom4.isSelected = Bool(exactly: self.gameData.cargoShipHatch[1][3] as NSNumber) ?? false
+//
+//        // Cargo Ship - Cargo
+//        cargoShipCargoTop1.isSelected = Bool(exactly: self.gameData.cargoShipCargo[0][0] as NSNumber) ?? false
+//        cargoShipCargoTop2.isSelected = Bool(exactly: self.gameData.cargoShipCargo[0][1] as NSNumber) ?? false
+//        cargoShipCargoTop3.isSelected = Bool(exactly: self.gameData.cargoShipCargo[0][2] as NSNumber) ?? false
+//        cargoShipCargoTop4.isSelected = Bool(exactly: self.gameData.cargoShipCargo[0][3] as NSNumber) ?? false
+//        cargoShipCargoBottom1.isSelected = Bool(exactly: self.gameData.cargoShipCargo[1][0] as NSNumber) ?? false
+//        cargoShipCargoBottom2.isSelected = Bool(exactly: self.gameData.cargoShipCargo[1][1] as NSNumber) ?? false
+//        cargoShipCargoBottom3.isSelected = Bool(exactly: self.gameData.cargoShipCargo[1][2] as NSNumber) ?? false
+//        cargoShipCargoBottom4.isSelected = Bool(exactly: self.gameData.cargoShipCargo[1][3] as NSNumber) ?? false
     }
     
     // R1 - Hatch Actions
