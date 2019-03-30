@@ -1,0 +1,80 @@
+4255 - RoboDores, 2, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, , true, true, None, false, false, 6
+6036 - Peninsula Robotics, 0, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 6, 2, 0, , false, false, None, false, false, 27
+6036 - Peninsula Robotics, 0, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 6, 2, 0, , false, false, None, false, false, 27
+7245 - Lion Bots, 4, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 1, 0, 3, 1, 0, , false, false, None, false, false, 18
+972 - Iron Claw, 4, false, false, 1, false, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 6, 1, 0, , false, false, None, false, false, 21
+649 - M-SET Fish, 0, false, true, 1, true, 1, 0, None, 0, 0, 1, 0, 0, 0, 1, 3, 3, 0, , false, false, None, false, true, 28
+2489 - The Insomniacs, 4, false, true, 1, true, 0, 0, None, 0, 2, 2, 0, 0, 0, 1, 0, 1, 0, , false, false, None, false, false, 16
+2473 - Goldstrikers, 6, false, true, 1, true, 0, 0, None, 0, 1, 2, 0, 0, 2, 0, 0, 1, 0, , false, false, None, false, false, 18
+5171 - Deus Ex Machina, 6, false, true, 1, true, 1, 0, None, 0, 1, 0, 0, 0, 0, 4, 0, 3, 0, , false, false, None, false, false, 25
+7445 - Garage Robotics, 7, false, true, 1, true, 1, 0, None, 0, 0, 0, 0, 0, 0, 1, 2, 1, 0, , false, false, None, false, false, 14
+846 - Funky Monkeys, 8, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 2, None, 0, Either tipped over or dced when defending 254, true, false, None, false, false, 9
+846 - Funky Monkeys, 8, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 2, None, 0, Either tipped over or dced when defending 254, true, false, None, false, false, 9
+766 - M-A Bears, 9, false, true, 1, true, 0, 0, None, 1, 1, 2, 0, 0, 0, 0, 0, 1, 0, (About Match 8 - scouted the wrong team and not 846), false, false, 2, false, false, 14
+670 - Homestead Robotics, 10, false, true, 1, true, 1, 0, None, 0, 0, 1, 0, 0, 0, 0, 4, 1, 0, , false, false, None, false, false, 20
+299 - Valkyrie Robotics, 11, false, true, 2, true, 0, 0, None, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, , false, false, None, false, false, 13
+6036 - Peninsula Robotics, 12, false, true, 1, true, 0, 0, C, 0, 0, 0, 0, 0, 0, 0, 3, 2, 0, Defended against a bit dropped 3 cargo , false, false, None, false, true, 18
+5171 - Deus Ex Machina, 13, false, true, 2, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 0, None, 0, , true, true, 3, false, false, 6
+7419 - Tech Support, 14, false, true, 2, true, 1, 0, None, 0, 0, 0, 0, 0, 0, 2, 3, 2, 0, , false, false, None, false, false, 25
+8 - Paly Robotics, 15, false, true, 1, true, 1, 0, None, 1, 1, 0, 0, 0, 0, 0, 3, 1, 0, Dced at beginning of game but revived , false, false, None, true, false, 19
+254 - Cheesy Poofs, 15, false, true, 1, true, 1, 0, None, 2, 2, 2, 2, 0, 2, 0, 0, 3, 0, , false, false, None, false, false, 39
+5499 - The Bay Orangutans, 13, false, true, 1, true, 0, 0, Both, 0, 2, 0, 0, 0, 2, 0, 2, 1, 0, , false, false, None, false, false, 22
+6665 - Nuts and Bolts, 14, false, true, 1, true, 0, 0, H, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, , true, true, None, false, false, 9
+2220 - Blue Twilight, 9, false, true, 1, true, 0, 0, H, 0, 0, 0, 0, 0, 3, 1, 3, 1, 0, , false, false, None, false, false, 26
+2813 - Gearheads, 8, false, true, 1, true, 0, 0, H, 0, 1, 1, 0, 0, 0, 0, 0, None, 0, , false, false, None, false, false, 7
+192 - GRT, 7, false, true, 1, true, 0, 0, H, 0, 0, 1, 0, 0, 0, 1, 3, 3, 0, , false, false, None, false, false, 28
+6619 - GravitechX, 6, false, true, 1, true, 0, 0, H, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, , true, true, None, false, false, 9
+840 - Aragon Robotics Team, 5, false, true, 1, true, 0, 0, H, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, , true, true, None, false, false, 6
+840 - Aragon Robotics Team, 5, false, true, 1, true, 0, 0, H, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, , true, true, None, false, false, 6
+6418 - The Missfits, 4, false, true, 1, true, 0, 0, H, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, , true, true, None, false, false, 9
+7245 - Lion Bots, 19, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, Dced at beginning but recovered. Still didn’t score anything , false, false, None, false, false, 6
+7245 - Lion Bots, 19, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, Dced at beginning but recovered. Still didn’t score anything , false, false, None, false, false, 6
+7667 - OtterBots, 20, false, true, 2, true, 0, 1, None, 0, 0, 0, 0, 0, 0, 0, 4, None, 0, , false, false, 1, false, false, 18
+841 - The BioMechs, 21, false, true, 2, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 0, None, 0, , false, false, None, true, false, 6
+4669 - Galileo Robotics, 23, false, true, 1, true, 0, 0, None, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, , false, false, 3, false, false, 8
+2367 - Lancer Robotics, 23, false, true, 2, true, 0, 0, H, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0, , false, false, 2, false, false, 18
+2220 - Blue Twilight, 24, false, true, 2, true, 1, 0, None, 0, 0, 2, 0, 0, 0, 1, 4, 1, 0, , false, false, None, false, true, 27
+256 - Robo Rams, 22, false, true, 1, true, 1, 0, None, 0, 0, 0, 0, 0, 0, 2, 0, 1, 0, , false, false, None, false, false, 10
+299 - Valkyrie Robotics, 23, false, true, 2, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 5, None, 0, , false, false, None, false, false, 21
+4171 - BayBots, 24, false, true, 2, true, 0, 1, None, 0, 0, 0, 0, 0, 0, 0, 2, 1, 0, inconsistent and slow , false, false, None, false, false, 15
+4990 - Gryphon Robotics, 6, false, true, 2, false, 0, 0, None, 0, 0, 3, 0, 0, 0, 0, 0, 1, 0, Got stuck on descent in Sandstorm and only goes for Rocket, false, false, 2, false, false, 9
+5499 - The Bay Orangutans, 8, false, true, 1, true, 0, 0, H, 1, 1, 1, 0, 0, 1, 0, 3, 2, 0, Mostly consistent and fast, false, false, None, false, true, 27
+8 - Paly Robotics, 9, false, true, 2, true, 0, 0, None, 2, 2, 1, 2, 1, 0, 0, 0, None, 0, Would have completed full rocket if they didn’t mess up with the placements, false, false, None, false, false, 25
+5849 - Joker, 13, false, true, 1, true, 0, 0, None, 0, 3, 0, 0, 0, 2, 0, 3, 1, 0, Fast and consistent, false, false, None, false, true, 27
+6238 - POPCORN PENGUINS, 14, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 0, None, 0, Got stuck on sandstorm and first level HAB, true, false, 1, false, false, 3
+766 - M-A Bears, 15, false, false, 2, true, 1, 0, None, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, Disconnected descored own team inconsistent, false, false, None, true, true, 11
+5027 - Event Horizon, 16, false, true, 1, false, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, Played defense majority of time , true, true, None, false, true, 3
+1458 - Gatorbotics, 15, false, true, 1, true, 1, 0, None, 1, 0, 0, 0, 0, 0, 0, 4, 1, 0, , false, false, None, false, false, 20
+668 - The Apes of Wrath, 18, false, false, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, , true, true, None, false, false, 6
+2220 - Blue Twilight, 19, false, true, 2, true, 1, 0, None, 0, 0, 2, 0, 0, 1, 1, 2, 1, 0, Consistent, false, false, None, false, true, 24
+199 - Deep Blue, 20, false, true, 1, true, 0, 0, None, 0, 0, 2, 0, 0, 0, 1, 1, None, 0, Inconsistent, false, false, 3, false, true, 12
+6036 - Peninsula Robotics, 21, false, true, 1, true, 0, 1, None, 0, 0, 0, 0, 0, 0, 0, 4, 2, 0, Slow but consistent, false, false, None, false, false, 21
+2367 - Lancer Robotics, 0, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 4, 1, 0, , false, false, None, false, false, 18
+1458 - Gatorbotics, 2, false, true, 1, false, 1, 0, None, 0, 0, 0, 0, 0, 0, 1, 4, 1, 0, Same Cargo intake as ours way slower drivetrain , false, false, None, false, false, 17
+1458 - Gatorbotics, 2, false, true, 1, false, 1, 0, None, 0, 0, 0, 0, 0, 0, 1, 4, 1, 0, Same Cargo intake as ours way slower drivetrain , false, false, None, false, false, 17
+7736 - DRAMA KINGS, 3, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, , true, false, None, false, false, 8
+846 - Funky Monkeys, 13, false, true, 1, true, 1, 0, None, 1, 1, 2, 0, 0, 0, 1, 0, 3, 0, , false, false, None, false, false, 25
+6418 - The Missfits, 14, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0, A little defense against it , false, false, None, false, true, 15
+972 - Iron Claw, 15, false, true, 1, true, 0, 0, C, 0, 0, 0, 0, 2, 0, 0, 6, 1, 0, , false, false, None, false, false, 30
+6039 - Cypress Circuits, 16, false, true, 1, true, 0, 0, None, 0, 0, 1, 0, 0, 0, 0, 0, 3, 0, got stuck on a ball but was saved by 5027, false, false, None, false, false, 17
+751 - barn2robotics, 17, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 0, None, 0, failed to get any of the 2 hatches they attempted and became full defense but failed to defend mset fish from scoring whole rocket , true, false, None, true, false, 3
+4159 - CardinalBotics, 18, false, true, 1, true, 0, 0, None, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0, , true, true, None, false, false, 17
+4159 - CardinalBotics, 18, false, true, 1, true, 0, 0, None, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0, , true, true, None, false, false, 17
+4669 - Galileo Robotics,10, false, true,1, true,0,0, H,0,0,1,0,0,0,0,0, None,0, Almost made it to platform 3 needed more time yet not useful robot for hatches or cargo., false, false,3, false, false,5
+1868 - Space Cookies,11, false, true,2, true,0,0, H,0,0,0,0,0,0,0,3,3,0, Efficient but they were not as good as they could have been during sandstorm., false, false, None, false, true,27
+5773 - YAFL Mechatronics,12, false, true,1, true,0,0, C,0,0,0,0,0,0,0,1, None,0, Didn۪t do much on offense and spent most of their time on the other side not doing much., true, false,1, false, false,6
+841 - The BioMechs,16, false, true,2, true,0,0, None,0,0,0,0,0,0,0,0, None,0, Only defense nothing else., true, true, None, false, false,6
+256 - Robo Rams,17, false, true,1, true,0,0, H,0,0,1,0,0,0,2,0,1,0, Focused only on hatches., false, false, None, false, false,12
+2473 - Goldstrikers,18, false, true,1, true,0,0, None,0,0,1,0,0,0,0,2,1,0, Missed some cargo placements also put cargo in a singular section twice., false, false, None, false, false,14
+3482 - Arrowbotics,22, false, true,1, true,0,0, None,0,0,0,0,0,0,0,0, None,0, They carried a hatch panel all match and didn۪t do anything. , false, false,2, false, false,3
+751 - barn2robotics,23, false, true,2, true,0,0, H,0,0,0,0,0,0,0,0,1,0, Good at defense but not much focus anywhere else., true, true, None, false, false,9
+2473 - Goldstrikers,24, false, true,1, true,0,0, None,0,0,1,0,0,0,0,1,1,0, Not much offense. , false, false, None, false, false,11
+2854 - The Prototypes, 13, false, true, 1, false, 0, 0, None, 0, 0, 0, 0, 2, 0, 0, 4, 1, 0, , false, false, None, false, false, 21
+2135 - Presentation Invasion, 14, false, false, 1, false, 0, 0, None, 0, 0, 0, 0, 0, 0, 1, 2, 2, 0, , false, false, None, false, false, 14
+199 - Deep Blue, 15, false, true, 2, false, 1, 0, None, 0, 0, 0, 0, 0, 0, 2, 0, 1, 0, , true, true, None, false, false, 7
+6970 - Barbarian, 19, false, true, 1, false, 0, 0, C, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, , false, false, 3, false, false, 12
+581 - Blazing Bulldogs, 20, false, true, 1, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, , false, false, None, false, false, 9
+7419 - Tech Support, 21, false, true, 2, true, 0, 0, None, 0, 0, 0, 0, 0, 0, 2, 2, 3, 0, Woot, false, false, None, false, false, 28
+4973 - Gator Gears,19, false, true,1, true,1,0, H,0,0,0,0,0,0,0,0, None,0, , true, true, None, false, false,3
+670 - Homestead Robotics,20, false, true,1, true,1,0, None,0,0,2,0,0,0,1,4, None,0, , false, false, None, false, false,21
+766 - M-A Bears,21, false, true,1, true,1,0, None,1,2,2,0,0,0,0,0, None,0, , false, false, None, false, false,13
