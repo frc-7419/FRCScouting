@@ -10,10 +10,12 @@ import Foundation
 
 class ModelObject {
     
-      static let shared = ModelObject()
+    static private(set) var shared = ModelObject()
     
-    private init() {
-        
+    private init() { }
+    
+    func reset() {
+        ModelObject.shared = ModelObject()
     }
     
     var teamName = ""

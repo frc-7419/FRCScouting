@@ -23,6 +23,8 @@ class ReViewController: FUIFormTableViewController {
         let alertController = UIAlertController(title: "Are You Sure?", message: "Going back home will erase any entered data", preferredStyle: .alert)
         
         let action1 = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction) in
+            //Reset data
+            self.gameData.reset()
             self.navigationController?.popToRootViewController(animated: true)
         }
         

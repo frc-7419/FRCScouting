@@ -189,6 +189,16 @@ class TeamPickerTableViewController: FUIFormTableViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.gameData = ModelObject.shared
+        if self.gameData.teamName.isEmpty {
+            self.selectedValues = [0]
+        }
+        self.tableView.reloadData()
+    }
+    
     @objc func pushNextViewController(sender: UIButton) {
         let nextVC = SandstormTableViewController()
         nextVC.gameData = self.gameData
