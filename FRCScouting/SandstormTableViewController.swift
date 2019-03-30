@@ -31,13 +31,20 @@ class SandstormTableViewController: UITableViewController {
             return switchFormCell
         case 1:
             multipleOptionCell.valueOptions = startingOptions
-            // TODO: Use switch statement to permanently save starting platform
-//            switch gameData.startingLevel {
-//            case 1:
-//            }
+            
+            switch gameData.startingLevel {
+                case 1:
+                    gameData.startingLevelIndex = 0
+                case 2:
+                    gameData.startingLevelIndex = 1
+            default:
+                print("You screwed up at line 41")
+            }
             multipleOptionCell.keyName = "Starting Platform"
+            multipleOptionCell.value = gameData.startingLevelIndex
             multipleOptionCell.isEditable = true
             multipleOptionCell.onChangeHandler = { newValue in
+                self.gameData.startingLevelIndex = newValue
                 if (newValue == 0) {
                     self.gameData.startingLevel = 1
                 }
@@ -48,34 +55,82 @@ class SandstormTableViewController: UITableViewController {
             return multipleOptionCell
         case 2:
             switchFormCell.keyName = "Successful Descent?"
-            switchFormCell.value = false
+            switchFormCell.value = gameData.successfulDescent
             switchFormCell.onChangeHandler = { [unowned self] newValue in
                 self.gameData.successfulDescent = newValue
             }
             return switchFormCell
         case 3:
+            // TODO: I don't think we need an index for this one
             multipleOptionCell.valueOptions = cargoAndHatchOptions
             multipleOptionCell.keyName = "Hatches"
+            multipleOptionCell.value = gameData.sandstormHatchIndex
+            switch gameData.sandstormHatch {
+            case 0:
+                gameData.sandstormHatchIndex = 0
+            case 1:
+                gameData.sandstormHatchIndex = 1
+            case 2:
+                gameData.sandstormHatchIndex = 2
+            default:
+                print("You screwed up at line 75")
+            }
             multipleOptionCell.isEditable = true
             multipleOptionCell.onChangeHandler = { newValue in
+                self.gameData.sandstormHatchIndex = newValue
                 self.gameData.sandstormHatch = newValue
             }
             return multipleOptionCell
         case 4:
+            // TODO: I don't think we need an index for this one
             multipleOptionCell.valueOptions = cargoAndHatchOptions
             multipleOptionCell.keyName = "Cargo"
+            multipleOptionCell.value = gameData.sandstormCargoIndex
+            switch gameData.sandstormCargo {
+            case 0:
+                gameData.sandstormCargoIndex = 0
+            case 1:
+                gameData.sandstormCargoIndex = 1
+            case 2:
+                gameData.sandstormCargoIndex = 2
+            default:
+                print("You screwed up at line 95")
+            }
             multipleOptionCell.isEditable = true
             multipleOptionCell.onChangeHandler = { newValue in
+                self.gameData.sandstormCargoIndex = newValue
                 self.gameData.sandstormCargo = newValue
             }
             return multipleOptionCell
         case 5:
             multipleOptionCell.valueOptions = missOptions
             multipleOptionCell.keyName = "Misses?"
+            multipleOptionCell.value = gameData.missesIndex
+            switch gameData.misses {
+            case "None":
+                gameData.missesIndex = 0
+            case "H":
+                gameData.missesIndex = 1
+            case "C":
+                gameData.missesIndex = 2
+            case "Both":
+                gameData.missesIndex = 3
+            default:
+                print("You screwed up at line 116")
+            }
             multipleOptionCell.isEditable = true
             multipleOptionCell.onChangeHandler = { newValue in
+                self.gameData.missesIndex = newValue
                 if (newValue == 0) {
                     self.gameData.misses = "None"
+                    
+                } else if (newValue == 1) {
+                    self.gameData.misses = "H"
+                    
+                } else if (newValue == 2) {
+                    self.gameData.misses = "C"
+                } else {
+                    self.gameData.misses = "Both"
                 }
             }
             return multipleOptionCell

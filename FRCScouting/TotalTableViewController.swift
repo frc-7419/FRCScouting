@@ -330,8 +330,16 @@ class TotalTableViewController: FUIFormTableViewController {
             case 0:
                 multipleOptionCell.valueOptions = endingOptions
                 multipleOptionCell.keyName = "Ending Platform"
+                switch gameData.endingLevel {
+                case "None":
+                    gameData.endingLevelIndex = 0
+                default:
+                    gameData.endingLevelIndex = Int(gameData.endingLevel)!
+                }
+                multipleOptionCell.value = gameData.endingLevelIndex
                 multipleOptionCell.isEditable = true
                 multipleOptionCell.onChangeHandler = { newValue in
+                    self.gameData.endingLevelIndex = newValue
                     if (newValue == 0) {
                         self.gameData.endingLevel = "None"
 
@@ -364,14 +372,25 @@ class TotalTableViewController: FUIFormTableViewController {
                         self.endLevelPlaceholder += 12
                         self.gameData.grandTotal = self.netPoints + self.endLevelPlaceholder
                     }
+                    
                     tableView.reloadRows(at: [[0,2]], with: UITableView.RowAnimation.none)
+                    grandTextFieldCell.value = "\(self.gameData.grandTotal)"
                 }
                 return multipleOptionCell
             case 1:
                 multipleOptionCell.valueOptions = endingOptions
                 multipleOptionCell.keyName = "Failed Climb Platform"
+                switch gameData.failedLevel {
+                case "None":
+                    gameData.failedLevelIndex = 0
+                default:
+                    gameData.failedLevelIndex = Int(gameData.failedLevel)!
+                }
+                
+                multipleOptionCell.value = gameData.failedLevelIndex
                 multipleOptionCell.isEditable = true
                 multipleOptionCell.onChangeHandler = { newValue in
+                    self.gameData.failedLevelIndex = newValue
                     if (newValue == 0) {
                         self.gameData.failedLevel = "None"
                     }
@@ -390,6 +409,9 @@ class TotalTableViewController: FUIFormTableViewController {
                 grandTextFieldCell.keyName = "Grand Total"
                 grandTextFieldCell.value = "\(gameData.grandTotal)"
                 grandTextFieldCell.isTrackingLiveChanges = true
+                grandTextFieldCell.onChangeHandler = { [unowned self] newTotal in
+                    self.gameData.grandTotal = Int(newTotal)!
+                }
                 let temporaryIndexPath = IndexPath(item: 2, section: 0)
                 tableView.reloadRows(at: [temporaryIndexPath], with: UITableView.RowAnimation.none)
                 grandTextFieldCell.isEditable = false
@@ -400,6 +422,7 @@ class TotalTableViewController: FUIFormTableViewController {
                 penaltyPoints.placeholderText = "Enter Points Here"
                 penaltyPoints.keyboardType = .numberPad
                 penaltyPoints.isTrackingLiveChanges = true
+                penaltyPoints.value = String(gameData.penaltyPoints)
                 penaltyPoints.onChangeHandler = { [unowned self] newValue in
                     let penalty = Int(newValue)
                     if penalty != nil {
@@ -414,42 +437,42 @@ class TotalTableViewController: FUIFormTableViewController {
                 return penaltyPoints
             case 4:
                 switchFormCell.keyName = "Attempted Defense?"
-                switchFormCell.value = false
+                switchFormCell.value = gameData.attemptedDefense
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
                     self.gameData.attemptedDefense = newValue
                 }
                 return switchFormCell
             case 5:
                 switchFormCell.keyName = "If so, was it effective?"
-                switchFormCell.value = false
+                switchFormCell.value = gameData.effectiveDefense
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
                     self.gameData.effectiveDefense = newValue
                 }
                 return switchFormCell
             case 6:
                 switchFormCell.keyName = "Terrible Collision with Ally?"
-                switchFormCell.value = false
+                switchFormCell.value = gameData.allyCollision
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
                     self.gameData.allyCollision = newValue
                 }
                 return switchFormCell
             case 7:
                 switchFormCell.keyName = "Disconnection"
-                switchFormCell.value = false
+                switchFormCell.value = gameData.disconnect
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
                     self.gameData.disconnect = newValue
                 }
                 return switchFormCell
             case 8:
                 switchFormCell.keyName = "Defended Against?"
-                switchFormCell.value = false
+                switchFormCell.value = gameData.defendedAgainst
                 switchFormCell.onChangeHandler = { [unowned self] newValue in
                     self.gameData.defendedAgainst = newValue
                 }
                 return switchFormCell
             case 9:
                 noteCell.isEditable = true
-                noteCell.value = ""
+                noteCell.value = gameData.notes
                 noteCell.placeholder.text = "Enter Additional Thoughts Here"
                 noteCell.maxNumberOfLines = 12
                 noteCell.onChangeHandler = { [unowned self] newValue in
