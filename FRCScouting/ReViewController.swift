@@ -19,7 +19,7 @@ class ReViewController: FUIFormTableViewController {
     
     let csvHeader = "Team Name, Match Number, Ally Collision, Attempt Sandstorm, Starting Level, Successful Descent, Sandstorm Hatches, Sandstorm Cargo, Sandstorm Misses, Rocket Hatch Top, Rocket Hatch Mid, Rocket Hatch Bottom, Rocket Cargo Top, Rocket Cargo Mid, Rocket Cargo Bottom, Cargo Ship Hatch, Cargo Ship Cargo, Ending Level, Penalty, Notes, Attempted Defense, Defense Effective, Failed Climb Level, Disconnect, Defended Against, Total"
     
-    @objc func alert(sender: UIButton) {
+    @objc func showResetAlert(sender: UIButton) {
         let alertController = UIAlertController(title: "Are You Sure?", message: "Going back home will erase any entered data", preferredStyle: .alert)
         
         let action1 = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction) in
@@ -27,6 +27,35 @@ class ReViewController: FUIFormTableViewController {
         }
         
         let action2 = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction) in
+            return
+        }
+        
+        alertController.addAction(action1)
+        alertController.addAction(action2)
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    @objc func showDataWipeAlert() {
+        let alertController = UIAlertController(title: "Confirm", message: "Do you want to delete previous match data", preferredStyle: .alert)
+        
+        let action1 = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction) in
+            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+            let url = NSURL(fileURLWithPath: path)
+            if let pathComponent = url.appendingPathComponent(self.csvFileTitle) {
+                do {
+                    try FileManager.default.removeItem(at: pathComponent)
+                } catch {
+                    FUIToastMessage.show(message: "Could not delete file!")
+                }
+                
+                FUIToastMessage.show(message: "File deleted")
+            } else {
+                FUIToastMessage.show(message: "Could not delete file!")
+            }
+        }
+        
+        let action2 = UIAlertAction(title: "No", style: .cancel) { (action:UIAlertAction) in
             return
         }
         
@@ -65,7 +94,7 @@ class ReViewController: FUIFormTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Review"
-        let nextButton = UIBarButtonItem(title: "Reset", style: .done, target: self, action: #selector(alert(sender:)))
+        let nextButton = UIBarButtonItem(title: "Reset", style: .done, target: self, action: #selector(showResetAlert))
         self.navigationItem.rightBarButtonItem = nextButton
         
         tableView.register(FUISwitchFormCell.self, forCellReuseIdentifier: FUISwitchFormCell.reuseIdentifier)
@@ -91,15 +120,17 @@ class ReViewController: FUIFormTableViewController {
     @objc func exportCSV(sender: UIButton) {
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let url = NSURL(fileURLWithPath: path)
-        guard let pathComponent = url.appendingPathComponent(csvFileTitle) else {preconditionFailure()}
+        guard let pathComponent = url.appendingPathComponent(csvFileTitle),
+            FileManager.default.fileExists(atPath: pathComponent.path) else {
+            FUIToastMessage.show(message: "File not found, did you save?")
+            return
+        }
         
         let vc = UIActivityViewController(activityItems: [pathComponent], applicationActivities: [])
         vc.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: Any?, error: Error?) in
+            
             if (completed) {
-                let alert = UIAlertController(title: "IMPORTANT", message: "Fill out what happened in sandstorm as well", preferredStyle: .alert)
-                let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
-                alert.addAction(dismissAction)
-                self.present(alert, animated: true, completion: nil)
+                self.showDataWipeAlert()
             }
             
         }
