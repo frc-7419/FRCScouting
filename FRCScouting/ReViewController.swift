@@ -52,6 +52,8 @@ class ReViewController: FUIFormTableViewController {
                 }
                 
                 FUIToastMessage.show(message: "File deleted")
+                self.gameData.reset()
+                self.navigationController?.popToRootViewController(animated: true)
             } else {
                 FUIToastMessage.show(message: "Could not delete file!")
             }

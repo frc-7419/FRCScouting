@@ -54,7 +54,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
                     self.gameData.teamName = self.listOptions[listPickerCell.value[0]]
                     NSLog("Picked team name \(self.gameData.teamName)")
                 }
-                
+                self.gameData.teamName = self.listOptions[listPickerCell.value[0]]
                 listPickerCell.listPicker.prompt = pickerPromptText
                 listPickerCell.listPicker.isSearchEnabled = isSearchEnabled
                 return listPickerCell
@@ -63,7 +63,7 @@ class TeamPickerTableViewController: FUIFormTableViewController {
                 valuePickerCell = cell // keep reference for onChangeHandler
                 cell.keyName = "Match Number"
                 cell.valueOptions = valueOptions
-                cell.value = self.gameData.match - 1  // index of first value as default
+                cell.value = self.gameData.match - 1 <= 0 ? 0 : self.gameData.match  // index of first value as default
                 cell.onChangeHandler = { newValue in
                     print("Selected value option: \(self.valueOptions[newValue])")
                     self.gameData.match = newValue + 1
