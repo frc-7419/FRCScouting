@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2A5ACCD7224A21C7008109E7 /* ReViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5ACCD6224A21C7008109E7 /* ReViewController.swift */; };
-		A18731F9226626AD00AAE571 /* SAPFiori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A18731F7226626AD00AAE571 /* SAPFiori.framework */; };
-		A18731FA226626AD00AAE571 /* SAPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A18731F8226626AD00AAE571 /* SAPCommon.framework */; };
-		A18731FB226626B000AAE571 /* SAPCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A18731F8226626AD00AAE571 /* SAPCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A18731FC226626B200AAE571 /* SAPFiori.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A18731F7226626AD00AAE571 /* SAPFiori.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A1E7D43C23860F9B006DE489 /* SAPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E7D43823860DCC006DE489 /* SAPCommon.framework */; };
+		A1E7D43D23860F9B006DE489 /* SAPCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1E7D43823860DCC006DE489 /* SAPCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A1E7D43E23860F9C006DE489 /* SAPFiori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E7D43723860DCC006DE489 /* SAPFiori.framework */; };
+		A1E7D43F23860F9C006DE489 /* SAPFiori.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1E7D43723860DCC006DE489 /* SAPFiori.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A1E7D44023860F9D006DE489 /* SAPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E7D43623860DCC006DE489 /* SAPFoundation.framework */; };
+		A1E7D44123860F9D006DE489 /* SAPFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1E7D43623860DCC006DE489 /* SAPFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AACB9D8C2217B19100B7E84B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9D8B2217B19100B7E84B /* AppDelegate.swift */; };
 		AACB9D8E2217B19100B7E84B /* TeamPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB9D8D2217B19100B7E84B /* TeamPickerTableViewController.swift */; };
 		AACB9D912217B19100B7E84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACB9D8F2217B19100B7E84B /* Main.storyboard */; };
@@ -31,8 +33,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A18731FB226626B000AAE571 /* SAPCommon.framework in Embed Frameworks */,
-				A18731FC226626B200AAE571 /* SAPFiori.framework in Embed Frameworks */,
+				A1E7D44123860F9D006DE489 /* SAPFoundation.framework in Embed Frameworks */,
+				A1E7D43D23860F9B006DE489 /* SAPCommon.framework in Embed Frameworks */,
+				A1E7D43F23860F9C006DE489 /* SAPFiori.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,8 +44,9 @@
 
 /* Begin PBXFileReference section */
 		2A5ACCD6224A21C7008109E7 /* ReViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReViewController.swift; sourceTree = "<group>"; };
-		A18731F7226626AD00AAE571 /* SAPFiori.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPFiori.framework; path = "Frameworks/Release-iphoneos/SAPFiori.framework"; sourceTree = "<group>"; };
-		A18731F8226626AD00AAE571 /* SAPCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPCommon.framework; path = "Frameworks/Release-iphoneos/SAPCommon.framework"; sourceTree = "<group>"; };
+		A1E7D43623860DCC006DE489 /* SAPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPFoundation.framework; path = Frameworks/SAPFoundation.framework; sourceTree = "<group>"; };
+		A1E7D43723860DCC006DE489 /* SAPFiori.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPFiori.framework; path = Frameworks/SAPFiori.framework; sourceTree = "<group>"; };
+		A1E7D43823860DCC006DE489 /* SAPCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAPCommon.framework; path = Frameworks/SAPCommon.framework; sourceTree = "<group>"; };
 		AACB9D882217B19100B7E84B /* FRCScouting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FRCScouting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACB9D8B2217B19100B7E84B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AACB9D8D2217B19100B7E84B /* TeamPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPickerTableViewController.swift; sourceTree = "<group>"; };
@@ -63,8 +67,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A18731FA226626AD00AAE571 /* SAPCommon.framework in Frameworks */,
-				A18731F9226626AD00AAE571 /* SAPFiori.framework in Frameworks */,
+				A1E7D44023860F9D006DE489 /* SAPFoundation.framework in Frameworks */,
+				A1E7D43E23860F9C006DE489 /* SAPFiori.framework in Frameworks */,
+				A1E7D43C23860F9B006DE489 /* SAPCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,8 +116,9 @@
 		B4EFC883223EB4D500F3F99E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A18731F8226626AD00AAE571 /* SAPCommon.framework */,
-				A18731F7226626AD00AAE571 /* SAPFiori.framework */,
+				A1E7D43823860DCC006DE489 /* SAPCommon.framework */,
+				A1E7D43723860DCC006DE489 /* SAPFiori.framework */,
+				A1E7D43623860DCC006DE489 /* SAPFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -375,17 +381,8 @@
 				DEVELOPMENT_TEAM = MJGRJBXP25;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/FRCScouting",
-					"$(PROJECT_DIR)/SAPML-Dependencies",
-					"$(PROJECT_DIR)/Frameworks/Release-fat",
-					"$(PROJECT_DIR)/Frameworks/Release-iphoneos",
-					"$(PROJECT_DIR)\\ 2",
-					"$(PROJECT_DIR)\\ 2",
-					"$(PROJECT_DIR)\\ 2",
-					"$(PROJECT_DIR)\\ 2",
-					"$(PROJECT_DIR)\\ 2",
-					"$(PROJECT_DIR)\\ 2",
+					"${PROJECT_DIR}/Frameworks/**",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = FRCScouting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -410,17 +407,8 @@
 				DEVELOPMENT_TEAM = MJGRJBXP25;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/FRCScouting",
-					"$(PROJECT_DIR)/SAPML-Dependencies",
-					"$(PROJECT_DIR)/Frameworks/Release-fat",
-					"$(PROJECT_DIR)/Frameworks/Release-iphoneos",
-					"$(PROJECT_DIR)\\ 2",
-					"$(PROJECT_DIR)\\ 2",
-					"$(PROJECT_DIR)\\ 2",
-					"$(PROJECT_DIR)\\ 2",
-					"$(PROJECT_DIR)\\ 2",
-					"$(PROJECT_DIR)\\ 2",
+					"${PROJECT_DIR}/Frameworks/**",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = FRCScouting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
